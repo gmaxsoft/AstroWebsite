@@ -1,138 +1,99 @@
-# Astro Frame
+# Maxsoft.pl
 
-A lightweight, multilingual Astro starter template designed for developers to quickly build static websites with support for Polish (PL) and English (EN) languages, SCSS styling, TypeScript, WebP image optimization, and SEO enhancements.
+Nowoczesna strona internetowa firmy Maxsoft - kompleksowe usługi programistyczne, projektowanie stron WWW, sklepy internetowe, integracje API, systemy CRM/ERP. Zbudowana na frameworku Astro z pełnym wsparciem wielojęzyczności, optymalizacją obrazów i SEO.
 
-## 🚀 Features
+## ✨ Funkcje
 
-- **Multilingual Support (i18n)**: Built-in internationalization with Polish (`pl`) as the default language and English (`en`) as an additional language, using Astro's i18n routing.
-- **SCSS Styling**: Integrated SCSS support for modular and maintainable CSS, compiled via `sass`.
-- **WebP Image Optimization**: Optimized image handling with `.webp` format using Astro's built-in `astro:assets` module for fast and modern websites.
-- **SEO Optimization**: Enhanced SEO with `astro-seo` for Open Graph and Twitter meta tags.
-- **TypeScript**: Full TypeScript support for type-safe development.
-- **Static Assets**: Support for static assets in `public/` and dynamic assets in `src/assets/`.
+- **Wielojęzyczność (i18n)**: Polski (`pl`) jako domyślny + Angielski (`en`)
+- **Optymalizacja obrazów**: WebP z `astro:assets` + Sharp
+- **SEO**: Open Graph, Twitter Cards (`astro-seo`)
+- **TypeScript**: Pełne wsparcie typów
+- **SCSS**: Modularne style z Sass
+- **Animacje**: GSAP + Swiper + Bootstrap 5
+- **Ikony**: Font Awesome
+- **Responsywność**: Mobile First
+- **Formularze kontaktowe**: Nodemailer (serwerowe endpointy)
 
-## 📂 Project Structure
+## 🚀 Demo i Kontakt
 
-```plaintext
-/
-├── public/
-│   ├── favicon.svg
-│   └── images/
-│       └── home-og.jpg
-├── src/
-│   ├── assets/
-│   │   └── astro.svg
-│   ├── i18n/
-│   │   ├── pl.json
-│   │   └── en.json
-│   ├── layouts/
-│   │   └── Layout.astro
-│   ├── pages/
-│   │   ├── [locale]/
-│   │   │   └── index.astro
-│   │   └── index.astro
-│   ├── styles/
-│   │   └── global.scss
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+| Typ | Link/Informacja |
+| :--- | :--- |
+| **Live Demo** | [👉 www.maxsoft.pl](https://www.maxsoft.pl/) |
+| **Lokalizacja** | Zielona Góra \| Lubrza |
+| **Repozytorium** | GitHub Repository |
+
+***
+
+## ✨ Kluczowe Funkcje
+
+* **Wielojęzyczność (i18n)**: Pełne wsparcie, z Polskim (`pl`) jako domyślnym oraz Angielskim (`en`).
+* **Optymalizacja Obrazów**: Wykorzystanie formatu **WebP** oraz komponentu `astro:assets` w połączeniu z biblioteką **Sharp** dla najlepszej wydajności.
+* **SEO & Social Media**: Zaawansowana konfiguracja **Open Graph** i **Twitter Cards** za pomocą modułu `astro-seo`.
+* **Wysoka Jakość Kodu**: Pełne wsparcie dla **TypeScript** gwarantujące bezpieczeństwo typów.
+* **Modularne Style**: Użycie **SCSS** (Sass) do zarządzania stylami.
+* **Zaawansowane Animacje**: Płynne efekty dzięki **GSAP**, karuzele i slidery obsługiwane przez **Swiper**.
+* **UI/UX**: Komponenty, grid i responsywność z **Bootstrap 5**, ikony z **Font Awesome**, galerka/lightbox **FancyApps UI**.
+* **Responsywność**: Architektura **Mobile First** zapewniająca idealne wyświetlanie na każdym urządzeniu.
+* **Formularze Kontaktowe**: Bezpieczne endpointy serwerowe (API Routes) do obsługi wysyłki maili za pomocą **Nodemailer**.
+
+***
+
+## 🛠️ Stos Technologiczny
+
+| Kategoria | Technologie |
+| :--- | :--- |
+| **Frontend** | Astro 5, SCSS, Bootstrap 5, GSAP, Swiper, FancyApps UI, jQuery |
+| **Backend** | Node.js, Nodemailer, SMTP (dla formularzy kontaktowych) |
+| **Narzędzia** | TypeScript, Sharp, Astro SEO, Font Awesome |
+
+***
+
+## 📂 Struktura Projektu
+
+Główne katalogi projektu:
+
+| Ścieżka | Opis |
+| :--- | :--- |
+| `/public/` | Zawiera statyczne zasoby. |
+| `├── favicon.svg` | Ikona strony. |
+| `└── images/` | Statyczne obrazy (nieoptymalizowane). |
+| `/src/` | Katalog z kodem źródłowym. |
+| `├── assets/` | Optymalizowane obrazy (importowane przez Astro Assets). |
+| `├── components/` | Komponenty Astro (.astro). |
+| `├── i18n/` | Pliki tłumaczeń (`pl.json`, `en.json`, itp.). |
+| `├── layouts/` | Główne layouty (np. `Layout.astro`). |
+| `├── pages/` | Strony z routingiem i i18n. |
+| `├── styles/` | Globalne style SCSS. |
+| `└── utils/` | Narzędzia pomocnicze (np. funkcje). |
+| `/` (Root) | Główne pliki konfiguracyjne. |
+| `├── astro.config.mjs` | Główna konfiguracja Astro i i18n. |
+| `├── package.json` | Lista zależności i skrypty. |
+| `└── tsconfig.json` | Konfiguracja TypeScript. |
+
+***
+
+## 🏁 Szybki Start
+
+### Wymagania
+
+Upewnij się, że masz zainstalowane:
+
+* Node.js **wersja 18+**
+* npm **wersja 9+**
+
+### Instalacja
+
+Sklonuj repozytorium i zainstaluj zależności:
+
+```bash
+git clone <twoje-repo>
+cd maxsoft.pl
+npm install
+
+Komenda,Opis,URL
+npm run dev,Uruchamia serwer deweloperski.,http://localhost:4321
+npm run build,Buduje projekt do produkcji (wynik w ./dist/).,-
+npm run preview,Lokalny podgląd zbudowanej wersji produkcyjnej.,-
+npm run astro check,Weryfikacja kodu za pomocą TypeScript.,-
+
 ```
-
-- **`public/`**: Static assets like `favicon.svg` and images for Open Graph (`home-og.jpg`).
-- **`src/assets/`**: Dynamic assets (e.g., `astro.svg`) for optimized imports.
-- **`src/i18n/`**: JSON files for translations (`pl.json`, `en.json`).
-- **`src/layouts/`**: Reusable layout component (`Layout.astro`) with SEO and i18n support.
-- **`src/pages/`**: Pages with i18n routing (`index.astro` for `/`, `[locale]/index.astro` for `/en/`).
-- **`src/styles/`**: SCSS styles (`global.scss`).
-- **`astro.config.mjs`**: Configures i18n and image optimization.
-- **`tsconfig.json`**: TypeScript configuration for type-safe development.
-
-## 🛠️ Getting Started
-
-### Prerequisites
-- Node.js (v18 or higher)
-- npm (v9 or higher)
-
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/gmaxsoft/astro_frame.git
-   cd astro_frame
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-### Commands
-Run these commands from the project root:
-| Command | Action |
-|---------|--------|
-| `npm run dev` | Starts the development server at `http://localhost:4321` |
-| `npm run build` | Builds the production site to `./dist/` |
-| `npm run preview` | Previews the built site locally |
-| `npm run astro ...` | Runs Astro CLI commands (e.g., `astro check`) |
-
-### Usage
-- **Development**: Run `npm run dev` to start the server. Access the site at:
-  - `http://localhost:4321/` for Polish (default).
-  - `http://localhost:4321/en/` for English.
-- **Build**: Run `npm run build` to generate static files in `dist/`.
-- **Translations**: Add or edit translations in `src/i18n/pl.json` and `src/i18n/en.json`.
-- **Images**: Place static images in `public/images/` (e.g., `home-og.jpg`) or dynamic images in `src/assets/` for optimization with `<Image>` from `astro:assets`.
-- **SCSS**: Add styles in `src/styles/global.scss` and import in `.astro` files with `<style lang="scss">`.
-
-## 🌐 Multilingual Setup
-The project supports two languages:
-- **Polish (`pl`)**: Default, accessible at `/` (e.g., `http://localhost:4321/`).
-- **English (`en`)**: Accessible at `/en/` (e.g., `http://localhost:4321/en/`).
-
-To add a new language (e.g., German `de`):
-1. Add the language to `astro.config.mjs`:
-   ```js
-   i18n: {
-     defaultLocale: 'pl',
-     locales: ['pl', 'en', 'de']
-   }
-   ```
-2. Create `src/i18n/de.json` with translations.
-3. Update `src/pages/[locale]/index.astro` in `getStaticPaths` to include `{ params: { locale: 'de' } }`.
-
-## 🖼️ Image Optimization
-Images (including `.webp`) are optimized using Astro's built-in `astro:assets` module:
-- **Static Images**: Place in `public/images/` and use `<img src="/images/example.webp">`.
-- **Dynamic Images**: Place in `src/assets/` and import:
-  ```astro
-  ---
-  import exampleImage from '../assets/example.webp';
-  import { Image } from 'astro:assets';
-  ---
-  <Image src={exampleImage} alt="Example" width={800} height={600} />
-  ```
-- Install `sharp` for faster image processing:
-  ```bash
-  npm install sharp
-  ```
-
-## 🎨 SCSS Styling
-- SCSS is supported via the `sass` package.
-- Add global styles in `src/styles/global.scss` and import in `.astro` files:
-  ```astro
-  <style lang="scss">
-    @import '../styles/global.scss';
-  </style>
-  ```
-
-## 🔍 SEO
-SEO is handled by the `astro-seo` package, with Open Graph and Twitter meta tags configured in `src/layouts/Layout.astro`. Update meta tags via props:
-```astro
-<Layout title="Page Title" description="Page Description" ogImage="/images/home-og.jpg">
-```
-
-## 📚 Learn More
-- [Astro Documentation](https://docs.astro.build)
-- [Astro i18n Guide](https://docs.astro.build/en/guides/internationalization/)
-- [Astro Image Optimization](https://docs.astro.build/en/guides/images/)
-
-## 📬 Contact
-For questions or contributions, open an issue on [GitHub](https://github.com/gmaxsoft/astro_frame) or contact the maintainer.
