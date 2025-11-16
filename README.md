@@ -6,7 +6,8 @@ Nowoczesna strona internetowa firmy Maxsoft - kompleksowe usługi programistyczn
 
 - **Wielojęzyczność (i18n)**: Polski (`pl`) jako domyślny + Angielski (`en`)
 - **Optymalizacja obrazów**: WebP z `astro:assets` + Sharp
-- **SEO**: Open Graph, Twitter Cards (`astro-seo`)
+- **SEO**: Open Graph, Twitter Cards (`astro-seo`) z poprawnymi canonical tags
+- **Wyjście serwerowe**: Node.js adapter dla dynamicznych aplikacji
 - **TypeScript**: Pełne wsparcie typów
 - **SCSS**: Modularne style z Sass
 - **Animacje**: GSAP + Swiper + Bootstrap 5
@@ -58,13 +59,13 @@ Główne katalogi projektu:
 | `├── favicon.svg` | Ikona strony. |
 | `└── images/` | Statyczne obrazy (nieoptymalizowane). |
 | `/src/` | Katalog z kodem źródłowym. |
-| `├── assets/` | Optymalizowane obrazy (importowane przez Astro Assets). |
+| `├── assets/` | Style SCSS. |
 | `├── components/` | Komponenty Astro (.astro). |
-| `├── i18n/` | Pliki tłumaczeń (`pl.json`, `en.json`, itp.). |
+| `├── i18n/` | Pliki tłumaczeń (`pl.json`, `en.json`). |
 | `├── layouts/` | Główne layouty (np. `Layout.astro`). |
 | `├── pages/` | Strony z routingiem i i18n. |
-| `├── styles/` | Globalne style SCSS. |
-| `└── utils/` | Narzędzia pomocnicze (np. funkcje). |
+| `├── scripts/` | Pliki JavaScript. |
+| `└── env.d.ts` | Definicje typów TypeScript. |
 | `/` (Root) | Główne pliki konfiguracyjne. |
 | `├── astro.config.mjs` | Główna konfiguracja Astro i i18n. |
 | `├── package.json` | Lista zależności i skrypty. |
@@ -86,14 +87,16 @@ Upewnij się, że masz zainstalowane:
 Sklonuj repozytorium i zainstaluj zależności:
 
 ```bash
-git clone <twoje-repo>
+git clone https://github.com/gmaxsoft/website_maxsoft.git
 cd maxsoft.pl
 npm install
-
-Komenda,Opis,URL
-npm run dev,Uruchamia serwer deweloperski.,http://localhost:4321
-npm run build,Buduje projekt do produkcji (wynik w ./dist/).,-
-npm run preview,Lokalny podgląd zbudowanej wersji produkcyjnej.,-
-npm run astro check,Weryfikacja kodu za pomocą TypeScript.,-
-
 ```
+
+### Uruchomienie
+
+| Komenda | Opis | URL |
+| :---: | :---: | :---: |
+| `npm run dev` | Uruchamia serwer deweloperski | http://localhost:4321 |
+| `npm run build` | Buduje projekt dla środowiska produkcyjnego | - |
+| `npm run preview` | Lokalny podgląd zbudowanej wersji produkcyjnej | - |
+| `npm run astro check` | Weryfikacja kodu za pomocą TypeScript | - |
