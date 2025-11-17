@@ -41,7 +41,7 @@ const resolvedCanonical = canonical || `https://www.maxsoft.pl${Astro.url.pathna
     <SEO
       title={title}
       description={description}
-      canonical={false}
+      canonical={resolvedCanonical}
       openGraph={{
         basic: {
           title: title,
