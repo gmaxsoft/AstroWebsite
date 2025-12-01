@@ -31,7 +31,7 @@ const {
   ogImage = "/img/default-og.webp", // Obrazek OG
 } = Astro.props;
 
-const finalCanonical = canonical || (lang === 'pl' ? `https://www.maxsoft.pl/` : `https://www.maxsoft.pl${Astro.url.pathname}`);
+const finalCanonical = canonical || (lang === 'pl' ? `https://www.maxsoft.pl/pl/` : `https://www.maxsoft.pl${Astro.url.pathname}`);
 
 const companyName = "MAXSOFT.PL";
 const mainWebsite = "https://www.maxsoft.pl";
@@ -130,7 +130,7 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
         // ...
       }}
     />
-    <link rel="alternate" hreflang="pl" href="https://maxsoft.pl/" />
+    <link rel="alternate" hreflang="pl" href="https://maxsoft.pl/pl/" />
     <link rel="alternate" hreflang="en" href="https://maxsoft.pl/en/" />
     <link rel="alternate" hreflang="x-default" href="https://maxsoft.pl/" />
     <script
