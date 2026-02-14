@@ -333,10 +333,10 @@ menu button
 .mil-menu-controls {
     display: flex; // Użyj Flexboxa do wyrównania elementów
     align-items: center; // Wyrównanie w pionie
-    
+
     // Ustawienie marginesu na lewo dla przycisku menu
     // Daje to 10px odstępu między flagami a przyciskiem
-    .mil-menu-btn { 
+    .mil-menu-btn {
         margin-left: 10px;
     }
 }
@@ -1243,12 +1243,6 @@ about
 partners
 
 ------------------------------------------- */
-.mil-infinite-show {
-    & .swiper-wrapper {
-        transition-timing-function: linear;
-    }
-}
-
 .mil-partner-frame {
     display: block;
 

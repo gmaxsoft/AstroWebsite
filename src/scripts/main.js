@@ -3,8 +3,6 @@ import $ from 'jquery';
 import gsap from 'gsap';
 import { ScrollTrigger, ScrollToPlugin } from 'gsap/all';
 import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
-import Swiper from 'swiper';
-import { Navigation, Pagination, FreeMode, Thumbs, Mousewheel, Autoplay, Parallax, EffectFade, Scrollbar } from 'swiper/modules';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -434,87 +432,6 @@ function initFancybox() {
     });
 }
 
-/**
- * Inicjalizuje wszystkie Swiper slidery.
- */
-function initSwipers() {
-
-    // Sprawdzenie, czy istnieją slidery do zainicjowania, używając natywnego JS
-    const reviewsSliderExists = document.querySelector('.mil-reviews-slider');
-    const infiniteSliderExists = document.querySelector('.mil-infinite-show');
-    const portfolioSliderExists = document.querySelector('.mil-portfolio-slider');
-
-    if (!reviewsSliderExists && !infiniteSliderExists) {
-        console.log('Brak elementów Swiper do inicjalizacji.');
-    }
-    else {
-        const menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
-
-        var reviewsSwiper = new Swiper('.mil-reviews-slider', {
-            modules: [Navigation, Pagination, Parallax, EffectFade],
-            pagination: {
-                el: '.mil-revi-pagination',
-                clickable: true,
-                renderBullet: function (index, className) {
-                    return '<span class="' + className + '">' + (menu[index]) + '</span>';
-                },
-            },
-            speed: 800,
-            effect: 'fade',
-            parallax: true,
-            navigation: {
-                nextEl: '.mil-revi-next',
-                prevEl: '.mil-revi-prev',
-            },
-        });
-
-        var infiniteSwiper = new Swiper('.mil-infinite-show', {
-            modules: [Navigation, Pagination, FreeMode, Thumbs, Mousewheel, Autoplay],
-            slidesPerView: 2,
-            spaceBetween: 30,
-            speed: 5000,
-            autoplay: true,
-            autoplay: {
-                delay: 0,
-            },
-            loop: true,
-            freeMode: true,
-            breakpoints: {
-                992: {
-                    slidesPerView: 4,
-                },
-            },
-        });
-    }
-
-    if (!portfolioSliderExists) {
-        console.log('Brak elementów Swiper Portfolio do inicjalizacji.');
-    }
-    else {
-        var swiper = new Swiper('.mil-portfolio-slider', {
-            modules: [Navigation, Pagination, Parallax, Mousewheel, Autoplay],
-            slidesPerView: 1,
-            spaceBetween: 0,
-            speed: 4800,
-            parallax: true,
-            autoplay: true,
-            autoplay: {
-                delay: 0,
-            },
-            mousewheel: {
-                enable: true
-            },
-            navigation: {
-                nextEl: '.mil-portfolio-next',
-                prevEl: '.mil-portfolio-prev',
-            },
-            pagination: {
-                el: '.swiper-portfolio-pagination',
-                type: 'fraction',
-            },
-        });
-    }
-}
 
 // ----------------------------------------------------
 // ## GŁÓWNA INICJALIZACJA
@@ -531,7 +448,6 @@ function initApp() {
     initAccordion();
     initCursor();
     initBackToTop();
-    initSwipers();
     initMenuToggle();
     initMainMenuDropdown();
     initFancybox();
