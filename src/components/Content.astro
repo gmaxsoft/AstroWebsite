@@ -1,4 +1,6 @@
 ---
+import { Swiper, SwiperWrapper, SwiperSlide, } from "astro-swiper";
+
 const { langPrefix } = Astro.props;
 const prefix = langPrefix || "/pl";
 const { data } = Astro.props;
@@ -267,9 +269,23 @@ const { data } = Astro.props;
             fill="#000000"></path>
         </svg>
 
-        <div class="swiper-container mil-reviews-slider">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
+        <Swiper class="swiper-container mil-reviews-slider" options={{
+          pagination: {
+            el: '.mil-revi-pagination',
+            clickable: true,
+            // renderBullet is a function, initialized in the script part
+          },
+          speed: 800,
+          effect: 'fade',
+          parallax: true,
+          navigation: {
+            nextEl: '.mil-revi-next',
+            prevEl: '.mil-revi-prev',
+          },
+          init: false
+        }}>
+          <SwiperWrapper>
+            <SwiperSlide>
               <div
                 class="mil-review-frame mil-center"
                 data-swiper-parallax="-200"
@@ -283,8 +299,8 @@ const { data } = Astro.props;
                   {data.softtxt4}
                 </p>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-review-frame mil-center"
                 data-swiper-parallax="-200"
@@ -298,8 +314,8 @@ const { data } = Astro.props;
                   {data.softtxt6}
                 </p>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-review-frame mil-center"
                 data-swiper-parallax="-200"
@@ -313,8 +329,8 @@ const { data } = Astro.props;
                   {data.softtxt7}
                 </p>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-review-frame mil-center"
                 data-swiper-parallax="-200"
@@ -328,8 +344,8 @@ const { data } = Astro.props;
                   {data.softtxt9}
                 </p>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-review-frame mil-center"
                 data-swiper-parallax="-200"
@@ -343,8 +359,8 @@ const { data } = Astro.props;
                   {data.softtxt11}
                 </p>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-review-frame mil-center"
                 data-swiper-parallax="-200"
@@ -358,8 +374,8 @@ const { data } = Astro.props;
                   {data.softtxt13}
                 </p>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-review-frame mil-center"
                 data-swiper-parallax="-200"
@@ -373,9 +389,9 @@ const { data } = Astro.props;
                   {data.softtxt16}
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
+            </SwiperSlide>
+          </SwiperWrapper>
+        </Swiper>
       </div>
     </div>
   </div>
@@ -383,74 +399,107 @@ const { data } = Astro.props;
 
 <div class="mil-soft-bg">
   <div class="container mil-p-0-120">
-    <div class="swiper-container mil-infinite-show mil-up">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
+    <Swiper class="swiper-container mil-up" options={{
+      slidesPerView: 2,
+      spaceBetween: 30,
+      speed: 5000,
+      autoplay: {
+        delay: 0,
+      },
+      loop: true,
+      freeMode: true,
+      breakpoints: {
+        992: {
+            slidesPerView: 4,
+        },
+      },
+    }}>
+      <SwiperWrapper class="mil-infinite-show">
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/php.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/react.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/vuejs.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/postgresql.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/nodejs.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/mysql.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/javascript.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/jquery.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/css3.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/html5.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/angularjs.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/angular2.svg" alt="logo" /></a
           >
-        </div>
-        <div class="swiper-slide">
+        </SwiperSlide>
+        <SwiperSlide>
           <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/laravel.svg" alt="logo" /></a
           >
-        </div>
-      </div>
-    </div>
+        </SwiperSlide>
+      </SwiperWrapper>
+    </Swiper>
   </div>
 </div>
+
+<style>
+.mil-infinite-show {
+  transition-timing-function: linear;
+}
+</style>
+
+<script>
+  import type { PaginationOptions } from 'swiper/types';
+  import { getSwiperFromUniqueSelector } from 'astro-swiper'
+  window.addEventListener('load', () => {
+    const swiper = getSwiperFromUniqueSelector('.mil-reviews-slider');
+    const menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>'];
+    (swiper!.params.pagination as PaginationOptions)!.renderBullet = function (index: number, className: string) {
+      return '<span class="' + className + '">' + (menu[index]) + '</span>';
+    }
+    swiper!.init()
+  })
+</script>

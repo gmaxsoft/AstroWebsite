@@ -1,4 +1,6 @@
 ---
+import { Swiper, SwiperWrapper, SwiperSlide, } from "astro-swiper";
+
 const { langPrefix } = Astro.props;
 const prefix = langPrefix || "/pl";
 const { data } = Astro.props;
@@ -46,9 +48,26 @@ const { data } = Astro.props;
   <div class="container">
     <div class="row align-items-end">
       <div class="col-lg-9">
-        <div class="swiper-container mil-portfolio-slider mil-up">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
+        <Swiper class="swiper-container mil-portfolio-slider mil-up" addDefaultClass={false} useCustomElement={false} options={{
+          slidesPerView: 1,
+          spaceBetween: 0,
+          speed: 4800,
+          parallax: true,
+          autoplay: {
+              delay: 0,
+          },
+          // mousewheel: true,
+          navigation: {
+              nextEl: '.mil-portfolio-next',
+              prevEl: '.mil-portfolio-prev',
+          },
+          pagination: {
+              el: '.swiper-portfolio-pagination',
+              type: 'fraction',
+          },
+        }}>
+          <SwiperWrapper>
+            <SwiperSlide>
               <div
                 class="mil-portfolio-item mil-slider-item"
                 data-swiper-parallax="-30"
@@ -92,8 +111,8 @@ const { data } = Astro.props;
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-portfolio-item mil-slider-item"
                 data-swiper-parallax="-30"
@@ -137,8 +156,8 @@ const { data } = Astro.props;
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-portfolio-item mil-slider-item"
                 data-swiper-parallax="-30"
@@ -182,8 +201,8 @@ const { data } = Astro.props;
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-portfolio-item mil-slider-item"
                 data-swiper-parallax="-30"
@@ -227,8 +246,8 @@ const { data } = Astro.props;
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-portfolio-item mil-slider-item"
                 data-swiper-parallax="-30"
@@ -272,8 +291,8 @@ const { data } = Astro.props;
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="swiper-slide">
+            </SwiperSlide>
+            <SwiperSlide>
               <div
                 class="mil-portfolio-item mil-slider-item"
                 data-swiper-parallax="-30"
@@ -317,9 +336,9 @@ const { data } = Astro.props;
                   </div>
                 </div>
               </div>
-            </div>
+            </SwiperSlide>
 
-            <div class="swiper-slide">
+            <SwiperSlide>
               <div
                 class="mil-portfolio-item mil-slider-item"
                 data-swiper-parallax="-30"
@@ -363,9 +382,9 @@ const { data } = Astro.props;
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </SwiperSlide>
+          </SwiperWrapper>
+        </Swiper>
       </div>
       <div class="col-lg-3 mil-relative">
         <div class="mil-portfolio-nav">
