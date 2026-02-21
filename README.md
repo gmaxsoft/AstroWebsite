@@ -10,7 +10,7 @@ Nowoczesna strona internetowa firmy Maxsoft - kompleksowe usługi programistyczn
 - **Wyjście serwerowe**: Node.js adapter dla dynamicznych aplikacji
 - **TypeScript**: Pełne wsparcie typów
 - **SCSS**: Modularne style z Sass
-- **Animacje**: GSAP + Swiper + Bootstrap 5
+- **Animacje**: Swiper + Bootstrap 5
 - **Ikony**: Font Awesome
 - **Responsywność**: Mobile First
 - **Formularze kontaktowe**: Nodemailer (serwerowe endpointy)
@@ -32,7 +32,7 @@ Nowoczesna strona internetowa firmy Maxsoft - kompleksowe usługi programistyczn
 * **SEO & Social Media**: Zaawansowana konfiguracja **Open Graph** i **Twitter Cards** za pomocą modułu `astro-seo`.
 * **Wysoka Jakość Kodu**: Pełne wsparcie dla **TypeScript** gwarantujące bezpieczeństwo typów.
 * **Modularne Style**: Użycie **SCSS** (Sass) do zarządzania stylami.
-* **Zaawansowane Animacje**: Płynne efekty dzięki **GSAP**, karuzele i slidery obsługiwane przez **Swiper**.
+* **Animacje**: Karuzele i slidery obsługiwane przez **Swiper**.
 * **UI/UX**: Komponenty, grid i responsywność z **Bootstrap 5**, ikony z **Font Awesome**, galerka/lightbox **FancyApps UI**.
 * **Responsywność**: Architektura **Mobile First** zapewniająca idealne wyświetlanie na każdym urządzeniu.
 * **Formularze Kontaktowe**: Bezpieczne endpointy serwerowe (API Routes) do obsługi wysyłki maili za pomocą **Nodemailer**.
@@ -43,7 +43,7 @@ Nowoczesna strona internetowa firmy Maxsoft - kompleksowe usługi programistyczn
 
 | Kategoria | Technologie |
 | :--- | :--- |
-| **Frontend** | Astro 5, SCSS, Bootstrap 5, GSAP, Swiper, FancyApps UI, jQuery |
+| **Frontend** | Astro 5, SCSS, Bootstrap 5, Swiper, FancyApps UI, jQuery |
 | **Backend** | Node.js, Nodemailer, SMTP (dla formularzy kontaktowych) |
 | **Narzędzia** | TypeScript, Sharp, Astro SEO, Font Awesome |
 

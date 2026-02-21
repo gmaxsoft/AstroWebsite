@@ -1,0 +1,77 @@
+# ============================================
+# Nagłówki bezpieczeństwa
+# ============================================
+<IfModule mod_headers.c>
+    # HSTS – wymuszenie HTTPS (2 lata)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Ochrona przed clickjackingiem (SAMEORIGIN – tylko twoja domena może osadzać stronę)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Zapobieganie MIME-sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Referrer – balans prywatność/SEO (pełny referrer same-origin, origin dla cross-origin HTTPS)
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Ograniczenie dostępu do API przeglądarki
+    Header always set Permissions-Policy "geolocation=(), midi=(), sync-xhr=(), accelerometer=(), gyroscope=(), magnetometer=(), camera=(), fullscreen=(self)"
+
+    # Ochrona XSS (legacy, ale nie szkodzi)
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ============================================
+# Konfiguracja serwera
+# ============================================
+Options +FollowSymLinks
+Options -Indexes
+
+# Blokada dostępu do wrażliwych plików
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+<FilesMatch "\.(env|git|htaccess|htpasswd|ini|log|sh|sql)$">
+    Require all denied
+</FilesMatch>
+
+# ============================================
+# Przekierowania i SEO
+# ============================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    DirectoryIndex index.html
+
+    # 1. HTTP → HTTPS (301)
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # 2. Bez www → z www (301)
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
+    RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # 3. Brak trailing slash → dodaj slash (301, zgodnie z trailingSlash Astro)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot)$ [NC]
+    RewriteRule ^(.*)$ $1/ [R=301,L]
+</IfModule>
+
+# ============================================
+# Cache dla zasobów statycznych (opcjonalne)
+# ============================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

@@ -1,11 +1,11 @@
 ---
 const { langPrefix } = Astro.props;
-const prefix = langPrefix || "/pl";
+const prefix = langPrefix ?? "/";
 const { data, prevProject, nextProject } = Astro.props;
 
-// Ustalenie ścieżek nawigacyjnych
-const prevHref = prevProject.slug ? `/${prevProject.slug}` : null;
-const nextHref = nextProject.slug ? `/${nextProject.slug}` : null;
+// Ustalenie ścieżek nawigacyjnych (trailingSlash: always)
+const prevHref = prevProject.slug ? `/${prevProject.slug}/` : null;
+const nextHref = nextProject.slug ? `/${nextProject.slug}/` : null;
 ---
 
 <!-- banner -->
@@ -23,7 +23,7 @@ const nextHref = nextProject.slug ? `/${nextProject.slug}` : null;
       <ul class="mil-breadcrumbs mil-mb-60">
         <li><a href={prefix}>Start</a></li>
         <li>
-          <a href={`${prefix}/projekty`} title={data.projekttxt01}
+          <a href={`${prefix}/projekty/`} title={data.projekttxt01}
             >{data.projekttxt01}</a
           >
         </li>
@@ -63,7 +63,7 @@ const nextHref = nextProject.slug ? `/${nextProject.slug}` : null;
             </li>
           </ul>
 
-          <h5 class="mil-up mil-mb-30">{data.projekttxt06}</h5>
+          <h2 class="mil-up mil-mb-30">{data.projekttxt06}</h2>
 
           <p class="mil-up mil-mb-30">
             {data.projekttxt07}
@@ -87,7 +87,7 @@ const nextHref = nextProject.slug ? `/${nextProject.slug}` : null;
       </div>
       <div class="col-lg-7">
         <div class="mil-image-frame mil-horizontal mil-up mil-mb-30">
-          <img src={`/img/works/${data.number}/1.webp`} alt={data.title} />
+          <img src={`/img/works/${data.number}/1.webp`} alt={data.title} loading="lazy" width="800" height="600" />
           <a
             data-fancybox="gallery"
             data-no-swup
@@ -99,7 +99,7 @@ const nextHref = nextProject.slug ? `/${nextProject.slug}` : null;
           </a>
         </div>
         <div class="mil-image-frame mil-horizontal mil-up mil-mb-30">
-          <img src={`/img/works/${data.number}/2.webp`} alt={data.title} />
+          <img src={`/img/works/${data.number}/2.webp`} alt={data.title} loading="lazy" width="800" height="600" />
           <a
             data-fancybox="gallery"
             data-no-swup
@@ -121,7 +121,7 @@ const nextHref = nextProject.slug ? `/${nextProject.slug}` : null;
         <span>{data.projekttxt12}</span>
       </a>
       <a
-        href={`${prefix}/projekty`}
+        href={`${prefix}/projekty/`}
         class="mil-link mil-dark"
         title={data.projekttxt11}
       >
@@ -150,10 +150,10 @@ const nextHref = nextProject.slug ? `/${nextProject.slug}` : null;
         />
       </div>
       <div class="mil-center">
-        <h2 class="mil-up mil-mb-60" set:html={data.projekttxt16} />
+        <h3 class="mil-up mil-mb-60" set:html={data.projekttxt16} />
         <div class="mil-up">
           <a
-            href={`${prefix}/kontakt`}
+            href={`${prefix}/kontakt/`}
             class="mil-button mil-arrow-place"
             title={data.projekttxt17}><span>{data.projekttxt17}</span></a
           >

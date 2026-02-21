@@ -8,7 +8,7 @@ import en from "../../../i18n/en.json";
 
 const translations = { pl, en };
 export async function getStaticPaths() {
-  return [{ params: { lang: "pl" } }, { params: { lang: "en" } }];
+  return [{ params: { lang: "en" } }]; // PL jest w root
 }
 
 const { lang } = Astro.params as { lang: "pl" | "en" };

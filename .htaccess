@@ -1,0 +1,22 @@
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+Header set X-Frame-Options "ALLOW-FROM URL"
+Header set X-Content-Type-Options nosniff
+Header set Referrer-Policy "same-origin"
+#Header always set Permissions-Policy "geolocation=(), midi=(),sync-xhr=(),accelerometer=(), gyroscope=(), magnetometer=(), camera=(), fullscreen=(self)"
+
+Options +FollowSymLinks
+RewriteEngine on
+RewriteBase /
+DirectoryIndex index.html
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+# Dodaj slash na końcu, jeśli go brakuje
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ $1/ [L,R=301]

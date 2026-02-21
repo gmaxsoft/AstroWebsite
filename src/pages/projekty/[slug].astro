@@ -1,0 +1,54 @@
+---
+export const prerender = true;
+
+import PageLayout from "../../layouts/PageLayout.astro";
+import ContentProjectsSingle from "../../components/ContentProjectsSingle.astro";
+import pl from "../../i18n/pl.json";
+import type { GetStaticPathsResult } from "astro";
+
+type Project = Record<string, any>;
+type Neighbor = {
+  slug: string | null;
+  title: string | null;
+};
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  const projectsList = (pl.projekt as Project[]) || [];
+
+  return projectsList.map((projekt, index) => {
+    const prevIndex = index - 1;
+    const prevProjectData = prevIndex >= 0 ? projectsList[prevIndex] : null;
+    const nextIndex = index + 1;
+    const nextProjectData = nextIndex < projectsList.length ? projectsList[nextIndex] : null;
+
+    const prevProject: Neighbor = {
+      slug: prevProjectData ? `projekty/${prevProjectData.slug}` : null,
+      title: prevProjectData ? prevProjectData.title : null,
+    };
+    const nextProject: Neighbor = {
+      slug: nextProjectData ? `projekty/${nextProjectData.slug}` : null,
+      title: nextProjectData ? nextProjectData.title : null,
+    };
+
+    return {
+      params: { slug: projekt.slug },
+      props: {
+        projectData: projekt,
+        prevProject,
+        nextProject,
+      },
+    };
+  });
+}
+
+const { projectData, prevProject, nextProject } = Astro.props;
+---
+
+<PageLayout lang="pl" langPrefix="">
+  <ContentProjectsSingle
+    data={projectData}
+    prevProject={prevProject}
+    nextProject={nextProject}
+    langPrefix=""
+  />
+</PageLayout>

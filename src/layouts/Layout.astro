@@ -9,15 +9,11 @@ import pl from "../i18n/pl.json";
 import en from "../i18n/en.json";
 
 const translations = { pl, en };
-export async function getStaticPaths() {
-  return [
-    { params: { lang: "pl" } }, // Strona dla języka polskiego
-    { params: { lang: "en" } }, // Strona dla języka angielskiego
-  ];
-}
+// Layout nie ma własnych getStaticPaths - jest używany przez strony
 
-const { lang } = Astro.params as { lang: "pl" | "en" };
-const langPrefix = `/${lang}`;
+// Dla stron w root (PL) params.lang jest undefined - używamy props
+const lang = (Astro.params?.lang ?? Astro.props?.lang) as "pl" | "en" || "pl";
+const langPrefix = lang === "pl" ? "" : `/${lang}`;
 const content = translations[lang]?.index || translations.pl.index;
 const contentFooter = translations[lang].footer;
 const contentMenu = translations[lang].menu;
@@ -31,7 +27,7 @@ const {
   ogImage = "/img/default-og.webp", // Obrazek OG
 } = Astro.props;
 
-const finalCanonical = canonical || (lang === 'pl' ? `https://www.maxsoft.pl/pl/` : `https://www.maxsoft.pl${Astro.url.pathname}`);
+const finalCanonical = canonical || (lang === 'pl' ? `https://www.maxsoft.pl/` : `https://www.maxsoft.pl${Astro.url.pathname}`);
 
 const companyName = "MAXSOFT.PL";
 const mainWebsite = "https://www.maxsoft.pl";
@@ -116,6 +112,10 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <!-- PageSpeed: preload LCP, preconnect -->
+    <link rel="preload" href="/img/logo-czarne.png" as="image" />
+    <link rel="preconnect" href="https://formspree.io" crossorigin />
+    <link rel="dns-prefetch" href="https://formspree.io" />
     <SEO
       title={title}
       description={description}
@@ -130,9 +130,9 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
         // ...
       }}
     />
-    <link rel="alternate" hreflang="pl" href="https://maxsoft.pl/pl/" />
-    <link rel="alternate" hreflang="en" href="https://maxsoft.pl/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://maxsoft.pl/" />
+    <link rel="alternate" hreflang="pl" href="https://www.maxsoft.pl/" />
+    <link rel="alternate" hreflang="en" href="https://www.maxsoft.pl/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.maxsoft.pl/" />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(allSchemas, null, 2)}
@@ -146,10 +146,10 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
 
       <div class="mil-frame">
         <div class="mil-frame-top mil-logo-fixed">
-          <a href={langPrefix} class="mil-logo">Maxsoft</a>
+          <a href={langPrefix || "/"} class="mil-logo">Maxsoft</a>
 
           <div class="mil-lang-switch">
-                <a href="/pl/" class:list={["mil-lang-flag", lang === 'pl' ? 'mil-active' : '']}>PL</a>
+                <a href="/" class:list={["mil-lang-flag", lang === 'pl' ? 'mil-active' : '']}>PL</a>
                 <a href="/en/" class:list={["mil-lang-flag", lang === 'en' ? 'mil-active' : '']}>EN</a>
           </div>
 
@@ -168,10 +168,12 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
       </div>
       <div class="mil-content">
         <div class="mil-main-transition">
-          <slot />
+          <main id="main">
+            <slot />
+          </main>
           <Footer data={contentFooter} langPrefix={langPrefix} />
           <HiddenElements />
-          <Seolink />
+          <Seolink langPrefix={langPrefix} />
         </div>
       </div>
     </div>

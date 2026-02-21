@@ -1,18 +1,16 @@
 ---
 export const prerender = true;
 
-import ErrorLayout from "../layouts/ErrorLayout.astro";
-import ErrorContent from "../components/ErrorContent.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import ContentCookies from "../components/ContentCookies.astro";
 import pl from "../i18n/pl.json";
 
-const pageData = pl.error;
+const pageData = pl.cookies;
 const contentFooter = pl.footer;
 const contentMenu = pl.menu;
-
-Astro.response.status = 404;
 ---
 
-<ErrorLayout
+<PageLayout
   lang="pl"
   langPrefix=""
   title={pageData.title}
@@ -23,7 +21,7 @@ Astro.response.status = 404;
   contentFooter={contentFooter}
 >
   <>
-    <ErrorContent data={pageData} langPrefix="" />
+    <ContentCookies data={pageData} langPrefix="" />
     <div style="display:none" aria-hidden="true"></div>
   </>
-</ErrorLayout>
+</PageLayout>

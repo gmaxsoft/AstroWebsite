@@ -1,6 +1,6 @@
 ---
 const { langPrefix } = Astro.props;
-const prefix = langPrefix || "/pl";
+const prefix = langPrefix ?? "/";
 const { data } = Astro.props;
 ---
 
@@ -37,7 +37,7 @@ const { data } = Astro.props;
   <div class="container mil-p-120-90">
     <div class="row justify-content-between">
       <div class="col-lg-4 mil-relative mil-mb-90">
-        <h4 class="mil-up mil-mb-30" set:html={data.mainContent} />
+        <h2 class="mil-up mil-mb-30" set:html={data.mainContent} />
         <p class="mil-up mil-mb-30 mil-text-justify">
           {data.ofertatxt2}
         </p>

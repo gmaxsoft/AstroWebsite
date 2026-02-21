@@ -1,6 +1,6 @@
 ---
 const { langPrefix } = Astro.props;
-const prefix = langPrefix || "/pl";
+const prefix = langPrefix ?? "/";
 const { data } = Astro.props;
 ---
 
@@ -107,11 +107,11 @@ const { data } = Astro.props;
           </p>
           <div class="mil-about-quote">
             <div class="mil-avatar mil-up">
-              <img src="/img/logo-czarne.png" alt="Logo Maxsoft" />
+              <img src="/img/logo-czarne.png" alt="Logo Maxsoft" fetchpriority="high" width="120" height="120" />
             </div>
-            <h4 class="mil-quote mil-up">
+            <p class="mil-quote mil-up">
               <span class="mil-thin">{data.abouttxt3}</span>
-            </h4>
+            </p>
           </div>
         </div>
       </div>
@@ -126,6 +126,9 @@ const { data } = Astro.props;
               src="/img/photo/programowanie.webp"
               alt="Programista Zielona Góra"
               class="mil-scale effect-image"
+              fetchpriority="high"
+              width="600"
+              height="960"
             />
           </div>
         </div>
@@ -183,7 +186,7 @@ const { data } = Astro.props;
             class="mil-service-card-sm mil-up"
             title="Oferta projektowania stron www Zielona Góra"
           >
-            <h4 class="mil-muted mil-mb-30" set:html={data.ofertxt5} />
+            <h3 class="mil-muted mil-mb-30" set:html={data.ofertxt5} />
             <p class="mil-light-soft mil-mb-30">
               {data.ofertxt6}
             </p>
@@ -196,7 +199,7 @@ const { data } = Astro.props;
             class="mil-service-card-sm mil-up"
             title="Oferta projektowania stron www Świebodzin"
           >
-            <h4 class="mil-muted mil-mb-30" set:html={data.ofertxt7} />
+            <h3 class="mil-muted mil-mb-30" set:html={data.ofertxt7} />
             <p class="mil-light-soft mil-mb-30">
               {data.ofertxt8}
             </p>
@@ -209,7 +212,7 @@ const { data } = Astro.props;
             class="mil-service-card-sm mil-up"
             title="Oferta projektowania stron www Sulechów"
           >
-            <h4 class="mil-muted mil-mb-30" set:html={data.ofertxt9} />
+            <h3 class="mil-muted mil-mb-30" set:html={data.ofertxt9} />
             <p class="mil-light-soft mil-mb-30">
               {data.ofertxt10}
             </p>
@@ -222,7 +225,7 @@ const { data } = Astro.props;
             class="mil-service-card-sm mil-up"
             title="Oferta projektowania stron www Nowa Sól"
           >
-            <h4 class="mil-muted mil-mb-30" set:html={data.ofertxt11} />
+            <h3 class="mil-muted mil-mb-30" set:html={data.ofertxt11} />
             <p class="mil-light-soft mil-mb-30">
               {data.ofertxt12}
             </p>
@@ -275,7 +278,7 @@ const { data } = Astro.props;
                 data-swiper-parallax="-200"
                 data-swiper-parallax-opacity="0"
               >
-                <h4 class="mil-up mil-mb-10">PHP</h4>
+                <h3 class="mil-up mil-mb-10">PHP</h3>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
                   {data.softtxt3}
                 </p>
@@ -290,7 +293,7 @@ const { data } = Astro.props;
                 data-swiper-parallax="-200"
                 data-swiper-parallax-opacity="0"
               >
-                <h4 class="mil-up mil-mb-10">React</h4>
+                <h3 class="mil-up mil-mb-10">React</h3>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
                   {data.softtxt5}
                 </p>
@@ -305,7 +308,7 @@ const { data } = Astro.props;
                 data-swiper-parallax="-200"
                 data-swiper-parallax-opacity="0"
               >
-                <h4 class="mil-up mil-mb-10">Javascript</h4>
+                <h3 class="mil-up mil-mb-10">Javascript</h3>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
                   {data.softtxt3}
                 </p>
@@ -320,7 +323,7 @@ const { data } = Astro.props;
                 data-swiper-parallax="-200"
                 data-swiper-parallax-opacity="0"
               >
-                <h4 class="mil-up mil-mb-10">Html5</h4>
+                <h3 class="mil-up mil-mb-10">Html5</h3>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
                   {data.softtxt8}
                 </p>
@@ -335,7 +338,7 @@ const { data } = Astro.props;
                 data-swiper-parallax="-200"
                 data-swiper-parallax-opacity="0"
               >
-                <h4 class="mil-up mil-mb-10">Node.js</h4>
+                <h3 class="mil-up mil-mb-10">Node.js</h3>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
                   {data.softtxt10}
                 </p>
@@ -350,7 +353,7 @@ const { data } = Astro.props;
                 data-swiper-parallax="-200"
                 data-swiper-parallax-opacity="0"
               >
-                <h4 class="mil-up mil-mb-10">Angular</h4>
+                <h3 class="mil-up mil-mb-10">Angular</h3>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
                   {data.softtxt12}
                 </p>
@@ -365,7 +368,7 @@ const { data } = Astro.props;
                 data-swiper-parallax="-200"
                 data-swiper-parallax-opacity="0"
               >
-                <h4 class="mil-up mil-mb-10">{data.softtxt14}</h4>
+                <h3 class="mil-up mil-mb-10">{data.softtxt14}</h3>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
                   {data.softtxt15}
                 </p>
@@ -387,67 +390,67 @@ const { data } = Astro.props;
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/php.svg" alt="logo" /></a
+            ><img src="/img/tech/php.svg" alt="PHP" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/react.svg" alt="logo" /></a
+            ><img src="/img/tech/react.svg" alt="React" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/vuejs.svg" alt="logo" /></a
+            ><img src="/img/tech/vuejs.svg" alt="Vue.js" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/postgresql.svg" alt="logo" /></a
+            ><img src="/img/tech/postgresql.svg" alt="PostgreSQL" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/nodejs.svg" alt="logo" /></a
+            ><img src="/img/tech/nodejs.svg" alt="Node.js" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/mysql.svg" alt="logo" /></a
+            ><img src="/img/tech/mysql.svg" alt="MySQL" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/javascript.svg" alt="logo" /></a
+            ><img src="/img/tech/javascript.svg" alt="JavaScript" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/jquery.svg" alt="logo" /></a
+            ><img src="/img/tech/jquery.svg" alt="jQuery" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/css3.svg" alt="logo" /></a
+            ><img src="/img/tech/css3.svg" alt="CSS3" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/html5.svg" alt="logo" /></a
+            ><img src="/img/tech/html5.svg" alt="HTML5" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/angularjs.svg" alt="logo" /></a
+            ><img src="/img/tech/angularjs.svg" alt="AngularJS" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/angular2.svg" alt="logo" /></a
+            ><img src="/img/tech/angular2.svg" alt="Angular" loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/laravel.svg" alt="logo" /></a
+            ><img src="/img/tech/laravel.svg" alt="Laravel" loading="lazy" width="60" height="60" /></a
           >
         </div>
       </div>

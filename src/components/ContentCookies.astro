@@ -1,6 +1,6 @@
 ---
 const { langPrefix } = Astro.props;
-const prefix = langPrefix || "/pl";
+const prefix = langPrefix ?? "/";
 const { data } = Astro.props;
 ---
 
@@ -9,9 +9,9 @@ const { data } = Astro.props;
     <div class="container">
       <ul class="mil-breadcrumbs mil-center mil-mb-60">
         <li><a href={prefix} title="Start">Start</a></li>
-        <li><a href={`${prefix}/polityka_cookies`} title={data.cookiestxt01}>{data.cookiestxt01}</a></li>
+        <li><a href={`${prefix}/polityka_cookies/`} title={data.cookiestxt01}>{data.cookiestxt01}</a></li>
       </ul>
-      <h2 set:html={data.heading} />
+      <h1 set:html={data.heading} />
     </div>
   </div>
 </div>
@@ -24,9 +24,9 @@ const { data } = Astro.props;
           {data.cookiestxt02}
         </p>
 
-        <h5 class="mil-up mil-mb-60">
+        <h2 class="mil-up mil-mb-60">
           {data.cookiestxt03}
-        </h5>
+        </h2>
         <blockquote class="mil-up mil-mb-60">
           <p class="mil-up mil-mb-30">
             {data.cookiestxt04}
@@ -39,7 +39,7 @@ const { data } = Astro.props;
           </p>
         </blockquote>
 
-        <h5 class="mil-up mil-mb-60">{data.cookiestxt07}</h5>
+        <h2 class="mil-up mil-mb-60">{data.cookiestxt07}</h2>
         <p class="mil-up mil-mb-30">
           {data.cookiestxt08}
         </p>

@@ -1,6 +1,6 @@
 ---
 const { langPrefix } = Astro.props;
-const prefix = langPrefix || "/pl";
+const prefix = langPrefix ?? "/";
 const { data } = Astro.props;
 ---
 
@@ -53,9 +53,9 @@ const { data } = Astro.props;
                   href={`${prefix}/oferta/`}
                   class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
                 >
-                  <h3 class="mil-muted mil-up mil-mb-30">
+                  <h2 class="mil-muted mil-up mil-mb-30">
                     {data.wspolpracatxt02}
-                  </h3>
+                  </h2>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
                     {data.wspolpracatxt03}
                   </p>
@@ -69,9 +69,9 @@ const { data } = Astro.props;
                   href={`${prefix}/oferta/`}
                   class="mil-service-card-lg mil-more mil-accent-cursor"
                 >
-                  <h3 class="mil-muted mil-up mil-mb-30">
+                  <h2 class="mil-muted mil-up mil-mb-30">
                     {data.wspolpracatxt05}
-                  </h3>
+                  </h2>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
                     {data.wspolpracatxt06}
                   </p>
@@ -85,9 +85,9 @@ const { data } = Astro.props;
                   href={`${prefix}/oferta/`}
                   class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
                 >
-                  <h3 class="mil-muted mil-up mil-mb-30">
+                  <h2 class="mil-muted mil-up mil-mb-30">
                     {data.wspolpracatxt07}
-                  </h3>
+                  </h2>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
                     {data.wspolpracatxt08}
                   </p>
@@ -101,9 +101,9 @@ const { data } = Astro.props;
                   href={`${prefix}/oferta/`}
                   class="mil-service-card-lg mil-more mil-accent-cursor"
                 >
-                  <h3 class="mil-muted mil-up mil-mb-30">
+                  <h2 class="mil-muted mil-up mil-mb-30">
                     {data.wspolpracatxt09}
-                  </h3>
+                  </h2>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
                     {data.wspolpracatxt10}
                   </p>
@@ -133,7 +133,7 @@ const { data } = Astro.props;
       </span>
     </div>
     <div class="mil-center">
-      <h2 class="mil-up mil-mb-60" set:html={data.wspolpracatxt12} />
+      <h3 class="mil-up mil-mb-60" set:html={data.wspolpracatxt12} />
       <div class="mil-up">
         <a
           href={`${prefix}/kontakt/`}

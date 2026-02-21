@@ -1,6 +1,6 @@
 ---
 const { langPrefix } = Astro.props;
-const prefix = langPrefix || "/pl";
+const prefix = langPrefix ?? "/";
 const { data } = Astro.props;
 ---
 
@@ -9,19 +9,19 @@ const { data } = Astro.props;
     <div class="container">
       <ul class="mil-breadcrumbs mil-center mil-mb-60">
         <li><a href={prefix} title="Start">Start</a></li>
-        <li><a href={`${prefix}/kontakt`} title={data.kontakttxt01}>{data.kontakttxt01}</a></li>
+        <li><a href={`${prefix}/kontakt/`} title={data.kontakttxt01}>{data.kontakttxt01}</a></li>
       </ul>
       <h1 class="mil-mb-60" set:html={data.heading} />
 
       <div class="mil-divider mil-mb-60"></div>
       <div class="row justify-content-between">
         <div class="col-lg-5 mil-mb-60">
-          <h6 class="mil-mb-30">Lubrza</h6>
+          <h2 class="mil-mb-30">Lubrza</h2>
 
           <p class="mil-dark-soft mil-up" set:html={data.kontakttxt02} />
         </div>
         <div class="col-lg-5 mil-mb-60">
-          <h6 class="mil-mb-30">Zielona Góra</h6>
+          <h2 class="mil-mb-30">Zielona Góra</h2>
 
           <p class="mil-dark-soft" set:html={data.kontakttxt03} />
         </div>
@@ -39,7 +39,7 @@ const { data } = Astro.props;
 
 <section id="contact">
   <div class="container mil-p-120-90">
-    <h2 class="mil-center mil-up mil-mb-120" set:html={data.kontakttxt05} />
+    <h3 class="mil-center mil-up mil-mb-120" set:html={data.kontakttxt05} />
     <form
       id="contactform"
       action="/send_email.php"

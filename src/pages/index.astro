@@ -1,18 +1,24 @@
 ---
-// src/pages/index.astro
-
-// Użycie export const prerender = true; nadal jest dobrym pomysłem.
 export const prerender = true;
 
-// UWAGA: Cała sekcja GET została usunięta, ponieważ jest serwerowa.
+import Layout from '../layouts/Layout.astro';
+import Content from "../components/Content.astro";
+import pl from '../i18n/pl.json';
+
+const contentFooter = pl.footer;
+const contentMenu = pl.menu;
+const pageData = pl.index;
 ---
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <title>Przekierowanie do wersji polskiej</title>
-    <meta http-equiv="refresh" content="0; url=/pl/" />
-</head>
-<body>
-    <p>Jeśli nie zostaniesz automatycznie przekierowany, kliknij: <a href="/pl/">wersja polska</a></p>
-</body>
-</html>
+
+<Layout 
+    lang="pl"
+    langPrefix=""
+    title={pageData.title}
+    description={pageData.description}
+    ogImage={pageData.ogimage}
+    currentLocale="pl"
+    contentMenu={contentMenu}
+    contentFooter={contentFooter}
+>
+    <Content data={pageData} langPrefix="" />
+</Layout>

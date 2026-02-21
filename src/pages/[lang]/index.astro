@@ -11,10 +11,7 @@ const translations = { pl, en };
 
 // Eksport funkcji getStaticPaths dla dynamicznego routingu
 export async function getStaticPaths() {
-  return [
-    { params: { lang: 'pl' } },
-    { params: { lang: 'en' } }
-  ];
+  return [{ params: { lang: 'en' } }]; // PL jest w root
 }
 
 // Pobierz parametr lang z Astro.params

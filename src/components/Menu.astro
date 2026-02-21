@@ -1,17 +1,17 @@
 ---
 const { langPrefix } = Astro.props;
 const { lang } = Astro.props;
-const prefix = langPrefix || "/pl";
+const prefix = langPrefix ?? "/";
 const { data } = Astro.props;
 ---
 
 <div class="mil-menu-frame">
   <div class="mil-frame-top mil-logo-fixed">
-    <a href={prefix} class="mil-logo">Maxsoft</a>
+    <a href={prefix || "/"} class="mil-logo">Maxsoft</a>
 
     <div class="mil-lang-switch">
       <a
-        href="/pl/"
+        href="/"
         class:list={["mil-lang-flag", lang === "pl" ? "mil-active" : ""]}>PL</a
       >
       <a
@@ -32,7 +32,7 @@ const { data } = Astro.props;
           <nav class="mil-main-menu" id="swupMenu">
             <ul>
               <li class="mil-has-children mil-active">
-                <a href={prefix} title="Start">Start</a>
+                <a href={prefix || "/"} title="Start">Start</a>
               </li>
               <li class="mil-has-children">
                 <a href={`${prefix}/oferta/`} title={data.menutxt5}
@@ -72,9 +72,9 @@ const { data } = Astro.props;
             <div class="mil-menu-right">
               <div class="row">
                 <div class="col-lg-7 mil-mb-60">
-                  <h6 class="mil-muted mil-mb-30">
+                  <p class="mil-muted mil-mb-30 mil-menu-section">
                     {data.menutxt1}
-                  </h6>
+                  </p>
                   <ul class="mil-menu-list">
                     <li>
                       <a
@@ -100,9 +100,9 @@ const { data } = Astro.props;
                   </ul>
                 </div>
                 <div class="col-lg-5 mil-mb-60">
-                  <h6 class="mil-muted mil-mb-30">
+                  <p class="mil-muted mil-mb-30 mil-menu-section">
                     {data.menutxt2}
-                  </h6>
+                  </p>
 
                   <ul class="mil-menu-list">
                     <li>
@@ -133,11 +133,11 @@ const { data } = Astro.props;
               <div class="mil-divider mil-mb-60"></div>
               <div class="row justify-content-between">
                 <div class="col-lg-5 mil-mb-60">
-                  <h6 class="mil-muted mil-mb-30">Świebodzin - Lubrza</h6>
+                  <p class="mil-muted mil-mb-30 mil-menu-section">Świebodzin - Lubrza</p>
                   <p class="mil-light-soft mil-up" set:html={data.menutxt3} />
                 </div>
                 <div class="col-lg-5 mil-mb-60">
-                  <h6 class="mil-muted mil-mb-30">Zielona Góra</h6>
+                  <p class="mil-muted mil-mb-30 mil-menu-section">Zielona Góra</p>
                   <p class="mil-light-soft" set:html={data.menutxt4} />
                 </div>
               </div>

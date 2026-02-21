@@ -38,6 +38,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   }[] = [];
 
   for (const [lang, data] of Object.entries(allTranslations)) {
+    if (lang === 'pl') continue; // PL projekty są w root /projekty/[slug]
     // Używamy klucza 'projekt', zgodnie z Twoim plikiem pl.json
     const projectsList = (data.projekt as Project[]) || [];
 
