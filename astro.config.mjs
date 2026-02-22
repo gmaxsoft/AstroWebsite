@@ -3,7 +3,7 @@ import sharp from 'sharp'; // Opcjonalnie, dla szybszej transformacji
 import node from '@astrojs/node'; // 🚨 Dodaj adapter
 
 export default defineConfig({
-  site: 'https://maxsoft.pl',
+  site: 'https://www.maxsoft.pl',
   output: 'static',
   trailingSlash: 'always',
   redirects: {

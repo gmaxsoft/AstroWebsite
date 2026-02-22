@@ -14,12 +14,15 @@ const contentFooter = translations[lang].footer;
 const contentMenu = translations[lang].menu;
 
 const {
-  title = content.title, // Tytuł strony (np. z JSON)
-  description = content.description, // Opis strony (np. z JSON)
-  canonical = Astro.url.href, // 💡 NOWY PROP: Link kanoniczny
-  currentLocale = lang, // Język strony
-  ogImage = "/img/default-og.webp", // Obrazek OG
+  title = content.title,
+  description = content.description,
+  canonical,
+  currentLocale = lang,
+  ogImage = "/img/default-og.webp",
 } = Astro.props;
+
+// 404: kanoniczny na stronę główną, noindex (nie indeksuj błędów)
+const errorCanonical = canonical || `https://www.maxsoft.pl${langPrefix ? `${langPrefix}/` : '/'}`;
 ---
 
 <!doctype html>
@@ -33,14 +36,16 @@ const {
     <SEO
       title={title}
       description={description}
+      canonical={errorCanonical}
+      noindex
+      nofollow
       openGraph={{
         basic: {
           title: title,
           type: "website",
           image: ogImage,
-          url: canonical, // Używamy kanonicznego URL
+          url: errorCanonical,
         },
-        // ...
       }}
     />
   </head>
