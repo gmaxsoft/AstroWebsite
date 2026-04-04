@@ -1,0 +1,612 @@
+@use "variables" as vars;
+
+.mil-blog-banner {
+  padding-bottom: 60px;
+}
+
+.mil-blog-meta {
+  font-size: 14px;
+  color: vars.$dt-60;
+  margin-bottom: 24px;
+
+  & span {
+    margin-right: 12px;
+  }
+}
+
+.mil-blog-tags-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-bottom: 24px;
+}
+
+.mil-blog-tags-heading {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: vars.$dt-80;
+}
+
+.mil-blog-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  & li {
+    margin: 0;
+  }
+}
+
+.mil-blog-tag-link {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border: 1px solid vars.$dt-40;
+  border-radius: 2px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    border-color: vars.$accent;
+    color: vars.$accent;
+  }
+}
+
+.mil-blog-tag-anchors {
+  position: relative;
+}
+
+.mil-blog-tag-target {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  scroll-margin-top: 120px;
+}
+
+.mil-blog-hero {
+  margin-bottom: 40px;
+  border-radius: 4px;
+  overflow: hidden;
+
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.mil-blog-layout {
+  display: grid;
+  gap: 40px;
+
+  @media (min-width: 992px) {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    align-items: start;
+  }
+}
+
+.mil-blog-sidebar {
+  padding: 24px;
+  background: rgba(vars.$dark, 0.04);
+  border-radius: 4px;
+  position: sticky;
+  top: 100px;
+}
+
+.mil-blog-sidebar-cats {
+  margin: 0;
+  padding: 0;
+
+  &__label {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: vars.$dark;
+    margin: 0 0 16px;
+    letter-spacing: 0.02em;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+    line-height: 1.45;
+  }
+
+  &__link {
+    display: inline;
+    font-size: 0.9375rem;
+    color: vars.$dark;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-bottom-color: vars.$accent;
+    }
+  }
+}
+
+.mil-blog-sidebar-cats + .mil-blog-toc,
+.mil-blog-sidebar-cats + .mil-blog-sidebar-main {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(vars.$dark, 0.1);
+}
+
+.mil-blog-toc {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  position: static;
+  border-radius: 0;
+
+  & + .mil-blog-sidebar-main {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(vars.$dark, 0.1);
+  }
+
+  &__label {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
+    color: vars.$dark;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.4;
+
+    & a {
+      color: vars.$dark;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+
+      &:hover {
+        border-bottom-color: vars.$accent;
+        color: vars.$dark;
+      }
+    }
+
+    &--nested {
+      padding-left: 16px;
+      font-size: 0.9375rem;
+    }
+  }
+}
+
+.mil-blog-sidebar-main {
+  &__label {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: vars.$dark;
+    margin: 0 0 16px;
+    letter-spacing: 0.02em;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+    line-height: 1.45;
+  }
+
+  &__link {
+    font-size: 1rem;
+    color: vars.$dark;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      border-bottom-color: vars.$accent;
+      color: vars.$dark;
+    }
+  }
+}
+
+.mil-blog-prose {
+  max-width: 720px;
+
+  & h2,
+  & h3 {
+    scroll-margin-top: 100px;
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+    font-weight: 600;
+  }
+
+  & h2 {
+    font-size: 1.5rem;
+  }
+
+  & h3 {
+    font-size: 1.2rem;
+  }
+
+  & p {
+    margin-bottom: 1em;
+    line-height: 1.7;
+    text-align: justify;
+  }
+
+  & strong {
+    font-weight: 600;
+  }
+
+  & ul {
+    margin: 0 0 1em 1.2em;
+    padding: 0;
+    line-height: 1.7;
+  }
+}
+
+.mil-blog-related {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(vars.$dark, 0.08);
+
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+}
+
+.mil-blog-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+
+  &__thumb {
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+
+    & img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.35s ease;
+    }
+  }
+
+  &:hover &__thumb img {
+    transform: scale(1.03);
+  }
+
+  &__heading {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  &__meta {
+    font-size: 13px;
+    color: vars.$dt-60;
+    margin-bottom: 8px;
+  }
+
+  &__excerpt {
+    font-size: 14px;
+    line-height: 1.6;
+    color: vars.$dt-60;
+    margin-bottom: 12px;
+  }
+
+  &__more {
+    font-size: 13px;
+  }
+}
+
+.mil-blog-list-card {
+  height: 100%;
+}
+
+.mil-blog-category-badge {
+  font-size: 0.9375rem;
+  margin: 0 0 20px;
+
+  & a {
+    color: vars.$dt-70;
+    text-decoration: none;
+    border-bottom: 1px solid vars.$dt-40;
+    transition: color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      color: vars.$accent;
+      border-bottom-color: vars.$accent;
+    }
+  }
+}
+
+/* ——— Blog index: sidebar left, feed, pager, List/Grid ——— */
+
+.mil-blog-index-layout {
+  display: grid;
+  gap: 40px;
+  align-items: start;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 260px minmax(0, 1fr);
+  }
+}
+
+.mil-blog-index-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.mil-blog-index-main {
+  min-width: 0;
+}
+
+.mil-blog-index-feed-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: vars.$dark;
+  margin: 0 0 20px;
+  line-height: 1.35;
+}
+
+.mil-blog-index-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 28px;
+}
+
+.mil-blog-view-toggle {
+  display: inline-flex;
+  border: 1px solid rgba(vars.$dark, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+
+  &__btn {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 10px 16px;
+    margin: 0;
+    border: none;
+    background: transparent;
+    color: vars.$dt-70;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+
+    &:hover {
+      color: vars.$dark;
+      background: rgba(vars.$dark, 0.04);
+    }
+
+    &.is-active {
+      background: vars.$dark;
+      color: #fff;
+    }
+
+    & + & {
+      border-left: 1px solid rgba(vars.$dark, 0.15);
+    }
+  }
+}
+
+/* Widoczność listy vs siatki sterowana klasą na root (atrybut [hidden] przegrywa z display:flex na panelu). */
+.mil-blog-index-root--grid .mil-blog-feed__list {
+  display: none !important;
+}
+
+.mil-blog-index-root--list .mil-blog-feed__grid {
+  display: none !important;
+}
+
+.mil-blog-feed__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mil-blog-card-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(vars.$dark, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:hover {
+    .mil-blog-card-row__thumb img {
+      transform: scale(1.03);
+    }
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__thumb {
+    flex: 0 0 240px;
+    max-width: 240px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    & img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.35s ease;
+    }
+
+    @media (max-width: 767px) {
+      flex: none;
+      max-width: none;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__meta {
+    font-size: 13px;
+    color: vars.$dt-60;
+    margin-bottom: 8px;
+  }
+
+  &__heading {
+    font-size: 1.15rem;
+    margin: 0 0 12px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  &__excerpt {
+    font-size: 14px;
+    line-height: 1.6;
+    color: vars.$dt-60;
+    margin-bottom: 12px;
+  }
+
+  &__more {
+    font-size: 13px;
+  }
+}
+
+.mil-blog-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(vars.$dark, 0.08);
+
+  &__link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: vars.$dark;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+
+    &:hover:not(.is-disabled) {
+      border-bottom-color: vars.$accent;
+    }
+
+    &.is-disabled {
+      color: vars.$dt-40;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  &__pages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: vars.$dark;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid rgba(vars.$dark, 0.12);
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+
+    &:hover {
+      border-color: vars.$accent;
+      background: rgba(vars.$accent, 0.06);
+    }
+  }
+
+  &__current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #fff;
+    background: vars.$dark;
+    border-radius: 4px;
+  }
+
+  &__ellipsis {
+    padding: 0 4px;
+    color: vars.$dt-50;
+    user-select: none;
+  }
+}
+
+.mil-blog-category-block {
+  scroll-margin-top: 120px;
+  margin-bottom: 72px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: vars.$dark;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(vars.$dark, 0.12);
+  }
+}

@@ -1,6 +1,4 @@
 import { defineConfig } from 'astro/config';
-import sharp from 'sharp'; // Opcjonalnie, dla szybszej transformacji
-import node from '@astrojs/node'; // 🚨 Dodaj adapter
 
 export default defineConfig({
   site: 'https://www.maxsoft.pl',
@@ -12,6 +10,9 @@ export default defineConfig({
     '/pl/kontakt/': '/kontakt/',
     '/pl/wspolpraca/': '/wspolpraca/',
     '/pl/projekty/': '/projekty/',
+    '/pl/e-commerce/': '/e-commerce/',
+    '/pl/seo/': '/seo/',
+    '/pl/integracje/': '/integracje/',
     '/pl/polityka_prywatnosci/': '/polityka_prywatnosci/',
     '/pl/polityka_cookies/': '/polityka_cookies/',
     '/pl/404/': '/',
@@ -22,21 +23,14 @@ export default defineConfig({
     '/pl/projekty/api-jbr-rogowiec/': '/projekty/api-jbr-rogowiec/',
     '/pl/projekty/sklep-rolniczy/': '/projekty/sklep-rolniczy/',
     '/pl/projekty/api-olx/': '/projekty/api-olx/',
+    '/pl/blog/': '/blog/',
   },
-  /*
-  adapter: node({
-    mode: 'standalone',
-  }),
-  */
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en'],
     routing: {
       prefixDefaultLocale: false
     }
-  },
-  image: {
-    serviceEntryPoint: '@astrojs/image/sharp' // Użyj sharp dla lepszej wydajności (opcjonalnie)
   },
   vite: {
     css: {

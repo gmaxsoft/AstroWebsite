@@ -8,7 +8,7 @@ const { data } = Astro.props;
   <div class="mil-banner-content mil-center mil-up">
     <div class="container">
       <ul class="mil-breadcrumbs mil-center mil-mb-60">
-        <li><a href={prefix} title="Start">Start</a></li>
+        <li><a href={prefix ? `${prefix}/` : "/"} title="Start">Start</a></li>
         <li><a href={`${prefix}/kontakt/`} title={data.kontakttxt01}>{data.kontakttxt01}</a></li>
       </ul>
       <h1 class="mil-mb-60" set:html={data.heading} />
@@ -16,7 +16,7 @@ const { data } = Astro.props;
       <div class="mil-divider mil-mb-60"></div>
       <div class="row justify-content-between">
         <div class="col-lg-5 mil-mb-60">
-          <h2 class="mil-mb-30">Lubrza</h2>
+          <h2 class="mil-mb-30">Świebodzin, Lubrza</h2>
 
           <p class="mil-dark-soft mil-up" set:html={data.kontakttxt02} />
         </div>

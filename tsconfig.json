@@ -7,7 +7,7 @@
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "moduleResolution": "node", // lub "bundler" dla najnowszych projektów
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   }
 }

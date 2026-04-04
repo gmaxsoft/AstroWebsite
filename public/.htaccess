@@ -54,7 +54,27 @@ Options -Indexes
     RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
     RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-    # 3. Brak trailing slash → dodaj slash (301, zgodnie z trailingSlash Astro)
+    # 3. /pl/* → /* (PL jest w root, przekieruj stare linki)
+    RewriteRule ^pl/?$ / [R=301,L]
+    RewriteRule ^pl/oferta/?$ /oferta/ [R=301,L]
+    RewriteRule ^pl/kontakt/?$ /kontakt/ [R=301,L]
+    RewriteRule ^pl/wspolpraca/?$ /wspolpraca/ [R=301,L]
+    RewriteRule ^pl/projekty/?$ /projekty/ [R=301,L]
+    RewriteRule ^pl/e-commerce/?$ /e-commerce/ [R=301,L]
+    RewriteRule ^pl/seo/?$ /seo/ [R=301,L]
+    RewriteRule ^pl/integracje/?$ /integracje/ [R=301,L]
+    RewriteRule ^pl/polityka_prywatnosci/?$ /polityka_prywatnosci/ [R=301,L]
+    RewriteRule ^pl/polityka_cookies/?$ /polityka_cookies/ [R=301,L]
+    RewriteRule ^pl/404/?$ / [R=301,L]
+    RewriteRule ^pl/projekty/([^/]+)/?$ /projekty/$1/ [R=301,L]
+	
+	# Użycie `Redirect 301` jest w porządku, ale musi być przed regułą Proxy
+	Redirect 301 /index.html https://www.maxsoft.pl/
+	Redirect 301 /index.php 
+	Redirect 301 /contact https://www.maxsoft.pl/kontakt/
+	Redirect 301 /policy https://www.maxsoft.pl/polityka_prywatnosci/https://www.maxsoft.pl/
+
+    # 4. Brak trailing slash → dodaj slash (301, zgodnie z trailingSlash Astro)
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_URI} !/$
     RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot)$ [NC]

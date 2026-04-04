@@ -17,7 +17,7 @@ const { data } = Astro.props;
   <div class="mil-banner-content mil-up">
     <div class="container">
       <ul class="mil-breadcrumbs mil-mb-60">
-        <li><a href={prefix || "/"} title="Start">Start</a></li>
+        <li><a href={prefix ? `${prefix}/` : "/"} title="Start">Start</a></li>
         <li><a href={`${prefix}/oferta/`} title={data.projektytxt01}>{data.projektytxt01}</a></li>
       </ul>
       <h1 class="mil-mb-60" set:html={data.heading} />
@@ -55,7 +55,7 @@ const { data } = Astro.props;
               >
                 <div class="mil-cover-frame mil-drag">
                   <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                    <img src="/img/works/projekt_strony_1.webp" alt="cover" loading="lazy" width="800" height="600" />
+                    <img src="/img/works/projekt_strony_1.webp" alt={data.altSlide1 || "Realizacja strony internetowej – portfolio Maxsoft, Zielona Góra"} loading="lazy" width="800" height="600" />
                   </div>
                 </div>
                 <div
@@ -100,7 +100,7 @@ const { data } = Astro.props;
               >
                 <div class="mil-cover-frame mil-drag">
                   <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                    <img src="/img/works/projekt_strony_2.webp" alt="cover" loading="lazy" width="800" height="600" />
+                    <img src="/img/works/projekt_strony_2.webp" alt={data.altSlide2 || "Projekt strony WWW – Maxsoft Zielona Góra"} loading="lazy" width="800" height="600" />
                   </div>
                 </div>
                 <div
@@ -145,7 +145,7 @@ const { data } = Astro.props;
               >
                 <div class="mil-cover-frame mil-drag">
                   <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                    <img src="/img/works/projekt_strony_3.webp" alt="cover" loading="lazy" width="800" height="600" />
+                    <img src="/img/works/projekt_strony_3.webp" alt={data.altSlide3 || "Projekt strony WWW – Maxsoft Zielona Góra"} loading="lazy" width="800" height="600" />
                   </div>
                 </div>
                 <div
@@ -190,7 +190,7 @@ const { data } = Astro.props;
               >
                 <div class="mil-cover-frame mil-drag">
                   <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                    <img src="/img/works/projekt_strony_4.webp" alt="cover" loading="lazy" width="800" height="600" />
+                    <img src="/img/works/projekt_strony_4.webp" alt={data.altSlide4 || "System CRM – realizacja Maxsoft, Zielona Góra"} loading="lazy" width="800" height="600" />
                   </div>
                 </div>
                 <div
@@ -235,7 +235,7 @@ const { data } = Astro.props;
               >
                 <div class="mil-cover-frame mil-drag">
                   <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                    <img src="/img/works/projekt_strony_5.webp" alt="cover" loading="lazy" width="800" height="600" />
+                    <img src="/img/works/projekt_strony_5.webp" alt={data.altSlide5 || "Integracja API – projekt Maxsoft, Zielona Góra"} loading="lazy" width="800" height="600" />
                   </div>
                 </div>
                 <div
@@ -280,7 +280,7 @@ const { data } = Astro.props;
               >
                 <div class="mil-cover-frame mil-drag">
                   <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                    <img src="/img/works/projekt_strony_6.webp" alt="cover" loading="lazy" width="800" height="600" />
+                    <img src="/img/works/projekt_strony_6.webp" alt={data.altSlide6 || "Sklep internetowy – Maxsoft Zielona Góra"} loading="lazy" width="800" height="600" />
                   </div>
                 </div>
                 <div
@@ -326,7 +326,7 @@ const { data } = Astro.props;
               >
                 <div class="mil-cover-frame mil-drag">
                   <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                    <img src="/img/works/projekt_strony_7.webp" alt="cover" loading="lazy" width="800" height="600" />
+                    <img src="/img/works/projekt_strony_7.webp" alt={data.altSlide7 || "Integracja API Otodom – Maxsoft Zielona Góra"} loading="lazy" width="800" height="600" />
                   </div>
                 </div>
                 <div

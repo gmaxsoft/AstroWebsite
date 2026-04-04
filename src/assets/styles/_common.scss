@@ -718,7 +718,7 @@ backgrounds
 
 ------------------------------------------- */
 .mil-banner {
-    background-image: url('../img/tlo.webp') !important;
+    background-image: url("/img/tlo.webp") !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -753,6 +753,19 @@ backgrounds
     background-color: vars.$gs-5;
 }
 
+/* Screen reader only – dostępność (np. pełny nagłówek przy rotatorze H1) */
+.mil-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* -------------------------------------------
 
 spaces
@@ -780,6 +793,10 @@ spaces
 
 .mil-mb-30 {
     margin-bottom: 30px;
+}
+
+.mil-mb-40 {
+    margin-bottom: 40px;
 }
 
 .mil-mb-60 {

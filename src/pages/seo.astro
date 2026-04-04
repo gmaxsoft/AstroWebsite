@@ -1,0 +1,24 @@
+---
+export const prerender = true;
+
+import PageLayout from "../layouts/PageLayout.astro";
+import ContentSeo from "../components/ContentSeo.astro";
+import pl from "../i18n/pl.json";
+
+const pageData = pl.seo;
+const contentFooter = pl.footer;
+const contentMenu = pl.menu;
+---
+
+<PageLayout
+  lang="pl"
+  langPrefix=""
+  title={pageData.title}
+  description={pageData.description}
+  ogImage={pageData.ogimage || "/img/default-og.webp"}
+  currentLocale="pl"
+  contentMenu={contentMenu}
+  contentFooter={contentFooter}
+>
+  <ContentSeo data={pageData} langPrefix="" />
+</PageLayout>

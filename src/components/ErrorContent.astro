@@ -26,7 +26,7 @@ const { data } = Astro.props;
           {data.heading}
           {data.message}
         </h2>
-        <a href={prefix || "/"} class="mil-button mil-arrow-place">
+        <a href={prefix ? `${prefix}/` : "/"} class="mil-button mil-arrow-place">
           <span>{data.button}</span>
         </a>
       </div>

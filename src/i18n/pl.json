@@ -1,9 +1,15 @@
 {
   "index": {
-    "title": "Maxsoft – Strony WWW, Sklepy Internetowe i Systemy CRM | Zielona Góra, Świebodzin",
-    "description": "Maxsoft tworzy strony WWW, sklepy internetowe i systemy CRM/ERP dla firm z regionu Lubuskiego. Indywidualne projekty, integracje API i wsparcie techniczne.",
+    "title": "Tworzenie stron internetowych Zielona Góra, Sklepy Internetowe Zielona Góra, Strony www Świebodzin",
+    "description": "Tworzenie stron WWW Zielona Góra, Tworzenie sklepów internetowych Zielona Góra i Świebodzin. Systemy CRM/ERP. Indywidualne projekty, integracje API. Projektowanie stron Świebodzin.",
     "ogimage": "/img/default-og.webp",
-    "heading": "<span class=\"mil-thin\">Usługi</span> Programistyczne<br /><span class=\"mil-thin\">Dla</span> Biznesu",
+    "heading": "<span class=\"mil-thin\">Usługi</span> Programistyczne<br /><span class=\"mil-thin\">Dla</span> Biznesu Świebodzin",
+    "headingSeoCombined": "Usługi programistyczne dla biznesu. Tworzenie stron internetowych Zielona Góra. Tworzenie sklepów internetowych Zielona Góra.",
+    "headingRotate": [
+      "<span class=\"mil-thin\">Usługi</span> Programistyczne<br /><span class=\"mil-thin\">Dla</span> Biznesu",
+      "Tworzenie stron internetowych <span class=\"mil-thin\">Zielona Góra</span>",
+      "Tworzenie sklepów internetowych <span class=\"mil-thin\">Zielona Góra</span>"
+    ],
     "mainContent": "Kompleksowe usługi internetowe, w tym projektowanie stron i sklepów internetowych, tworzenie aplikacji webowych, wdrożenia systemów CMS/CRM/ERP oraz profesjonalne pozycjonowanie (SEO).",
     "linktxt1": "Oferta",
     "linktxt2": "Projekty",
@@ -11,7 +17,9 @@
     "aboutheading": "Czym się <span class=\"mil-thin\">Zajmujemy?</span>",
     "abouttxt1": "Nasze produkcje charakteryzują się oryginalnymi pomysłami, z zachowaniem najwyższych standardów technicznych i wizualnych. Ogranicza nas tylko wyobraźnia.",
     "abouttxt2": "Posiadamy wszystko, co jest konieczne do tworzenia nowoczesnych rozwiązań IT. Rozwój aplikacji, integracja systemów oraz analiza technologiczna to filary naszego procesu projektowania i solidnej architektury.",
-    "abouttxt3": "Projektowanie stron www, Sklepy internetowe, Systemy zarządania firmą CRM, ERP",
+    "abouttxt3": "Projektowanie i tworzenie stron internetowych · sklepy online (PrestaShop, WooCommerce) · aplikacje webowe i panele B2B · systemy CRM i ERP · integracje API · SEO, szybkość stron i Core Web Vitals · hosting, SSL oraz opieka techniczna.",
+    "aboutBlogCta": "Sprawdź nasz Blog",
+    "aboutBlogCtaTitle": "Blog Maxsoft – artykuły o stronach WWW, e-commerce i SEO",
     "ofertxt1": "Nasza Firma to Profesjonaliści, którzy pomagają Twojej marce<br />rozwijać się i iść naprzód.",
     "ofertxt2": "Nasze <span class=\"mil-thin\">Usługi</span>",
     "ofertxt3": "<span class=\"mil-thin\">Dla</span> Biznesu.",
@@ -40,20 +48,27 @@
     "softtxt14": "Laravel",
     "softtxt15": "PHP framework",
     "softtxt16": "Laravel to nasz wybór dla aplikacji PHP wymagających skalowalnej architektury. Eloquent, migracje i ekosystem pakietów przyspieszają rozwój projektów.",
-    "softtxt17": "Do góry"
+    "softtxt17": "Do góry",
+    "altLogoAbout": "Logo Maxsoft – agencja stron WWW, sklepy internetowe i systemy CRM, Zielona Góra",
+    "altPhotoAbout": "Projektowanie stron internetowych i aplikacji webowych – zespół Maxsoft, województwo lubuskie",
+    "altTechTemplate": "Logo {tech} – technologie w projektach stron WWW i sklepów, Maxsoft Zielona Góra"
   },
   "footer": {
     "footertxt1": "Zapisz się na nasz newsletter:",
-    "footertxt2": "Strony WWW, sklepy internetowe, systemy CRM i ERP, integracje API – Maxsoft realizuje projekty IT dla firm z Zielonej Góry, Świebodzina i okolic.",
+    "footertxt2": "Tworzenie stron WWW, sklepy internetowe Zielona Góra, Świebodzin, systemy CRM i ERP, integracje API - Maxsoft realizuje projekty IT dla firm z Zielonej Góry, Świebodzina i okolic.<br /><br /><strong>Świebodzin</strong>, <strong>Zielona Góra</strong>, <strong>Sulechów</strong>, <strong>Międzyrzecz</strong>, <strong>Nowa Sól</strong>, <strong>Lubuskie</strong>",
     "footertxt3": "© Copyright 2025 - Maxsoft. Wszystkie prawa zastrzeżone.",
-    "footertxt4": "66-218 Lubrza<br />Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 453 645 286</span>",
+    "footertxt4": "66-218 Lubrza, Świebodzin<br />Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 453 645 286</span>",
     "footertxt5": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
     "footertxt6": "Oferta",
     "footertxt7": "Projekty",
+    "footertxtEcommerce": "E-commerce",
+    "footertxtSeo": "SEO",
+    "footertxtIntegracje": "Integracje",
     "footertxt8": "Współpraca",
     "footertxt9": "Kontakt",
     "footertxt10": "Polityka prywatności",
-    "footertxt11": "Polityka plików cookie"
+    "footertxt11": "Polityka plików cookie",
+    "footertxtBlog": "Blog"
   },
   "menu": {
     "menutxt1": "Projekty",
@@ -62,31 +77,67 @@
     "menutxt4": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
     "menutxt5": "Oferta",
     "menutxt6": "Projekty",
+    "menutxtEcommerce": "E-commerce",
+    "menutxtSeo": "SEO",
+    "menutxtIntegracje": "Integracje",
     "menutxt7": "Współpraca",
     "menutxt8": "Kontakt",
     "menutxt9": "Polityka prywatności",
-    "menutxt10": "Polityka plików cookie"
+    "menutxt10": "Polityka plików cookie",
+    "menutxtBlog": "Blog"
+  },
+  "blog": {
+    "indexTitle": "Blog Maxsoft – strony WWW, e-commerce, hosting i bezpieczeństwo",
+    "indexDescription": "Artykuły o Astro, sklepach internetowych, hostingu i dobrych praktykach dla firm z Zielonej Góry, Świebodzina i całej Polski.",
+    "indexHeading": "Blog <span class=\"mil-thin\">Maxsoft</span>",
+    "breadcrumb": "Blog",
+    "readMore": "Czytaj artykuł",
+    "tocTitle": "Spis treści",
+    "relatedTitle": "Polecane artykuły",
+    "tagsLabel": "Tagi:",
+    "sidebarMainNavTitle": "Menu główne",
+    "sidebarStart": "Start",
+    "categoriesTitle": "Kategorie",
+    "allPostsNav": "Wszystkie artykuły",
+    "viewList": "Lista",
+    "viewGrid": "Siatka",
+    "pagerPrev": "Poprzednia",
+    "pagerNext": "Następna",
+    "pagerAria": "Paginacja listy artykułów",
+    "categoryKeysOrder": [
+      "core-business",
+      "ecommerce",
+      "seo-marketing",
+      "technologie-it"
+    ],
+    "categoryLabels": {
+      "core-business": "Projektowanie i Tworzenie Stron (Core Business)",
+      "ecommerce": "E-commerce (Sklepy Internetowe)",
+      "seo-marketing": "SEO i Marketing (Widoczność)",
+      "technologie-it": "Nowoczesne Technologie i Systemy IT"
+    }
   },
   "oferta": {
-    "title": "Oferta – Strony WWW, Sklepy i Systemy CRM | Maxsoft Zielona Góra",
+    "title": "Oferta - Projektowanie stron WWW Zielona Góra, Sklepy internetowe Zielona Góra, Świebodzin",
     "description": "Szczegółowa oferta Maxsoft: tworzenie stron WWW, responsywnych sklepów internetowych (PrestaShop, WooCommerce), systemów CRM/ERP oraz integracji API. Usługi dla firm w Zielonej Górze i Świebodzinie z optymalizacją SEO.",
+    "ogimage": "/img/default-og.webp",
     "heading": " Projektowanie <span class=\"mil-thin\">Systemów</span><br /><span class=\"mil-thin\">Zarządzania</span> firmą",
     "mainContent": "Ogranicza <span class=\"mil-thin\">Nas</span> tylko<br /><span class=\"mil-thin\">Wyobraźnia</span>",
     "ofertatxt1": "Dowiedz się więcej",
     "ofertatxt2": "Specjalizujemy się w systemach CRM i ERP, realizujemy także strony WWW i sklepy. Każdy projekt traktujemy indywidualnie – dbamy o szczegóły i dopasowanie do Twoich potrzeb. Oferujemy rozbudowę, optymalizację, aktualizacje i wsparcie techniczne.",
     "ofertatxt3": "Nasze Usługi",
     "ofertatxt4": "Systemy CMS,CRM,ERP",
-    "ofertatxt5": "Wdrażamy systemy dla firm każdej wielkości. Wsparcie 24/7, konfiguracja pod indywidualne potrzeby klienta.",
+    "ofertatxt5": "Wdrażamy i konfigurujemy systemy CMS (zarządzanie treścią), CRM (relacje z klientem, pipeline sprzedaży) oraz ERP (procesy firmowe: magazyn, produkcja, finanse). Dobieramy rozwiązanie do wielkości organizacji – od prostych wdrożeń po rozbudowane integracje z istniejącymi narzędziami. Oferujemy szkolenia zespołu, dokumentację, aktualizacje oraz wsparcie techniczne i możliwość rozwoju systemu wraz z rozwojem firmy.",
     "ofertatxt6": "Profesjonalne strony WWW",
-    "ofertatxt7": "Indywidualne projekty stron internetowych oparte o systemy zarządzania treścią CMS takie jak WordPress czy Systemy Autorskie na indywidualne zamówienie.",
+    "ofertatxt7": "Projektujemy i wdrażamy strony firmowe, serwisy i landing page’y: od szablonów na WordPressie po rozwiązania autorskie dopasowane do specyfiki branży. Dbamy o responsywność (mobile-first), szybkość ładowania, czytelność treści oraz podstawy techniczne SEO. Przygotowujemy panele edycji dla zespołu, integrujemy formularze i narzędzia analityczne; po starcie oferujemy aktualizacje, rozbudowę i opiekę nad bezpieczeństwem.",
     "ofertatxt8": "Bazy Danych",
-    "ofertatxt9": "Projektowanie i optymalizacja baz danych. Optymalizacja wykonywania zapytań. Pracujemy na bazach relacyjnych jak SQL, MySQL, PostgreSQL, Oracle Database oraz nierelacyjnych jak np. MongoDB.",
+    "ofertatxt9": "Projektujemy struktury baz danych, normalizację, indeksy i zapytania pod wydajność oraz rosnącą skalę danych. Pracujemy z systemami relacyjnymi (MySQL, PostgreSQL, SQL Server, Oracle) oraz nierelacyjnymi tam, gdzie ma to sens (np. MongoDB). Wykonujemy migracje między środowiskami, optymalizację „wąskich gardeł”, kopie zapasowe i doradztwo przy wyborze technologii pod konkretny projekt – sklep, CRM czy aplikację webową.",
     "ofertatxt10": "Sklepy internetowe",
-    "ofertatxt11": "Tworzymy nowoczesne, responsywne sklepy internetowe oparte o różne oprogramowanie w tym o PrestaShop, WooCommerce oraz Magento.",
+    "ofertatxt11": "Budujemy i rozwijamy sklepy internetowe na PrestaShop, WooCommerce (WordPress) oraz Magento – w zależności od skali katalogu, integracji z ERP i wymagań hostingowych. Konfigurujemy produkty, płatności, wysyłkę, szablony pod markę oraz integracje z kurierami i hurtowniami. Szczegółowy zakres usług e-commerce znajdziesz na dedykowanej podstronie E-commerce.",
     "ofertatxt12": "Usługi hostingowe",
-    "ofertatxt13": "Świadczymy usługi hostingu domen, bazy danych, kont e-mail i FTP. Oferujemy także profesjonalną pomoc przy konfiguracji i zarządzaniu całą platformą hostingową.",
+    "ofertatxt13": "Zapewniamy hosting domen, konfigurację DNS, pocztę e-mail, przestrzeń na pliki i bazy danych oraz dostęp FTP/SFTP. Pomagamy dobrać pakiet do ruchu i wymagań aplikacji (PHP, bazy danych, certyfikaty SSL), monitorujemy działanie serwisu i wspieramy przy przenoszeniu witryny między dostawcami. Oferujemy też pomoc przy kopiach zapasowych, aktualizacjach i zabezpieczeniach na poziomie serwera.",
     "ofertatxt14": "Instalacje certyfikatów SSL",
-    "ofertatxt15": "Pomożemy Ci zainstalować certyfikaty SSL oraz zmodyfikować i zoptymalizować stronę internetową tak aby mogła sprostać najwyższym potrzebom bezpieczeństwa.",
+    "ofertatxt15": "Pomagamy wybrać certyfikat (m.in. darmowe Let’s Encrypt lub komercyjne), zainstalować go na serwerze lub w panelu hostingu oraz wymusić szyfrowany ruch HTTPS. Usuwamy problemy typu „mixed content”, konfigurujemy przekierowania i – w razie potrzeby – nagłówki bezpieczeństwa (np. HSTS). SSL buduje zaufanie użytkowników, jest wymagany przy płatnościach online i wspiera zgodność z dobrymi praktykami oraz RODO przy przesyłaniu danych osobowych.",
     "ofertatxt16": "Rozsądne <span class=\"mil-thin\">ceny</span><br />za innowacyjne <span class=\"mil-thin\">rozwiązania</span>",
     "ofertatxt17": "W naszej firmie stosujemy unikalne podejście do projektowania systemów CRM i tworzenia stron internetowych.<br />Wierzymy w tworzenie z myślą o doświadczeniu użytkownika i funkcjonalności.",
     "ofertatxt18": "Instalacje Certyfikatów<br />SSL",
@@ -121,11 +172,183 @@
     "ofertatxt47": "Centralizacja danych",
     "ofertatxt48": "Analiza i raportowanie",
     "ofertatxt49": "Automatyzacja procesów",
-    "ofertatxt50": "Integracje"
+    "ofertatxt50": "Integracje",
+    "ofertatxt51": "Integracje API",
+    "ofertatxt52": "Łączymy strony WWW, sklepy oraz systemy CRM/ERP z zewnętrznymi usługami: ekosystem Meta (Facebook, Instagram), kampanie reklamowe, portale OLX i Otodom (m.in. nieruchomości), operatorzy kurierscy jak InPost i DPD, bramki płatności i inne API. Projektujemy stabilne połączenia, bezpieczeństwo tokenów oraz przepływ danych zgodny z Twoim procesem. Szczegółowy zakres – na podstronie Integracje.",
+    "ofertatxt53": "SEO i marketing cyfrowy",
+    "ofertatxt54": "Pozycjonowanie stron w wyszukiwarce, audyt techniczny i treści, kampanie Google Ads, reklamy na Facebooku i Instagramie (Meta), TikTok Ads, wzrost ruchu organicznego oraz analityka (np. GA4). Dobieramy kanały do celów: leady, sprzedaż lub rozpoznawalność. Pełna oferta marketingowa – na podstronie SEO."
+  },
+  "ecommerce": {
+    "title": "Sklepy PrestaShop i WooCommerce Zielona Góra | Sklepy Świebodzin, szablony WordPress, integracje płatności",
+    "description": "Sklepy PrestaShop i WooCommerce, szablony WordPress, wtyczki i aktualizacje. Integracje płatności Przelewy24, PayU, BLIK – Maxsoft Zielona Góra i cała Polska.",
+    "ogimage": "/img/default-og.webp",
+    "heading": "E-commerce <span class=\"mil-thin\">PrestaShop & WooCommerce</span>",
+    "breadcrumb": "E-commerce",
+    "scrolltxt": "Poznaj ofertę",
+    "h2Intro": "Sklepy <span class=\"mil-thin\">PrestaShop</span> i <span class=\"mil-thin\">WooCommerce</span>",
+    "intro1": "W Maxsoft wdrażamy i rozwijamy sklepy internetowe w oparciu o PrestaShop oraz WooCommerce na WordPressie – dwa najczęściej wybierane silniki e-commerce w Polsce. Dobieramy technologię do skali biznesu, integracji z ERP i oczekiwań SEO.",
+    "intro2": "Poniżej znajdziesz zakres usług w formie listy – PrestaShop i WooCommerce, a na końcu integracje płatności z polskimi operatorami.",
+    "linkToList": "Przejdź do zakresu usług",
+    "h2List": "Co <span class=\"mil-thin\">realizujemy</span>",
+    "listIntro": "Wdrożenia, szablony, moduły, wtyczki, aktualizacje oraz płatności – dopasowujemy wszystko do Twojego sklepu i hostingu.",
+    "ecommerceItems": [
+      {
+        "title": "Sklepy internetowe oparte o PrestaShop",
+        "description": "Projektujemy i wdrażamy sklepy PrestaShop dopasowane do Twojej branży – od katalogu produktów i wariantów, przez koszyk i proces zamówienia, po integracje z kurierami, magazynem i systemami ERP. Dbamy o responsywność (mobile-first), szybkość ładowania oraz przejrzystą ścieżkę zakupową, co przekłada się na konwersję i SEO sklepu."
+      },
+      {
+        "title": "Szablony PrestaShop (motywy)",
+        "description": "Tworzymy i dostosowujemy szablony PrestaShop: gotowe motywy premium oraz modyfikacje pod markę – kolorystyka, typografia, układ strony głównej, listingu produktów i karty produktu. Szablony optymalizujemy pod Core Web Vitals i wytyczne Google, aby sklep był szybki i przyjazny użytkownikom z Zielonej Góry, Świebodzina i całej Polski."
+      },
+      {
+        "title": "Aktualizacje sklepów PrestaShop",
+        "description": "Regularne aktualizacje PrestaShop to bezpieczeństwo, zgodność z modułami płatności i kurierów oraz stabilność sklepu. Wykonujemy aktualizacje rdzenia, modułów i szablonów z kopiami zapasowymi i testami na środowisku staging. Pomagamy też po awariach i konfliktach modułów po aktualizacji."
+      },
+      {
+        "title": "Moduły PrestaShop",
+        "description": "Wdrażamy i konfigurujemy moduły PrestaShop: płatności, kurierzy, faktury, CRM, porównywarki cen, integracje z hurtowniami (XML/CSV/API), marketing automation oraz narzędzia analityczne. Dobieramy sprawdzone moduły lub tworzymy integracje pod zamówienie, zgodnie z wymaganiami Twojego biznesu."
+      },
+      {
+        "title": "Sklepy internetowe WooCommerce (WordPress)",
+        "description": "Tworzymy sklepy na WooCommerce – rozszerzeniu WordPressa idealnym do średniej skali i szybkiego startu. Konfigurujemy produkty, warianty, podatki i wysyłkę, integracje z kurierami oraz podstawowe SEO produktowe. WooCommerce sprawdza się tam, gdzie liczy się elastyczność ekosystemu WordPress i rozbudowa o wtyczki bez przebudowy całego silnika."
+      },
+      {
+        "title": "Szablony WooCommerce",
+        "description": "Dostosowujemy i tworzymy szablony (motywy) pod WooCommerce: karta produktu, archiwum sklepu, koszyk i checkout zgodne z identyfikacją wizualną marki. Optymalizujemy motywy pod szybkość i urządzenia mobilne; przy motywach z Elementor, Gutenberg lub klasycznych integrujemy sekcje tak, by były stabilne po aktualizacjach WooCommerce."
+      },
+      {
+        "title": "Szablony WordPress",
+        "description": "Poza sklepem projektujemy szablony WordPress dla stron firmowych, landingów i serwisów contentowych – jako część tej samej instalacji co WooCommerce lub osobnej witryny. Dbamy o spójność z marką, dostępność (a11y) i podstawy techniczne SEO (nagłówki, struktura, szybkość)."
+      },
+      {
+        "title": "Wtyczki WordPress i WooCommerce",
+        "description": "Instalujemy, konfigurujemy i łączymy wtyczki: płatności, kurierzy, faktury, SEO (np. Yoast, Rank Math), zabezpieczenia, cache, kopie zapasowe, integracje z CRM i hurtowniami. Wybieramy sprawdzone rozszerzenia lub integracje pod zamówienie; unikamy konfliktów między wtyczkami i dbamy o licencje na środowisku produkcyjnym."
+      },
+      {
+        "title": "Aktualizacje szablonów, motywów i sklepów WooCommerce",
+        "description": "Regularnie aktualizujemy WordPress, WooCommerce, motywy i wtyczki – to łatki bezpieczeństwa i kompatybilność z bramkami płatności. Wykonujemy kopie przed aktualizacją, testy na stagingu oraz naprawy po konfliktach (np. motyw vs. nowa wersja WooCommerce). Pomagamy też w migracji na nowsze wersje PHP i hosting."
+      }
+    ],
+    "h2Payments": "Integracje płatności – operatorzy w Polsce",
+    "pPaymentsIntro": "W sklepach PrestaShop (moduły) oraz WooCommerce (wtyczki) integrujemy płatności z wykorzystaniem oficjalnych rozszerzeń lub sprawdzonych integracji API. Poniżej lista najważniejszych polskich (i szeroko używanych w Polsce) operatorów płatności internetowych, dla których dostępne są moduły/wtyczki lub gotowe integracje (lista ma charakter informacyjny – dostępność zależy od wersji sklepu i oferty operatora):",
+    "paymentsNote": "BLIK, karty płatnicze i przelewy online są zwykle obsługiwane przez powyższe bramki. Przed wdrożeniem weryfikujemy kompatybilność z Twoją wersją PrestaShop lub WordPress/WooCommerce oraz hostingiem.",
+    "paymentItems": [
+      "Przelewy24 (P24)",
+      "PayU",
+      "Tpay",
+      "Blue Media",
+      "imoje (ING Bank Śląski)",
+      "Autopay (dawniej Paynow – m.in. Bank Millennium, Grupa Santander)",
+      "Dotpay",
+      "Polskie ePłatności / PayTel",
+      "Transferuj.pl (Grupa Tpay)",
+      "PayPro SA",
+      "eCard (eService)",
+      "PayPal",
+      "Stripe",
+      "Mollie (m.in. BLIK, karty, metody lokalne)",
+      "Worldline (Six Payment Services)",
+      "Klarna (w zależności od konfiguracji i rynku)",
+      "Allegro Pay / płatności w ekosystemie Allegro (integracje pośrednie)"
+    ],
+    "ctaTitle": "Wycena sklepu PrestaShop lub WooCommerce",
+    "ctaText": "Opisz sklep lub prześlij link – wycenimy wdrożenie, szablon WordPress/WooCommerce, motyw PrestaShop lub integracje.",
+    "ctaButton": "Kontakt"
+  },
+  "seo": {
+    "title": "Pozycjonowanie SEO Zielona Góra, Google Ads, Facebook, TikTok | Zielona Góra Świebodzin",
+    "description": "SEO, kampanie Google Ads, reklama na Facebooku, TikTok Ads i wzrost ruchu organicznego. Usługi marketingowe Maxsoft dla firm z Zielonej Góry, Świebodzina i całej Polski.",
+    "ogimage": "/img/default-og.webp",
+    "heading": "Marketing i <span class=\"mil-thin\">SEO</span>",
+    "breadcrumb": "SEO",
+    "scrolltxt": "Poznaj usługi",
+    "h2Intro": "Widoczność w sieci i <span class=\"mil-thin\">konwersje</span>",
+    "intro1": "W Maxsoft łączymy techniczne przygotowanie stron i sklepów z działaniami marketingowymi: od pozycjonowania w Google, przez płatne kampanie (Google Ads, Meta, TikTok), po strategię wzrostu ruchu organicznego. Dobieramy narzędzia do branży, budżetu i celów – od rozpoznawalności po leady i sprzedaż.",
+    "intro2": "Poniżej opisujemy poszczególne obszary: SEO, reklamy w wyszukiwarce i social media oraz działania wspierające naturalny ruch na stronie. Każdy zakres można realizować osobno lub jako spójny plan.",
+    "linkToList": "Przejdź do zakresu usług",
+    "h2List": "Usługi <span class=\"mil-thin\">SEO i reklamy</span>",
+    "listIntro": "Wycena i strategia zależ od konkurencji, rynku i stanu obecnej witryny. Napisz do nas – omówimy cele i proponowany mix działań.",
+    "serviceItems": [
+      {
+        "title": "Pozycjonowanie SEO",
+        "description": "Optymalizacja pod wyszukiwarki: audyt techniczny, struktura serwisu, słowa kluczowe, treści i linkowanie. Dążymy do stabilnej widoczności w Google na frazy istotne dla Twojego biznesu – bez obietnic „gwarantowanej pierwszej pozycji”, za to z transparentnym raportowaniem i realnym planem prac."
+      },
+      {
+        "title": "Kampanie Google Ads",
+        "description": "Tworzenie i konfiguracja konta, kampanii w sieci wyszukiwania, reklam produktowych (Shopping) oraz remarketingu. Dobieramy grupy reklam, słowa kluczowe i stawki pod Twój budżet, śledzimy konwersje i na bieżąco optymalizujemy, by nie przepalać budżetu na nieefektywne kliknięcia."
+      },
+      {
+        "title": "Facebook marketing i reklamy w Meta",
+        "description": "Kampanie na Facebooku i Instagramie: docieranie do grup docelowych, promowanie postów, lead ads i konwersje. Pomagamy przy pikselu Meta, zdarzeniach i integracji z witryną lub sklepem, aby mierzyć skuteczność i budować świadomość marki lub generować zapytania."
+      },
+      {
+        "title": "TikTok Ads",
+        "description": "Reklamy w ekosystemie TikToka dla marek, które chcą dotrzeć do młodszej publiczności i formatu wideo. Wspieramy przy koncie reklamowym, kreacjach dopasowanych do platformy oraz prostych lejach: ruch na stronę, instalacje aplikacji lub rozpoznawalność."
+      },
+      {
+        "title": "Wzrost ruchu organicznego",
+        "description": "Długofalowe działania bez stałego dokładania budżetu reklamowego: rozbudowa treści (blog, landingi), poprawa UX i szybkości strony, wewnętrzna struktura linków oraz wsparcie techniczne pod Core Web Vitals. Organiczny ruch buduje się systematycznie – łączymy go z SEO i jakością serwisu."
+      },
+      {
+        "title": "Analityka, raporty i optymalizacja",
+        "description": "Konfiguracja Google Analytics 4, Search Console, śledzenie celów i zdarzeń e-commerce. Regularne podsumowania: skąd przychodzi ruch, co konwertuje, gdzie warto dokładać SEO lub reklamy. Decyzje opieramy na danych, nie na domysłach."
+      }
+    ],
+    "ctaTitle": "Wycena SEO lub kampanii reklamowych",
+    "ctaText": "Napisz, czego potrzebujesz (SEO, Google Ads, Meta, TikTok) – zaproponujemy zakres i harmonogram.",
+    "ctaButton": "Kontakt"
+  },
+  "integracje": {
+    "title": "Integracje API Zielona Góra | Facebook, Instagram, Meta, OLX, Otodom, InPost, DPD | Świebodzin",
+    "description": "Integracje API: social media (Facebook, Instagram, Meta Marketing), OLX, Otodom, nieruchomości, logistyka InPost i DPD. Doświadczenie Maxsoft Zielona Góra.",
+    "ogimage": "/img/default-og.webp",
+    "heading": "<span class=\"mil-thin\">Integracje</span> API",
+    "breadcrumb": "Integracje",
+    "scrolltxt": "Poznaj integracje",
+    "h2Intro": "Systemy, portale i <span class=\"mil-thin\">logistyka</span>",
+    "intro1": "W Maxsoft mamy bogate doświadczenie w łączeniu stron WWW, sklepów i systemów CRM/ERP z zewnętrznymi usługami przez API. Realizujemy integracje z ekosystemem Meta (Facebook, Instagram), narzędziami reklamowymi, portalami ogłoszeniowymi oraz operatorami kurierskimi – z naciskiem na stabilność, bezpieczeństwo tokenów i czytelny przepływ danych.",
+    "intro2": "Poniżej znajdziesz skrócone opisy wybranych API, z którymi pracujemy: od social media i reklamy w Meta, przez OLX i Otodom (w tym wsparcie dla biur i deweloperów w obszarze sprzedaży i wynajmu nieruchomości), aż po InPost i DPD w logistyce e-commerce.",
+    "linkToList": "Przejdź do listy integracji",
+    "h2List": "Wybrane <span class=\"mil-thin\">integracje</span> API",
+    "listIntro": "Każde wdrożenie dopasowujemy do Twojego systemu, uprawnień API i wymagań biznesowych. Skontaktuj się z nami, aby omówić zakres i wycenę.",
+    "integrationItems": [
+      {
+        "title": "Facebook Graph API",
+        "description": "Dostęp do stron, postów, komentarzy, formularzy leadowych i podstawowych statystyk. Łączymy Fanpage z witryną lub CRM, aby zbierać leady i synchronizować treści bez ręcznego przepisywania."
+      },
+      {
+        "title": "Instagram Graph API",
+        "description": "Obsługa konta firmowego: publikacja i harmonogram treści, podstawowe metryki oraz powiązanie z Facebookiem w ekosystemie Meta. Przydatne w marketingu i automatyzacji social media."
+      },
+      {
+        "title": "Meta Marketing API",
+        "description": "Automatyzacja kampanii reklamowych na Facebooku i Instagramie: zestawy reklam, targetowanie, budżety i raporty. Wspieramy procesy, w których reklama musi być spięta z własnym panelem lub sklepem."
+      },
+      {
+        "title": "API OLX",
+        "description": "Synchronizacja ofert ogłoszeń między OLX a Twoim systemem lub stroną – mniej ręcznej pracy i spójność danych. Pomagamy przy autoryzacji i limitach API."
+      },
+      {
+        "title": "API Otodom",
+        "description": "Integracja ofert sprzedaży i wynajmu nieruchomości z Otodom dla biur, deweloperów i serwisów z branży. Ułatwia prezentację lokali na portalu bez dublowania wpisów w wielu miejscach."
+      },
+      {
+        "title": "InPost API",
+        "description": "Generowanie etykiet, śledzenie przesyłek, mapa punktów Paczkomatów i integracja z procesem zamówienia w sklepie. Rozwiązania dla e-commerce i firm wysyłkowych."
+      },
+      {
+        "title": "DPD API",
+        "description": "Nadawania przesyłek, śledzenie paczek i integracja z magazynem lub sklepem. Wspieramy automatyzację wysyłki i komunikaty dla kupujących."
+      }
+    ],
+    "ctaTitle": "Wycena integracji API",
+    "ctaText": "Opisz system (strona, sklep, CRM) i docelowe API – przygotujemy koncepcję połączenia i wycenę.",
+    "ctaButton": "Kontakt"
   },
   "projekty": {
-    "title": "Projekty stron internetowych: Strony www, systemy CRM Zielona Góra | Świebodzin",
+    "title": "Projektowanie stron internetowych: Strony www, systemy CRM Zielona Góra | Świebodzin",
     "description": "Przegląd projektów Maxsoft: nowoczesne strony WWW, sklepy internetowe i systemy CRM dla klientów z Zielonej Góry i Świebodzina. Zobacz nasze realizacje w PHP, JavaScript i więcej.",
+    "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Najnowsze</span> projekty",
     "projektytxt01": "Projekty",
     "projektytxt02": "TECHNOLOGIA",
@@ -143,11 +366,22 @@
     "projektytxt14": "PHP,HTML5,JAVASCRIPT",
     "projektytxt15": "Wykonanie Sklepu internetowego.",
     "projektytxt16": "PHP,HTML5,JAVASCRIPT",
-    "projektytxt17": "Integracja strony www z API Otodom."
+    "projektytxt17": "Integracja strony www z API Otodom.",
+    "altSlide1": "Realizacja strony internetowej Wooden Dream – portfolio Maxsoft, Zielona Góra",
+    "altSlide2": "Projekt strony firmowej KupSaune – realizacja Maxsoft, Zielona Góra",
+    "altSlide3": "Strona firmowa Westatre – projekt WWW Maxsoft, Zielona Góra",
+    "altSlide4": "System CRM dla firmy rolniczej – realizacja Maxsoft, Zielona Góra",
+    "altSlide5": "Integracja API JBR ze sklepem PrestaShop – projekt Maxsoft, Zielona Góra",
+    "altSlide6": "Sklep internetowy PrestaShop dla branży rolniczej – Maxsoft Zielona Góra",
+    "altSlide7": "Integracja strony WordPress z API Otodom – realizacja Maxsoft, Zielona Góra",
+    "altZoomGallery": "Powiększ podgląd zrzutu ekranu realizacji",
+    "altGalleryView1": "Wizualizacja realizacji: {title} – widok 1, Maxsoft Zielona Góra",
+    "altGalleryView2": "Wizualizacja realizacji: {title} – widok 2, Maxsoft Zielona Góra"
   },
   "wspolpraca": {
     "title": "Współpraca B2B: Systemy CRM, Strony WWW Zielona Góra | Świebodzin",
     "description": "Dołącz do Maxsoft: warunki współpracy B2B, outsourcing IT, doradztwo w projektowaniu stron WWW, sklepów internetowych i systemów CRM. Szukamy partnerów w Zielonej Górze i Świebodzinie.",
+    "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Ty wyznaczasz</span> Cel<br /><span class=\"mil-thin\">My</span> dostarczamy rezultaty",
     "wspolpracatxt01": "Współpraca",
     "wspolpracatxt02": "Współpraca B2B",
@@ -164,12 +398,13 @@
     "wspolpracatxt13": "Skontaktuj się"
   },
   "kontakt": {
-    "title": "Kontakt: Projektowanie Stron WWW, Sklepy Zielona Góra | Świebodzin",
+    "title": "Kontakt: Budowa stron www Zielona Góra, Sklepy Zielona Góra | Świebodzin",
     "description": "Skontaktuj się z Maxsoft w Zielonej Górze lub Świebodzinie: telefon, email, formularz. Zamów stronę WWW, sklep internetowy lub system CRM. Szybka wycena i profesjonalne doradztwo.",
+    "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Skontaktuj się</span><br />z Nami",
     "kontakttxt01": "Kontakt",
-    "kontakttxt02": "66-218 Lubrza, Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
-    "kontakttxt03": "65-463 Zielona Góra, ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">+(48) 453 645 286</span>",
+    "kontakttxt02": "66-218 Lubrza, Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">+(48) 453 645 286</span>",
+    "kontakttxt03": "65-463 Zielona Góra, ul.Prosta 45<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
     "kontakttxt04": "Wyślij wiadomość",
     "kontakttxt05": "Formularz <span class=\"mil-thin\">Kontaktowy</span>",
     "kontakttxt06": "Wybierz temat",
@@ -355,6 +590,8 @@
   ],
   "error": {
     "title": "Błąd 404 - Strona nie znaleziona",
+    "description": "Strona nie została znaleziona. Wróć na stronę główną Maxsoft lub skorzystaj z menu.",
+    "ogimage": "/img/default-og.webp",
     "heading": "Oops! Strona nie znaleziona.",
     "message": "Wygląda na to, że ten adres URL jest niepoprawny lub strona została usunięta.",
     "button": "Wróć na stronę główną"
@@ -369,6 +606,7 @@
   "polityka": {
     "title": "Polityka Prywatności",
     "description": "Profesjonalne usługi programistyczne dla biznesu: projektowanie stron WWW, sklepy internetowe, systemy CRM/ERP w Zielonej Górze i Świebodzinie. Kompleksowe rozwiązania IT z SEO i wsparciem 24/7.",
+    "ogimage": "/img/default-og.webp",
     "heading": "Polityka <span class=\"mil-thin\">Prywatności</span>",
     "politykatxt01": "Polityka prywatności",
     "politykatxt02": "I. Postanowienia ogólne",
@@ -409,6 +647,7 @@
   "cookies": {
     "title": "Polityka Cookies",
     "description": "Profesjonalne usługi programistyczne dla biznesu: projektowanie stron WWW, sklepy internetowe, systemy CRM/ERP w Zielonej Górze i Świebodzinie. Kompleksowe rozwiązania IT z SEO i wsparciem 24/7.",
+    "ogimage": "/img/default-og.webp",
     "heading": "Polityka <span class=\"mil-thin\">Cookies</span>",
     "cookiestxt01": "Polityka cookies",
     "cookiestxt02": "Pliki cookies (tzw. „ciasteczka”) stanowią dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika Serwisu i przeznaczone są do korzystania ze stron internetowych Serwisu. Cookies zazwyczaj zawierają nazwę strony internetowej, z której pochodzą, czas przechowywania ich na urządzeniu końcowym oraz unikalny numer.",

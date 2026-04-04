@@ -5,6 +5,12 @@ import PageLayout from "../../layouts/PageLayout.astro";
 import ContentProjectsSingle from "../../components/ContentProjectsSingle.astro";
 import pl from "../../i18n/pl.json";
 import type { GetStaticPathsResult } from "astro";
+import {
+  type ProjectJson,
+  getProjectMetaDescription,
+  getProjectOgImagePath,
+  getProjectPageTitle,
+} from "../../utils/projectMeta";
 
 type Project = Record<string, any>;
 type Neighbor = {
@@ -41,14 +47,35 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   });
 }
 
-const { projectData, prevProject, nextProject } = Astro.props;
+const { projectData: rawProject, prevProject, nextProject } = Astro.props;
+const projectData = rawProject as ProjectJson;
+
+const pageTitle = getProjectPageTitle(
+  projectData.title,
+  pl.projekty.projektytxt01,
+);
+const description = getProjectMetaDescription(projectData);
+const ogImage = getProjectOgImagePath(String(projectData.number));
+const canonical = `https://www.maxsoft.pl/projekty/${projectData.slug}/`;
+const ogImageAlt = (pl.projekty.altGalleryView1 as string).replace(
+  "{title}",
+  projectData.title,
+);
 ---
 
-<PageLayout lang="pl" langPrefix="">
+<PageLayout
+  lang="pl"
+  title={pageTitle}
+  description={description}
+  ogImage={ogImage}
+  canonical={canonical}
+  openGraphImageAlt={ogImageAlt}
+>
   <ContentProjectsSingle
     data={projectData}
     prevProject={prevProject}
     nextProject={nextProject}
     langPrefix=""
+    lang="pl"
   />
 </PageLayout>

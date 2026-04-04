@@ -1,0 +1,83 @@
+---
+/**
+ * JSON-LD: BlogPosting + BreadcrumbList (@graph).
+ * Wstrzyknij przez <SEO ... slot="head" /> w PageLayout (slot name="head").
+ */
+interface BreadcrumbItem {
+  name: string;
+  item: string;
+}
+
+interface Props {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
+  imageUrls: string[];
+  authorName: string;
+  keywords?: string[];
+  breadcrumbs: BreadcrumbItem[];
+}
+
+const {
+  headline,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  imageUrls,
+  authorName,
+  keywords = [],
+  breadcrumbs,
+} = Astro.props;
+
+const publisher = {
+  "@type": "Organization",
+  name: "Maxsoft",
+  url: "https://www.maxsoft.pl/",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://www.maxsoft.pl/img/logo-czarne.png",
+  },
+};
+
+const blogPosting: Record<string, unknown> = {
+  "@type": "BlogPosting",
+  headline,
+  description,
+  url,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": url,
+  },
+  datePublished,
+  ...(dateModified ? { dateModified } : {}),
+  author: {
+    "@type": "Person",
+    name: authorName,
+  },
+  publisher,
+  image: imageUrls,
+  ...(keywords.length ? { keywords: keywords.join(", ") } : {}),
+};
+
+const breadcrumbList = {
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((b, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: b.name,
+    item: b.item,
+  })),
+};
+
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [blogPosting, breadcrumbList],
+};
+
+const json = JSON.stringify(graph).replace(/</g, "\\u003c");
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

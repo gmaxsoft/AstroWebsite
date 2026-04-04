@@ -7,7 +7,7 @@ const { data } = Astro.props;
 
 <div class="mil-menu-frame">
   <div class="mil-frame-top mil-logo-fixed">
-    <a href={prefix || "/"} class="mil-logo">Maxsoft</a>
+    <a href={prefix ? `${prefix}/` : "/"} class="mil-logo">Maxsoft</a>
 
     <div class="mil-lang-switch">
       <a
@@ -32,7 +32,7 @@ const { data } = Astro.props;
           <nav class="mil-main-menu" id="swupMenu">
             <ul>
               <li class="mil-has-children mil-active">
-                <a href={prefix || "/"} title="Start">Start</a>
+                <a href={prefix ? `${prefix}/` : "/"} title="Start">Start</a>
               </li>
               <li class="mil-has-children">
                 <a href={`${prefix}/oferta/`} title={data.menutxt5}
@@ -42,6 +42,23 @@ const { data } = Astro.props;
               <li class="mil-has-children">
                 <a href={`${prefix}/projekty/`} title={data.menutxt6}
                   >{data.menutxt6}</a
+                >
+              </li>
+              <li class="mil-has-children">
+                <a
+                  href={`${prefix}/e-commerce/`}
+                  title={data.menutxtEcommerce}>{data.menutxtEcommerce}</a
+                >
+              </li>
+              <li class="mil-has-children">
+                <a href={`${prefix}/seo/`} title={data.menutxtSeo}
+                  >{data.menutxtSeo}</a
+                >
+              </li>
+              <li class="mil-has-children">
+                <a
+                  href={`${prefix}/integracje/`}
+                  title={data.menutxtIntegracje}>{data.menutxtIntegracje}</a
                 >
               </li>
               <li class="mil-has-children">
@@ -125,6 +142,13 @@ const { data } = Astro.props;
                         rel="noreferrer nofollow"
                         class="mil-light-soft"
                         title="Github">Github</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="/blog/"
+                        class="mil-light-soft"
+                        title={data.menutxtBlog}>{data.menutxtBlog}</a
                       >
                     </li>
                   </ul>

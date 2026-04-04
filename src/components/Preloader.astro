@@ -1,6 +1,4 @@
 ---
-const { langPrefix } = Astro.props;
-const prefix = langPrefix ?? "/";
 const { data } = Astro.props;
 ---
 
@@ -25,8 +23,8 @@ const { data } = Astro.props;
         </div>
         <div class="mil-pos-abs mil-animation-2">
             <div class="mil-reveal-frame">
-                <p class="mil-reveal-box"></p>
-                <p class="mil-h3 mil-muted mil-thin">maxsoft.pl</p>
+                <p class="mil-reveal-box" aria-hidden="true"></p>
+                <p class="mil-h3 mil-thin mil-preloader-brand">maxsoft.pl</p>
             </div>
         </div>
     </div>

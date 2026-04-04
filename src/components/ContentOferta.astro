@@ -17,7 +17,7 @@ const { data } = Astro.props;
   <div class="mil-banner-content mil-up">
     <div class="container">
       <ul class="mil-breadcrumbs mil-mb-60">
-        <li><a href={prefix} title="Start">Start</a></li>
+        <li><a href={prefix ? `${prefix}/` : "/"} title="Start">Start</a></li>
         <li><a href={`${prefix}/oferta/`} title={data.ofertatxt38}>{data.ofertatxt38}</a></li>
       </ul>
       <h1 class="mil-mb-60" set:html={data.heading} />
@@ -143,6 +143,38 @@ const { data } = Astro.props;
           <div class="mil-accordion-content">
             <p class="mil-mb-30 mil-text-justify">
               {data.ofertatxt15}
+            </p>
+          </div>
+        </div>
+
+        <div class="mil-accordion-group mil-up">
+          <div class="mil-accordion-menu">
+            <p class="mil-accordion-head">{data.ofertatxt51}</p>
+
+            <div class="mil-symbol mil-h3">
+              <div class="mil-plus">+</div>
+              <div class="mil-minus">-</div>
+            </div>
+          </div>
+          <div class="mil-accordion-content">
+            <p class="mil-mb-30 mil-text-justify">
+              {data.ofertatxt52}
+            </p>
+          </div>
+        </div>
+
+        <div class="mil-accordion-group mil-up">
+          <div class="mil-accordion-menu">
+            <p class="mil-accordion-head">{data.ofertatxt53}</p>
+
+            <div class="mil-symbol mil-h3">
+              <div class="mil-plus">+</div>
+              <div class="mil-minus">-</div>
+            </div>
+          </div>
+          <div class="mil-accordion-content">
+            <p class="mil-mb-30 mil-text-justify">
+              {data.ofertatxt54}
             </p>
           </div>
         </div>

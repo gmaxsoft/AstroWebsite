@@ -8,7 +8,7 @@ const { data } = Astro.props;
   <div class="mil-banner-content mil-center mil-up">
     <div class="container">
       <ul class="mil-breadcrumbs mil-center mil-mb-60">
-        <li><a href={prefix} title="Start">Start</a></li>
+        <li><a href={prefix ? `${prefix}/` : "/"} title="Start">Start</a></li>
         <li><a href={`${prefix}/polityka_cookies/`} title={data.cookiestxt01}>{data.cookiestxt01}</a></li>
       </ul>
       <h1 set:html={data.heading} />

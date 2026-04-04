@@ -2,7 +2,7 @@
 import $ from 'jquery';
 import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
 import Swiper from 'swiper';
-import { Navigation, Pagination, FreeMode, Thumbs, Mousewheel, Autoplay, Parallax, EffectFade, Scrollbar } from 'swiper/modules';
+import { Navigation, Pagination, FreeMode, Thumbs, Mousewheel, Autoplay, Parallax, EffectFade } from 'swiper/modules';
 
 /**
  * Inicjalizuje animację Preloadera (sekwencja: 3 linie → maxsoft.pl z reveal → fade out).

@@ -1,0 +1,45 @@
+---
+import { Picture } from "astro:assets";
+import type { BlogEntry } from "../../utils/blog";
+
+interface Props {
+  posts: BlogEntry[];
+  title: string;
+  readMore: string;
+}
+
+const { posts, title, readMore } = Astro.props;
+---
+
+{
+  posts.length > 0 && (
+    <section class="mil-blog-related mil-up" aria-labelledby="mil-blog-related-heading">
+      <h2 id="mil-blog-related-heading" class="mil-blog-related__title">
+        {title}
+      </h2>
+      <div class="row">
+        {posts.map((post) => (
+          <div class="col-md-4 mil-mb-60">
+            <a href={`/blog/${post.id}/`} class="mil-blog-card mil-blog-card--related">
+              <div class="mil-blog-card__thumb">
+                <Picture
+                  src={post.data.image}
+                  alt={post.data.title}
+                  width={640}
+                  height={360}
+                  formats={["avif", "webp"]}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <h3 class="mil-blog-card__heading">{post.data.title}</h3>
+              <span class="mil-link mil-dark mil-arrow-place mil-blog-card__more">
+                <span>{readMore}</span>
+              </span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}

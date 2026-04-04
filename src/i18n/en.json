@@ -4,6 +4,12 @@
     "description": "Maxsoft builds websites, online stores and CRM/ERP systems for businesses in the Lubuskie region. Custom projects, API integrations and technical support.",
     "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Programming</span> Services<br /><span class=\"mil-thin\">For</span> Business",
+    "headingSeoCombined": "Programming services for business. Website development Zielona Góra. Online stores Zielona Góra.",
+    "headingRotate": [
+      "<span class=\"mil-thin\">Programming</span> Services<br /><span class=\"mil-thin\">For</span> Business",
+      "Website development <span class=\"mil-thin\">Zielona Góra</span>",
+      "Online stores <span class=\"mil-thin\">Zielona Góra</span>"
+    ],
     "mainContent": "Comprehensive internet services, including website and online store design, web application development, implementation of CMS/CRM/ERP systems, and professional search engine optimization (SEO).",
     "linktxt1": "Offer",
     "linktxt2": "Projects",
@@ -11,7 +17,9 @@
     "aboutheading": "What Do <span class=\"mil-thin\">We Do?</span>",
     "abouttxt1": "Our productions are characterized by original ideas, while maintaining the highest technical and visual standards. We are limited only by imagination.",
     "abouttxt2": "We possess everything necessary to create the most modern IT solutions using the best methods and technologies. Application development, system integration, analysis, and technological assessment are the pillars of our design process and solid architecture.",
-    "abouttxt3": "Website design, E-commerce stores, CRM/ERP company management systems",
+    "abouttxt3": "Website design and development · online stores (PrestaShop, WooCommerce) · web applications and B2B portals · CRM and ERP systems · API integrations · SEO, performance and Core Web Vitals · hosting, SSL and technical support.",
+    "aboutBlogCta": "Visit our blog",
+    "aboutBlogCtaTitle": "Maxsoft blog – articles on websites, e-commerce and SEO",
     "ofertxt1": "Our Company consists of Professionals who help your brand<br />grow and move forward.",
     "ofertxt2": "Our <span class=\"mil-thin\">Services</span>",
     "ofertxt3": "<span class=\"mil-thin\">For</span> Business.",
@@ -40,7 +48,10 @@
     "softtxt14": "Laravel",
     "softtxt15": "PHP framework",
     "softtxt16": "Laravel is our choice for PHP applications requiring scalable architecture. Eloquent, migrations and package ecosystem speed up development.",
-    "softtxt17": "Back to top"
+    "softtxt17": "Back to top",
+    "altLogoAbout": "Maxsoft logo – web design, e-commerce and CRM systems, Zielona Góra, Poland",
+    "altPhotoAbout": "Web development and custom applications – Maxsoft team, Lubuskie region",
+    "altTechTemplate": "{tech} logo – technologies used in Maxsoft web and e-commerce projects, Zielona Góra"
   },
   "footer": {
     "footertxt1": "Subscribe to our newsletter:",
@@ -50,10 +61,14 @@
     "footertxt5": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Poland<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
     "footertxt6": "Offer",
     "footertxt7": "Projects",
+    "footertxtEcommerce": "E-commerce",
+    "footertxtSeo": "SEO",
+    "footertxtIntegracje": "Integrations",
     "footertxt8": "Cooperation",
     "footertxt9": "Contact",
     "footertxt10": "Privacy Policy",
-    "footertxt11": "Cookie Policy"
+    "footertxt11": "Cookie Policy",
+    "footertxtBlog": "Blog"
   },
   "menu": {
     "menutxt1": "Projects",
@@ -62,31 +77,48 @@
     "menutxt4": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Poland<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
     "menutxt5": "Offer",
     "menutxt6": "Projects",
+    "menutxtEcommerce": "E-commerce",
+    "menutxtSeo": "SEO",
+    "menutxtIntegracje": "Integrations",
     "menutxt7": "Cooperation",
     "menutxt8": "Contact",
     "menutxt9": "Privacy Policy",
-    "menutxt10": "Cookie Policy"
+    "menutxt10": "Cookie Policy",
+    "menutxtBlog": "Blog"
+  },
+  "blog": {
+    "indexTitle": "Maxsoft Blog – websites, e-commerce, hosting and security",
+    "indexDescription": "Articles on Astro, online stores, hosting and best practices for businesses in Zielona Góra, Świebodzin and across Poland.",
+    "indexHeading": "Maxsoft <span class=\"mil-thin\">Blog</span>",
+    "breadcrumb": "Blog",
+    "readMore": "Read article",
+    "tocTitle": "Table of contents",
+    "relatedTitle": "Recommended articles",
+    "tagsLabel": "Tags:",
+    "sidebarMainNavTitle": "Main menu",
+    "sidebarStart": "Start"
   },
   "oferta": {
     "title": "Offer – Websites, E-commerce and CRM Systems | Maxsoft Zielona Góra",
     "description": "Maxsoft's detailed offer: creating websites, responsive online stores (PrestaShop, WooCommerce), CRM/ERP systems and API integrations. Services for companies in Zielona Góra and Świebodzin with SEO optimization.",
+    "ogimage": "/img/default-og.webp",
     "heading": "Design of <span class=\"mil-thin\">Company</span><br /><span class=\"mil-thin\">Management</span> Systems",
     "mainContent": "<span class=\"mil-thin\">We are</span> limited only<br />by <span class=\"mil-thin\">Imagination</span>",
     "ofertatxt1": "Learn more",
     "ofertatxt2": "We specialize in creating CRM, ERP systems, but we also handle smaller projects like website creation. We create every project individually, paying attention to details and ensuring it meets your expectations. We also provide comprehensive service: development, optimization, updates, and ongoing technical support. Many years of experience allow us to implement various types of projects that stand out for their functionality and effectiveness.",
     "ofertatxt3": "Our Services",
     "ofertatxt4": "CMS, CRM, ERP Systems",
-    "ofertatxt5": "We will implement and provide systems for managing small and large companies! Free 24/7 support. Systems prepared for individual client needs.",
+    "ofertatxt5": "We implement and configure CMS (content management), CRM (customer relationships, sales pipeline) and ERP systems (business processes: warehouse, production, finance). We match the solution to your organisation’s size – from straightforward rollouts to deep integration with tools you already use. We train your team, provide documentation, updates and ongoing technical support so the system can grow with your business.",
     "ofertatxt6": "Professional Websites",
-    "ofertatxt7": "Individual website projects based on Content Management Systems (CMS) such as WordPress or custom-made proprietary systems.",
+    "ofertatxt7": "We design and build corporate sites, services and landing pages – from WordPress-based themes to bespoke solutions tailored to your industry. We focus on responsive, mobile-first layouts, fast loading, readable content and technical SEO foundations. We set up editing workflows for your team, integrate forms and analytics, and after launch we handle updates, extensions and security maintenance.",
     "ofertatxt8": "Databases",
-    "ofertatxt9": "Database design and optimization. Query execution optimization. We work with relational databases like SQL, MySQL, PostgreSQL, Oracle Database, and non-relational ones like MongoDB.",
+    "ofertatxt9": "We design database structures, normalisation, indexes and queries for performance and growing data volumes. We work with relational engines (MySQL, PostgreSQL, SQL Server, Oracle) and non-relational stores where it fits (e.g. MongoDB). We run environment migrations, tune slow queries, plan backups and advise on technology choices for each project – e-commerce, CRM or custom web applications.",
     "ofertatxt10": "E-commerce Stores",
-    "ofertatxt11": "We create modern, responsive online stores based on various software, including PrestaShop, WooCommerce, and Magento.",
+    "ofertatxt11": "We build and evolve online stores on PrestaShop, WooCommerce (WordPress) and Magento, depending on catalogue scale, ERP integration needs and hosting constraints. We configure products, payments, shipping, branded themes and integrations with couriers and wholesalers. For a full service breakdown, see our dedicated E-commerce page.",
     "ofertatxt12": "Hosting Services",
-    "ofertatxt13": "We provide hosting services for domains, databases, e-mail accounts, and FTP. We also offer professional assistance with configuration and management of the entire hosting platform.",
+    "ofertatxt13": "We cover domain hosting, DNS setup, e-mail, file and database space, and FTP/SFTP access. We help choose a plan that matches traffic and app requirements (PHP, databases, SSL certificates), monitor service health and support site migrations between providers. We also assist with backups, updates and server-level hardening where needed.",
     "ofertatxt14": "SSL Certificate Installation",
-    "ofertatxt15": "We will help you install SSL certificates and modify and optimize your website so that it meets the highest security needs.",
+    "ofertatxt15": "We help you pick the right certificate (including free Let’s Encrypt or commercial options), install it on the server or hosting panel and enforce HTTPS for all traffic. We fix mixed-content issues, set up redirects and, when useful, security headers such as HSTS. SSL builds user trust, is required for online payments and supports good practice and GDPR-aligned handling of personal data in transit.",
     "ofertatxt16": "Reasonable <span class=\"mil-thin\">prices</span><br />for innovative <span class=\"mil-thin\">solutions</span>",
     "ofertatxt17": "In our company, we apply a unique approach to designing CRM systems and creating websites.<br />We believe in creating with user experience and functionality in mind.",
     "ofertatxt18": "SSL Certificate<br />Installation",
@@ -121,11 +153,183 @@
     "ofertatxt47": "Data centralization",
     "ofertatxt48": "Analysis and reporting",
     "ofertatxt49": "Process automation",
-    "ofertatxt50": "Integrations"
+    "ofertatxt50": "Integrations",
+    "ofertatxt51": "API integrations",
+    "ofertatxt52": "We connect websites, stores and CRM/ERP systems with external services: the Meta ecosystem (Facebook, Instagram), advertising tools, OLX and Otodom (including real estate), courier operators such as InPost and DPD, payment gateways and other APIs. We design stable integrations, token security and data flows aligned with your processes. See the Integrations page for details.",
+    "ofertatxt53": "SEO & digital marketing",
+    "ofertatxt54": "Search engine optimisation, technical and content SEO, Google Ads campaigns, Facebook and Instagram (Meta) ads, TikTok Ads, organic traffic growth and analytics (e.g. GA4). We match channels to your goals: leads, sales or awareness. Full marketing scope – on the SEO page."
+  },
+  "ecommerce": {
+    "title": "PrestaShop & WooCommerce E-commerce Zielona Góra | Stores, WordPress themes, payments",
+    "description": "PrestaShop and WooCommerce stores, WordPress themes, plugins and updates. Payment integrations Przelewy24, PayU, BLIK – Maxsoft, Poland.",
+    "ogimage": "/img/default-og.webp",
+    "heading": "E-commerce <span class=\"mil-thin\">PrestaShop & WooCommerce</span>",
+    "breadcrumb": "E-commerce",
+    "scrolltxt": "Discover our services",
+    "h2Intro": "<span class=\"mil-thin\">PrestaShop</span> & <span class=\"mil-thin\">WooCommerce</span> stores",
+    "intro1": "At Maxsoft we implement and grow online stores on PrestaShop and WooCommerce on WordPress – two of the most popular e-commerce stacks in Poland. We match the technology to your scale, ERP integrations and SEO goals.",
+    "intro2": "Below you will find our services as a structured list – PrestaShop and WooCommerce, ending with payment integrations with major Polish providers.",
+    "linkToList": "Go to service list",
+    "h2List": "What we <span class=\"mil-thin\">deliver</span>",
+    "listIntro": "Implementations, themes, modules, plugins, updates and payments – tailored to your store and hosting.",
+    "ecommerceItems": [
+      {
+        "title": "PrestaShop-based online stores",
+        "description": "We implement PrestaShop stores tailored to your industry – catalogues and combinations, cart and checkout, courier and warehouse integrations, and ERP connectors. We focus on responsive layouts, fast loading and clear conversion paths."
+      },
+      {
+        "title": "PrestaShop themes (templates)",
+        "description": "We build and customise PrestaShop themes: premium templates and brand-specific adjustments – colours, typography, home, listing and product pages. We optimise for Core Web Vitals and Google guidelines."
+      },
+      {
+        "title": "PrestaShop store updates",
+        "description": "Regular PrestaShop updates keep your store secure and compatible with payment and shipping modules. We upgrade core, modules and themes with backups and staging tests. We also help after failed updates or module conflicts."
+      },
+      {
+        "title": "PrestaShop modules",
+        "description": "We implement PrestaShop modules: payments, shipping, invoicing, CRM, price comparison feeds, wholesaler integrations (XML/CSV/API), marketing and analytics. We choose proven modules or build custom integrations."
+      },
+      {
+        "title": "WooCommerce online stores (WordPress)",
+        "description": "We build stores on WooCommerce – the WordPress e-commerce extension suited to mid-scale projects and fast launches. We configure products, variations, tax and shipping, courier integrations and basic product SEO. WooCommerce fits when you need the WordPress ecosystem and plugins without replacing the whole engine."
+      },
+      {
+        "title": "WooCommerce themes",
+        "description": "We customise and build WooCommerce themes: product pages, shop archives, cart and checkout aligned with your brand. We optimise themes for speed and mobile; with Elementor, Gutenberg or classic themes we wire sections so they stay stable after WooCommerce updates."
+      },
+      {
+        "title": "WordPress themes",
+        "description": "Beyond the shop we design WordPress themes for corporate sites, landing pages and content hubs – on the same install as WooCommerce or a separate site. We keep brand consistency, accessibility basics and technical SEO (headings, structure, performance)."
+      },
+      {
+        "title": "WordPress and WooCommerce plugins",
+        "description": "We install, configure and connect plugins: payments, shipping, invoicing, SEO (e.g. Yoast, Rank Math), security, cache, backups, CRM and wholesaler integrations. We pick proven extensions or custom integrations; we avoid plugin conflicts and respect production licences."
+      },
+      {
+        "title": "WooCommerce theme, template and store updates",
+        "description": "We regularly update WordPress, WooCommerce, themes and plugins – security patches and compatibility with payment gateways. We use backups, staging tests and fixes after conflicts (e.g. theme vs. new WooCommerce). We also help migrate to newer PHP versions and hosting."
+      }
+    ],
+    "h2Payments": "Payment integrations – providers in Poland",
+    "pPaymentsIntro": "For PrestaShop (modules) and WooCommerce (plugins) we integrate payments using official extensions or reliable API integrations. Below is a list of major Polish (and widely used in Poland) online payment operators with modules/plugins or ready integrations (informational – availability depends on your store version and the provider’s offer):",
+    "paymentsNote": "BLIK, cards and online transfers are usually offered through the gateways above. We verify compatibility with your PrestaShop or WordPress/WooCommerce version and hosting before go-live.",
+    "paymentItems": [
+      "Przelewy24 (P24)",
+      "PayU",
+      "Tpay",
+      "Blue Media",
+      "imoje (ING Bank Śląski)",
+      "Autopay (formerly Paynow – e.g. Bank Millennium, Santander Group)",
+      "Dotpay",
+      "Polskie ePłatności / PayTel",
+      "Transferuj.pl (Tpay Group)",
+      "PayPro SA",
+      "eCard (eService)",
+      "PayPal",
+      "Stripe",
+      "Mollie (incl. BLIK, cards, local methods)",
+      "Worldline (Six Payment Services)",
+      "Klarna (depending on configuration and market)",
+      "Allegro Pay / Allegro ecosystem payments (indirect integrations)"
+    ],
+    "ctaTitle": "PrestaShop or WooCommerce project quote",
+    "ctaText": "Describe your store or send a link – we will estimate implementation, WordPress/WooCommerce themes, PrestaShop themes or integrations.",
+    "ctaButton": "Contact"
+  },
+  "seo": {
+    "title": "SEO, Google Ads, Facebook & TikTok Marketing | Maxsoft Zielona Góra",
+    "description": "SEO, Google Ads, Facebook and Instagram ads, TikTok Ads and organic traffic growth. Digital marketing services for businesses in Zielona Góra, Świebodzin and across Poland.",
+    "ogimage": "/img/default-og.webp",
+    "heading": "<span class=\"mil-thin\">SEO</span> & marketing",
+    "breadcrumb": "SEO",
+    "scrolltxt": "Explore services",
+    "h2Intro": "Visibility and <span class=\"mil-thin\">conversions</span>",
+    "intro1": "At Maxsoft we combine solid websites and stores with marketing: SEO in Google, paid campaigns (Google Ads, Meta, TikTok) and strategies to grow organic traffic. We match channels to your industry, budget and goals – from brand awareness to leads and sales.",
+    "intro2": "Below we outline each area: SEO, search and social ads, and activities that support natural traffic on your site. You can run them standalone or as one coherent plan.",
+    "linkToList": "Go to service list",
+    "h2List": "<span class=\"mil-thin\">SEO & paid</span> services",
+    "listIntro": "Pricing and strategy depend on competition, market and your current site. Contact us to align on goals and the right mix of activities.",
+    "serviceItems": [
+      {
+        "title": "SEO (search engine optimisation)",
+        "description": "Optimisation for search: technical audit, site structure, keywords, content and internal linking. We aim for sustainable visibility in Google for queries that matter to your business – with transparent reporting and a realistic roadmap, not empty “guaranteed #1” promises."
+      },
+      {
+        "title": "Google Ads campaigns",
+        "description": "Account and campaign setup: Search, Shopping, Performance Max where appropriate, plus remarketing. We structure ad groups, match keywords to budget, track conversions and optimise continuously so spend goes to clicks that can convert."
+      },
+      {
+        "title": "Facebook & Meta advertising",
+        "description": "Campaigns on Facebook and Instagram: audiences, boosted posts, lead ads and conversion objectives. We help with the Meta Pixel, events and website/store integration so you can measure results and grow awareness or inbound leads."
+      },
+      {
+        "title": "TikTok Ads",
+        "description": "Advertising on TikTok for brands targeting younger audiences and short-form video. We support ad account setup, creatives that fit the platform and simple goals: traffic, app installs or awareness."
+      },
+      {
+        "title": "Growing organic traffic",
+        "description": "Long-term growth without relying only on ad spend: content (blog, landing pages), UX and page speed, internal linking and technical health aligned with Core Web Vitals. Organic traffic compounds when SEO and site quality move together."
+      },
+      {
+        "title": "Analytics, reporting & optimisation",
+        "description": "Google Analytics 4, Search Console, goals and e-commerce events. Regular summaries: where traffic comes from, what converts, where to invest more in SEO or ads. Decisions are data-driven."
+      }
+    ],
+    "ctaTitle": "Quote for SEO or ad campaigns",
+    "ctaText": "Tell us what you need (SEO, Google Ads, Meta, TikTok) – we will propose scope and timeline.",
+    "ctaButton": "Contact"
+  },
+  "integracje": {
+    "title": "API Integrations Zielona Góra | Facebook, Instagram, Meta, OLX, Otodom, InPost, DPD | Maxsoft",
+    "description": "API integrations: social media (Facebook, Instagram, Meta Marketing), OLX, Otodom, real estate, InPost and DPD logistics. Maxsoft experience in Zielona Góra and Poland.",
+    "ogimage": "/img/default-og.webp",
+    "heading": "<span class=\"mil-thin\">API</span> Integrations",
+    "breadcrumb": "Integrations",
+    "scrolltxt": "Explore integrations",
+    "h2Intro": "Systems, portals and <span class=\"mil-thin\">logistics</span>",
+    "intro1": "At Maxsoft we have extensive experience connecting websites, online stores and CRM/ERP systems with external services via API. We implement integrations with the Meta ecosystem (Facebook, Instagram), advertising tools, classified portals and courier operators – with a focus on stability, token security and clear data flows.",
+    "intro2": "Below are short descriptions of selected APIs we work with: from social media and Meta ads, through OLX and Otodom (including support for agencies and developers in sales and rentals), to InPost and DPD in e-commerce logistics.",
+    "linkToList": "Go to integration list",
+    "h2List": "Selected <span class=\"mil-thin\">API</span> integrations",
+    "listIntro": "Every implementation is tailored to your stack, API permissions and business requirements. Contact us to discuss scope and pricing.",
+    "integrationItems": [
+      {
+        "title": "Facebook Graph API",
+        "description": "Access to pages, posts, comments, lead forms and basic insights. We connect your Facebook Page with the website or CRM to capture leads and sync content without manual copy-paste."
+      },
+      {
+        "title": "Instagram Graph API",
+        "description": "Business account features: publishing and scheduling, basic metrics and linkage with Facebook in the Meta ecosystem. Useful for marketing and social automation."
+      },
+      {
+        "title": "Meta Marketing API",
+        "description": "Automation of Facebook and Instagram ad campaigns: ad sets, targeting, budgets and reporting. For setups where ads must tie into your own panel or store."
+      },
+      {
+        "title": "OLX API",
+        "description": "Synchronisation of classified listings between OLX and your system or website – less manual work and consistent data. We help with authorisation and API limits."
+      },
+      {
+        "title": "Otodom API",
+        "description": "Integration of property sale and rental listings with Otodom for agencies, developers and industry sites – easier listing on the portal without duplicating entries everywhere."
+      },
+      {
+        "title": "InPost API",
+        "description": "Label generation, parcel tracking, Paczkomat map and checkout integration. Solutions for e-commerce and shipping-heavy businesses."
+      },
+      {
+        "title": "DPD API",
+        "description": "Shipment booking, parcel tracking and integration with warehouse or store workflows. We support shipping automation and buyer notifications."
+      }
+    ],
+    "ctaTitle": "API integration quote",
+    "ctaText": "Describe your system (website, store, CRM) and target API – we will propose the connection and estimate the work.",
+    "ctaButton": "Contact"
   },
   "projekty": {
     "title": "Portfolio and Completed Projects: Websites, CRM Zielona Góra | Świebodzin",
     "description": "Overview of Maxsoft projects: modern websites, online stores and CRM systems for clients from Zielona Góra and Świebodzin. See our implementations in PHP, JavaScript and more.",
+    "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Latest</span> projects",
     "projektytxt01": "Projects",
     "projektytxt02": "TECHNOLOGY",
@@ -143,11 +347,22 @@
     "projektytxt14": "PHP,HTML5,JAVASCRIPT",
     "projektytxt15": "E-commerce store development.",
     "projektytxt16": "PHP,HTML5,JAVASCRIPT",
-    "projektytxt17": "Website integration with Otodom API."
+    "projektytxt17": "Website integration with Otodom API.",
+    "altSlide1": "Wooden Dream company website – web project by Maxsoft, Zielona Góra",
+    "altSlide2": "KupSaune business website – delivered by Maxsoft, Zielona Góra",
+    "altSlide3": "Westatre corporate website – Maxsoft web project, Zielona Góra",
+    "altSlide4": "Agricultural CRM system – Maxsoft implementation, Zielona Góra",
+    "altSlide5": "JBR API and PrestaShop integration – Maxsoft, Zielona Góra",
+    "altSlide6": "PrestaShop online store for agriculture sector – Maxsoft, Zielona Góra",
+    "altSlide7": "WordPress and Otodom API integration – Maxsoft, Zielona Góra",
+    "altZoomGallery": "Enlarge project screenshot preview",
+    "altGalleryView1": "Project preview: {title} – view 1, Maxsoft Zielona Góra",
+    "altGalleryView2": "Project preview: {title} – view 2, Maxsoft Zielona Góra"
   },
   "wspolpraca": {
     "title": "B2B Cooperation: CRM Systems, Websites Zielona Góra | Świebodzin",
     "description": "Join Maxsoft: B2B cooperation terms, IT outsourcing, consulting in website design, online stores and CRM systems. Looking for partners in Zielona Góra and Świebodzin",
+    "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">You set the</span> Goal<br /><span class=\"mil-thin\">We</span> deliver the results",
     "wspolpracatxt01": "Cooperation",
     "wspolpracatxt02": "B2B Cooperation",
@@ -166,6 +381,7 @@
   "kontakt": {
     "title": "Contact: Website Design, Stores Zielona Góra | Świebodzin",
     "description": "Contact Maxsoft in Zielona Góra or Świebodzin: phone, email, form. Order a website, online store or CRM system. Quick quote and professional advice",
+    "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Contact</span><br />Us",
     "kontakttxt01": "Contact",
     "kontakttxt02": "66-218 Lubrza, Nowa Wioska 39<br />Poland<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
@@ -355,6 +571,8 @@
   ],
   "error": {
     "title": "Error 404 - Page not found",
+    "description": "The page was not found. Return to the Maxsoft homepage or use the menu.",
+    "ogimage": "/img/default-og.webp",
     "heading": "Oops! Page not found.",
     "message": "It looks like this URL is incorrect or the page has been deleted.",
     "button": "Go to the homepage"
@@ -369,6 +587,7 @@
   "polityka": {
     "title": "Privacy Policy",
     "description": "Professional programming services for business: website design, online stores, CRM/ERP systems in Zielona Góra and Świebodzin. Comprehensive IT solutions with SEO and 24/7 support.",
+    "ogimage": "/img/default-og.webp",
     "heading": "Privacy <span class=\"mil-thin\">Policy</span>",
     "politykatxt01": "Privacy Policy",
     "politykatxt02": "I. General Provisions",
@@ -409,6 +628,7 @@
   "cookies": {
     "title": "Cookies Policy",
     "description": "Professional programming services for business: website design, online stores, CRM/ERP systems in Zielona Góra and Świebodzin. Comprehensive IT solutions with SEO and 24/7 support.",
+    "ogimage": "/img/default-og.webp",
     "heading": "Cookies <span class=\"mil-thin\">Policy</span>",
     "cookiestxt01": "Cookies Policy",
     "cookiestxt02": "Cookies (so-called \"cookies\") constitute IT data, in particular text files, stored on the User's end device and intended for using the Website's internet pages. Cookies usually contain the name of the website they come from, the time they are stored on the end device, and a unique number.",

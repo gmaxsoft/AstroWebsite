@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /wp-content/
+Disallow: /generator/
+Sitemap: https://www.maxsoft.pl/sitemap.xml

@@ -13,6 +13,16 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+/** Statyczny build wywołuje GET na trasach API – zwracamy 405, formularz używa POST. */
+export const GET: APIRoute = () =>
+    new Response(JSON.stringify({ message: "Użyj metody POST." }), {
+        status: 405,
+        headers: {
+            Allow: "POST",
+            "Content-Type": "application/json",
+        },
+    });
+
 export const POST: APIRoute = async ({ request }) => {
     const data = await request.formData();
 

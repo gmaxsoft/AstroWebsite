@@ -1,0 +1,31 @@
+---
+import type { MarkdownHeading } from "@astrojs/markdown-remark";
+
+interface Props {
+  headings: MarkdownHeading[];
+  title: string;
+}
+
+const { headings, title } = Astro.props;
+const items = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+---
+
+{
+  items.length > 0 && (
+    <nav class="mil-blog-toc" aria-label={title}>
+      <p class="mil-blog-toc__label">{title}</p>
+      <ol class="mil-blog-toc__list">
+        {items.map((h) => (
+          <li
+            class:list={[
+              "mil-blog-toc__item",
+              h.depth === 3 ? "mil-blog-toc__item--nested" : "",
+            ]}
+          >
+            <a href={`#${h.slug}`}>{h.text}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}

@@ -112,6 +112,18 @@
                 position: relative;
                 padding: 0 30px;
                 overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 3.5rem;
+
+                /* Czarny napis nad pomarańczowym paskiem (pasek ma niższy z-index) */
+                & > p:not(.mil-reveal-box) {
+                    position: relative;
+                    z-index: 5;
+                    margin: 0;
+                    color: vars.$dark;
+                }
 
                 & .mil-reveal-box {
                     z-index: 4;
@@ -1287,6 +1299,7 @@ about
     & .mil-quote {
         padding-left: 30px;
         width: calc(100% - 90px);
+        color: #333;
     }
 
     @media screen and (max-width: 992px) {
@@ -1307,6 +1320,28 @@ about
             padding-left: 30px;
             width: calc(100% - 70px);
         }
+    }
+}
+
+/* Teksty w sekcji O nas – czytelny kolor na jasnym tle */
+#about {
+    p {
+        color: #333;
+    }
+
+    /* Cytat */
+    p.mil-quote,
+    p.mil-quote.mil-up,
+    .mil-about-quote p.mil-quote {
+        color: #333 !important;
+        opacity: 1 !important;
+    }
+
+    .mil-about-blog-cta {
+        margin-top: 56px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 }
 
@@ -1790,31 +1825,31 @@ revievs
 
 
             &.mil-slide-1 {
-                background-image: url(../img/tech/php.svg);
+                background-image: url("/img/tech/php.svg");
             }
 
             &.mil-slide-2 {
-                background-image: url(../img/tech/react.svg);
+                background-image: url("/img/tech/react.svg");
             }
 
             &.mil-slide-3 {
-                background-image: url(../img/tech/javascript.svg);
+                background-image: url("/img/tech/javascript.svg");
             }
 
             &.mil-slide-4 {
-                background-image: url(../img/tech/html5.svg);
+                background-image: url("/img/tech/html5.svg");
             }
 
             &.mil-slide-5 {
-                background-image: url(../img/tech/nodejs.svg);
+                background-image: url("/img/tech/nodejs.svg");
             }
 
             &.mil-slide-6 {
-                background-image: url(../img/tech/angular2.svg);
+                background-image: url("/img/tech/angular2.svg");
             }
 
             &.mil-slide-7 {
-                background-image: url(../img/tech/laravel.svg);
+                background-image: url("/img/tech/laravel.svg");
             }
         }
 

@@ -1,0 +1,204 @@
+---
+export const prerender = true;
+
+import { getCollection, render as renderContent } from "astro:content";
+import { getImage, Picture } from "astro:assets";
+import PageLayout from "../../layouts/PageLayout.astro";
+import BlogSEO from "../../components/blog/SEO.astro";
+import TableOfContents from "../../components/blog/TableOfContents.astro";
+import BlogMainNav from "../../components/blog/BlogMainNav.astro";
+import BlogCategories from "../../components/blog/BlogCategories.astro";
+import RelatedPosts from "../../components/blog/RelatedPosts.astro";
+import pl from "../../i18n/pl.json";
+import { getRelatedPosts } from "../../utils/blog";
+import { blogTagToId } from "../../utils/blogTagSlug";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return Promise.all(
+    posts.map(async (entry) => {
+      const { headings } = await renderContent(entry);
+      return {
+        params: { slug: entry.id },
+        props: { entry, headings },
+      };
+    }),
+  );
+}
+
+const { entry, headings } = Astro.props;
+const { Content } = await renderContent(entry);
+const lang = "pl" as const;
+const blogUi = pl.blog;
+type BlogCategoryKey =
+  | "core-business"
+  | "ecommerce"
+  | "seo-marketing"
+  | "technologie-it";
+const categoryKeysOrder = blogUi.categoryKeysOrder as BlogCategoryKey[];
+const categoryLabel =
+  blogUi.categoryLabels[
+    entry.data.category as keyof typeof blogUi.categoryLabels
+  ];
+
+const canonical = `https://www.maxsoft.pl/blog/${entry.id}/`;
+
+const og = await getImage({
+  src: entry.data.image,
+  width: 1200,
+  height: 630,
+  format: "webp",
+});
+const ogImageUrl = new URL(og.src, Astro.site).href;
+
+const imageUrlsForSchema = [ogImageUrl];
+
+const pubIso = entry.data.pubDate.toISOString();
+const modIso = entry.data.updatedDate?.toISOString() ?? pubIso;
+
+const allPosts = await getCollection("blog");
+const related = getRelatedPosts(allPosts, entry, 3);
+---
+
+<PageLayout
+  lang={lang}
+  title={`${entry.data.title} | ${blogUi.breadcrumb} Maxsoft`}
+  description={entry.data.description}
+  ogImage={ogImageUrl}
+  canonical={canonical}
+  openGraphType="article"
+  openGraphTitle={entry.data.title}
+  openGraphImageAlt={entry.data.title}
+  openGraphArticle={{
+    publishedTime: pubIso,
+    modifiedTime: modIso,
+    authors: [entry.data.author],
+    tags: entry.data.tags,
+    section: categoryLabel,
+  }}
+>
+  <BlogSEO
+    slot="head"
+    headline={entry.data.title}
+    description={entry.data.description}
+    url={canonical}
+    datePublished={pubIso}
+    dateModified={entry.data.updatedDate ? modIso : undefined}
+    imageUrls={imageUrlsForSchema}
+    authorName={entry.data.author}
+    keywords={entry.data.tags}
+    breadcrumbs={[
+      { name: "Start", item: "https://www.maxsoft.pl/" },
+      { name: blogUi.breadcrumb, item: "https://www.maxsoft.pl/blog/" },
+      { name: entry.data.title, item: canonical },
+    ]}
+  />
+
+  <div class="mil-inner-banner mil-blog-banner">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="mil-banner-content mil-up">
+      <div class="container">
+        <ul class="mil-breadcrumbs mil-mb-60">
+          <li>
+            <a href="/" title="Start">Start</a>
+          </li>
+          <li>
+            <a href="/blog/" title={blogUi.breadcrumb}>{blogUi.breadcrumb}</a>
+          </li>
+          <li>
+            <span title={entry.data.title}>{entry.data.title}</span>
+          </li>
+        </ul>
+        <h1 class="mil-mb-30">{entry.data.title}</h1>
+        <p class="mil-blog-category-badge mil-up">
+          <a href={`/blog/kategoria/${entry.data.category}/`}>{categoryLabel}</a>
+        </p>
+        <p class="mil-blog-meta mil-dark">
+          <span>
+            {
+              entry.data.pubDate.toLocaleDateString("pl-PL", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }
+          </span>
+          <span>{entry.data.author}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <article class="mil-soft-bg">
+    <div class="container mil-p-120-90">
+      <div class="mil-blog-hero mil-up">
+        <Picture
+          src={entry.data.image}
+          alt={entry.data.title}
+          width={1200}
+          height={675}
+          formats={["avif", "webp"]}
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      {
+        entry.data.tags.length > 0 && (
+          <div class="mil-blog-tags-block mil-up">
+            <span class="mil-blog-tags-heading">{blogUi.tagsLabel}</span>
+            <ul
+              class="mil-blog-tags"
+              aria-label={blogUi.tagsLabel.replace(":", "").trim()}
+            >
+              {entry.data.tags.map((tag: string) => (
+                <li>
+                  <a
+                    href={`/blog/#tag-${blogTagToId(tag)}`}
+                    class="mil-blog-tag-link"
+                  >
+                    #{tag}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      <div class="mil-blog-layout">
+        <div class="mil-blog-prose mil-text-justify mil-dark mil-up">
+          <Content />
+        </div>
+        <aside class="mil-up">
+          <div class="mil-blog-sidebar">
+            <BlogCategories
+              title={blogUi.categoriesTitle}
+              categoryKeysOrder={categoryKeysOrder}
+              categoryLabels={pl.blog.categoryLabels}
+            />
+            <TableOfContents headings={headings} title={blogUi.tocTitle} />
+            <BlogMainNav
+              sectionLabel={blogUi.sidebarMainNavTitle}
+              startLabel={blogUi.sidebarStart}
+              menu={pl.menu}
+            />
+          </div>
+        </aside>
+      </div>
+
+      <RelatedPosts
+        posts={related}
+        title={blogUi.relatedTitle}
+        readMore={blogUi.readMore}
+      />
+    </div>
+  </article>
+</PageLayout>

@@ -1,0 +1,90 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import BlogIndexContent from "../../../components/blog/BlogIndexContent.astro";
+import pl from "../../../i18n/pl.json";
+import {
+  BLOG_INDEX_PAGE_SIZE,
+  sortBlogPostsByDateDesc,
+} from "../../../utils/blog";
+
+const blogUi = pl.blog;
+
+export async function getStaticPaths() {
+  const raw = await getCollection("blog");
+  const posts = sortBlogPostsByDateDesc(raw);
+  const totalPages = Math.max(1, Math.ceil(posts.length / BLOG_INDEX_PAGE_SIZE));
+  if (totalPages <= 1) return [];
+  return Array.from({ length: totalPages - 1 }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const lang = "pl" as const;
+const pageParam = Astro.params.page ?? "2";
+const pageNum = Math.max(2, parseInt(pageParam, 10) || 2);
+
+const raw = await getCollection("blog");
+const posts = sortBlogPostsByDateDesc(raw);
+const totalPages = Math.max(1, Math.ceil(posts.length / BLOG_INDEX_PAGE_SIZE));
+
+if (pageNum > totalPages) {
+  return Astro.redirect("/blog/");
+}
+
+const start = (pageNum - 1) * BLOG_INDEX_PAGE_SIZE;
+const pagePosts = posts.slice(start, start + BLOG_INDEX_PAGE_SIZE);
+
+const canonical = `https://www.maxsoft.pl/blog/page/${pageNum}/`;
+---
+
+<PageLayout
+  lang={lang}
+  title={`${blogUi.breadcrumb} – strona ${pageNum} | Maxsoft`}
+  description={blogUi.indexDescription}
+  ogImage="/img/default-og.webp"
+  canonical={canonical}
+  openGraphImageAlt={blogUi.breadcrumb}
+>
+  <div class="mil-inner-banner mil-blog-banner">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="mil-banner-content mil-up">
+      <div class="container">
+        <ul class="mil-breadcrumbs mil-mb-60">
+          <li>
+            <a href="/" title="Start">Start</a>
+          </li>
+          <li>
+            <a href="/blog/" title={blogUi.breadcrumb}>{blogUi.breadcrumb}</a>
+          </li>
+          <li>
+            <span>Strona {pageNum}</span>
+          </li>
+        </ul>
+        <h1 class="mil-mb-60" set:html={blogUi.indexHeading} />
+      </div>
+    </div>
+  </div>
+
+  <section class="mil-soft-bg">
+    <div class="container mil-p-120-90">
+      <BlogIndexContent
+        allPostsSorted={posts}
+        pagePosts={pagePosts}
+        currentPage={pageNum}
+        totalPages={totalPages}
+        pathPrefix="/blog"
+        activeCategoryKey={null}
+      />
+    </div>
+  </section>
+</PageLayout>

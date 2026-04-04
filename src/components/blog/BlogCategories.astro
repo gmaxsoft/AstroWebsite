@@ -1,0 +1,26 @@
+---
+type CategoryKey = "core-business" | "ecommerce" | "seo-marketing" | "technologie-it";
+
+interface Props {
+  title: string;
+  categoryKeysOrder: CategoryKey[];
+  categoryLabels: Record<string, string>;
+}
+
+const { title, categoryKeysOrder, categoryLabels } = Astro.props;
+---
+
+<nav class="mil-blog-sidebar-cats" aria-label={title}>
+  <p class="mil-blog-sidebar-cats__label">{title}</p>
+  <ul class="mil-blog-sidebar-cats__list">
+    {
+      categoryKeysOrder.map((key) => (
+        <li class="mil-blog-sidebar-cats__item">
+          <a href={`/blog/kategoria/${key}/`} class="mil-blog-sidebar-cats__link">
+            {categoryLabels[key] ?? key}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

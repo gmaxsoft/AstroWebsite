@@ -19,7 +19,7 @@ const { data } = Astro.props;
         </div>
         <div class="container">
           <ul class="mil-breadcrumbs mil-light mil-mb-60">
-            <li><a href={prefix} title="Start">Start</a></li>
+            <li><a href={prefix ? `${prefix}/` : "/"} title="Start">Start</a></li>
             <li>
               <a href={`${prefix}/wspolpraca/`} title={data.wspolpracatxt01}
                 >{data.wspolpracatxt01}</a>

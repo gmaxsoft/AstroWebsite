@@ -1,0 +1,120 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import PageLayout from "../../../../../layouts/PageLayout.astro";
+import BlogIndexContent from "../../../../../components/blog/BlogIndexContent.astro";
+import pl from "../../../../../i18n/pl.json";
+import {
+  BLOG_CATEGORY_KEYS,
+  BLOG_INDEX_PAGE_SIZE,
+  sortBlogPostsByDateDesc,
+  type BlogEntry,
+} from "../../../../../utils/blog";
+
+const blogUi = pl.blog;
+
+export async function getStaticPaths() {
+  const raw = await getCollection("blog");
+  const posts = sortBlogPostsByDateDesc(raw);
+  const paths: { params: { category: string; page: string } }[] = [];
+
+  for (const category of BLOG_CATEGORY_KEYS) {
+    const filtered = posts.filter(
+      (p: BlogEntry) => p.data.category === category,
+    );
+    const totalPages = Math.max(
+      1,
+      Math.ceil(filtered.length / BLOG_INDEX_PAGE_SIZE),
+    );
+    if (totalPages <= 1) continue;
+    for (let p = 2; p <= totalPages; p++) {
+      paths.push({ params: { category, page: String(p) } });
+    }
+  }
+  return paths;
+}
+
+const lang = "pl" as const;
+const category = Astro.params.category ?? "";
+const pageParam = Astro.params.page ?? "2";
+const pageNum = Math.max(2, parseInt(pageParam, 10) || 2);
+
+if (!BLOG_CATEGORY_KEYS.includes(category as (typeof BLOG_CATEGORY_KEYS)[number])) {
+  return Astro.redirect("/blog/");
+}
+
+const categoryLabels = blogUi.categoryLabels as Record<string, string>;
+const feedTitle = categoryLabels[category] ?? category;
+
+const raw = await getCollection("blog");
+const posts = sortBlogPostsByDateDesc(raw);
+const filtered = posts.filter(
+  (p: BlogEntry) => p.data.category === category,
+);
+const totalPages = Math.max(1, Math.ceil(filtered.length / BLOG_INDEX_PAGE_SIZE));
+
+if (pageNum > totalPages) {
+  return Astro.redirect(`/blog/kategoria/${category}/`);
+}
+
+const start = (pageNum - 1) * BLOG_INDEX_PAGE_SIZE;
+const pagePosts = filtered.slice(start, start + BLOG_INDEX_PAGE_SIZE);
+
+const canonical = `https://www.maxsoft.pl/blog/kategoria/${category}/page/${pageNum}/`;
+---
+
+<PageLayout
+  lang={lang}
+  title={`${feedTitle} – strona ${pageNum} | ${blogUi.breadcrumb} Maxsoft`}
+  description={blogUi.indexDescription}
+  ogImage="/img/default-og.webp"
+  canonical={canonical}
+  openGraphImageAlt={feedTitle}
+>
+  <div class="mil-inner-banner mil-blog-banner">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="mil-banner-content mil-up">
+      <div class="container">
+        <ul class="mil-breadcrumbs mil-mb-60">
+          <li>
+            <a href="/" title="Start">Start</a>
+          </li>
+          <li>
+            <a href="/blog/" title={blogUi.breadcrumb}>{blogUi.breadcrumb}</a>
+          </li>
+          <li>
+            <a href={`/blog/kategoria/${category}/`} title={feedTitle}>
+              {feedTitle}
+            </a>
+          </li>
+          <li>
+            <span>Strona {pageNum}</span>
+          </li>
+        </ul>
+        <h1 class="mil-mb-60" set:html={blogUi.indexHeading} />
+      </div>
+    </div>
+  </div>
+
+  <section class="mil-soft-bg">
+    <div class="container mil-p-120-90">
+      <BlogIndexContent
+        allPostsSorted={posts}
+        pagePosts={pagePosts}
+        currentPage={pageNum}
+        totalPages={totalPages}
+        pathPrefix={`/blog/kategoria/${category}`}
+        activeCategoryKey={category}
+        feedTitle={feedTitle}
+      />
+    </div>
+  </section>
+</PageLayout>

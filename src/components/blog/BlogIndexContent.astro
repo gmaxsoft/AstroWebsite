@@ -1,0 +1,384 @@
+---
+import { Picture } from "astro:assets";
+import type { BlogEntry } from "../../utils/blog";
+import pl from "../../i18n/pl.json";
+import { blogTagToId } from "../../utils/blogTagSlug";
+
+type PagerEntry = { kind: "num"; num: number } | { kind: "ellipsis" };
+
+interface Props {
+  allPostsSorted: BlogEntry[];
+  pagePosts: BlogEntry[];
+  currentPage: number;
+  totalPages: number;
+  /** np. `/blog` albo `/blog/kategoria/ecommerce` (bez końcowego slasha) */
+  pathPrefix: string;
+  activeCategoryKey: string | null;
+  /** Opcjonalny nagłówek nad listą (np. nazwa kategorii). */
+  feedTitle?: string | null;
+}
+
+const {
+  allPostsSorted,
+  pagePosts,
+  currentPage,
+  totalPages,
+  pathPrefix,
+  activeCategoryKey,
+  feedTitle = null,
+} = Astro.props;
+
+const blogUi = pl.blog;
+const categoryKeysOrder = blogUi.categoryKeysOrder as string[];
+const categoryLabels = blogUi.categoryLabels as Record<string, string>;
+
+const uniqueTags = [
+  ...new Set(allPostsSorted.flatMap((p) => p.data.tags)),
+].sort((a, b) => a.localeCompare(b, "pl"));
+
+function pageHref(pageNum: number): string {
+  if (pageNum <= 1) {
+    return pathPrefix === "/blog" ? "/blog/" : `${pathPrefix}/`;
+  }
+  return `${pathPrefix}/page/${pageNum}/`;
+}
+
+const pagerNums: number[] = [];
+if (totalPages > 1) {
+  const window = 2;
+  const add = (n: number) => {
+    if (!pagerNums.includes(n)) pagerNums.push(n);
+  };
+  add(1);
+  add(totalPages);
+  for (let d = -window; d <= window; d++) {
+    const n = currentPage + d;
+    if (n > 1 && n < totalPages) add(n);
+  }
+  pagerNums.sort((a, b) => a - b);
+}
+
+const pagerEntries: PagerEntry[] = [];
+for (let i = 0; i < pagerNums.length; i++) {
+  const num = pagerNums[i];
+  const prevNum = i > 0 ? pagerNums[i - 1] : undefined;
+  if (prevNum !== undefined && num - prevNum > 1) {
+    pagerEntries.push({ kind: "ellipsis" });
+  }
+  pagerEntries.push({ kind: "num", num });
+}
+---
+
+<div
+  class="mil-blog-index-root mil-blog-index-root--grid"
+  id="mil-blog-index-root"
+  data-blog-view-state="grid"
+>
+  <div class="mil-blog-tag-anchors" aria-hidden="true">
+    {
+      uniqueTags.map((tag) => (
+        <span class="mil-blog-tag-target" id={`tag-${blogTagToId(tag)}`} />
+      ))
+    }
+  </div>
+
+  <div class="mil-blog-index-layout">
+    <aside
+      class="mil-blog-sidebar mil-blog-index-sidebar mil-up"
+      aria-label={blogUi.categoriesTitle}
+    >
+      <nav class="mil-blog-sidebar-cats">
+        <p class="mil-blog-sidebar-cats__label">{blogUi.categoriesTitle}</p>
+        <ul class="mil-blog-sidebar-cats__list">
+          <li class="mil-blog-sidebar-cats__item">
+            <a
+              href="/blog/"
+              class="mil-blog-sidebar-cats__link"
+              aria-current={activeCategoryKey === null ? "page" : undefined}
+            >
+              {blogUi.allPostsNav}
+            </a>
+          </li>
+          {
+            categoryKeysOrder.map((key) => (
+              <li class="mil-blog-sidebar-cats__item">
+                <a
+                  href={`/blog/kategoria/${key}/`}
+                  class="mil-blog-sidebar-cats__link"
+                  aria-current={
+                    activeCategoryKey === key ? "page" : undefined
+                  }
+                >
+                  {categoryLabels[key] ?? key}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="mil-blog-index-main mil-up">
+      {
+        feedTitle && (
+          <h2 class="mil-blog-index-feed-title">{feedTitle}</h2>
+        )
+      }
+      <div class="mil-blog-index-toolbar">
+        <div
+          class="mil-blog-view-toggle"
+          role="group"
+          aria-label={`${blogUi.viewList} / ${blogUi.viewGrid}`}
+        >
+          <button
+            type="button"
+            class="mil-blog-view-toggle__btn"
+            data-blog-view="list"
+            aria-pressed="false"
+          >
+            {blogUi.viewList}
+          </button>
+          <button
+            type="button"
+            class="mil-blog-view-toggle__btn is-active"
+            data-blog-view="grid"
+            aria-pressed="true"
+          >
+            {blogUi.viewGrid}
+          </button>
+        </div>
+      </div>
+
+      <div class="mil-blog-feed mil-blog-feed--grid" data-blog-feed>
+        <!-- Grid -->
+        <div
+          class="row mil-blog-feed__grid"
+          data-blog-view-panel="grid"
+          aria-hidden="false"
+        >
+          {
+            pagePosts.map((post) => (
+              <div class="col-lg-4 col-md-6 mil-mb-90">
+                <article class="mil-up mil-blog-list-card">
+                  <a href={`/blog/${post.id}/`} class="mil-blog-card">
+                    <div class="mil-blog-card__thumb">
+                      <Picture
+                        src={post.data.image}
+                        alt={post.data.title}
+                        width={800}
+                        height={450}
+                        formats={["avif", "webp"]}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <p class="mil-blog-card__meta">
+                      {post.data.pubDate.toLocaleDateString("pl-PL", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                      {" · "}
+                      {post.data.author}
+                    </p>
+                    <h3 class="mil-blog-card__heading">{post.data.title}</h3>
+                    <p class="mil-blog-card__excerpt">
+                      {post.data.description}
+                    </p>
+                    <span class="mil-link mil-dark mil-arrow-place mil-blog-card__more">
+                      <span>{blogUi.readMore}</span>
+                    </span>
+                  </a>
+                </article>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- List -->
+        <div
+          class="mil-blog-feed__list"
+          data-blog-view-panel="list"
+          aria-hidden="true"
+        >
+          {
+            pagePosts.map((post) => (
+              <article class="mil-blog-feed-row mil-up">
+                <a href={`/blog/${post.id}/`} class="mil-blog-card-row">
+                  <div class="mil-blog-card-row__thumb">
+                    <Picture
+                      src={post.data.image}
+                      alt={post.data.title}
+                      width={400}
+                      height={250}
+                      formats={["avif", "webp"]}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="mil-blog-card-row__body">
+                    <p class="mil-blog-card-row__meta">
+                      {post.data.pubDate.toLocaleDateString("pl-PL", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                      {" · "}
+                      {post.data.author}
+                    </p>
+                    <h3 class="mil-blog-card-row__heading">
+                      {post.data.title}
+                    </h3>
+                    <p class="mil-blog-card-row__excerpt">
+                      {post.data.description}
+                    </p>
+                    <span class="mil-link mil-dark mil-arrow-place mil-blog-card-row__more">
+                      <span>{blogUi.readMore}</span>
+                    </span>
+                  </div>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      {
+        totalPages > 1 && (
+          <nav
+            class="mil-blog-pagination mil-up"
+            aria-label={blogUi.pagerAria}
+          >
+            {
+              currentPage > 1 ? (
+                <a
+                  href={pageHref(currentPage - 1)}
+                  class="mil-blog-pagination__link"
+                >
+                  {blogUi.pagerPrev}
+                </a>
+              ) : (
+                <span class="mil-blog-pagination__link mil-blog-pagination__prev is-disabled">
+                  {blogUi.pagerPrev}
+                </span>
+              )
+            }
+            <ul class="mil-blog-pagination__pages">
+              {
+                pagerEntries.map((entry) =>
+                  entry.kind === "ellipsis" ? (
+                    <li
+                      class="mil-blog-pagination__ellipsis"
+                      aria-hidden="true"
+                    >
+                      …
+                    </li>
+                  ) : (
+                    <li>
+                      {entry.num === currentPage ? (
+                        <span
+                          class="mil-blog-pagination__current"
+                          aria-current="page"
+                        >
+                          {entry.num}
+                        </span>
+                      ) : (
+                        <a
+                          href={pageHref(entry.num)}
+                          class="mil-blog-pagination__num"
+                        >
+                          {entry.num}
+                        </a>
+                      )}
+                    </li>
+                  ),
+                )
+              }
+            </ul>
+            {
+              currentPage < totalPages ? (
+                <a
+                  href={pageHref(currentPage + 1)}
+                  class="mil-blog-pagination__link"
+                >
+                  {blogUi.pagerNext}
+                </a>
+              ) : (
+                <span class="mil-blog-pagination__link mil-blog-pagination__next is-disabled">
+                  {blogUi.pagerNext}
+                </span>
+              )
+            }
+          </nav>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    function initMaxsoftBlogIndexView() {
+      var root = document.getElementById("mil-blog-index-root");
+      if (!root) return;
+      var storageKey = "maxsoft-blog-index-view";
+      var feed = root.querySelector("[data-blog-feed]");
+      var gridPanel = root.querySelector('[data-blog-view-panel="grid"]');
+      var listPanel = root.querySelector('[data-blog-view-panel="list"]');
+      var buttons = root.querySelectorAll(
+        ".mil-blog-view-toggle__btn[data-blog-view]",
+      );
+      if (!feed || !gridPanel || !listPanel || buttons.length < 1) return;
+
+      function setView(mode) {
+        var isList = mode === "list";
+        root.classList.remove(
+          "mil-blog-index-root--grid",
+          "mil-blog-index-root--list",
+        );
+        root.classList.add(
+          isList ? "mil-blog-index-root--list" : "mil-blog-index-root--grid",
+        );
+        root.setAttribute("data-blog-view-state", isList ? "list" : "grid");
+        feed.classList.toggle("mil-blog-feed--list", isList);
+        feed.classList.toggle("mil-blog-feed--grid", !isList);
+        gridPanel.setAttribute("aria-hidden", isList ? "true" : "false");
+        listPanel.setAttribute("aria-hidden", isList ? "false" : "true");
+        buttons.forEach(function (btn) {
+          var m = btn.getAttribute("data-blog-view");
+          var on = m === mode;
+          btn.classList.toggle("is-active", on);
+          btn.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        try {
+          localStorage.setItem(storageKey, mode);
+        } catch (e) {}
+      }
+
+      var saved = "grid";
+      try {
+        saved = localStorage.getItem(storageKey) || "grid";
+      } catch (e) {}
+      if (saved !== "list" && saved !== "grid") saved = "grid";
+      setView(saved);
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          var mode = btn.getAttribute("data-blog-view");
+          if (mode === "list" || mode === "grid") setView(mode);
+        });
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener(
+        "DOMContentLoaded",
+        initMaxsoftBlogIndexView,
+        { once: true },
+      );
+    } else {
+      initMaxsoftBlogIndexView();
+    }
+  })();
+</script>

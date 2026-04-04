@@ -17,11 +17,20 @@ const {
   canonical,
   title = content.title, // Tytuł strony (np. z JSON)
   description = content.description, // Opis strony (np. z JSON)
-  currentLocale = lang, // Język strony
-  ogImage = "/img/default-og.webp", // Obrazek OG
+  ogImage = "/img/default-og.webp", // Obrazek OG (ścieżka względna lub pełny URL)
+  openGraphType = "website",
+  openGraphTitle,
+  openGraphImageAlt = "Maxsoft",
+  openGraphArticle,
+  twitterSite,
+  twitterCreator,
 } = Astro.props;
 
 const resolvedCanonical = canonical || `https://www.maxsoft.pl${Astro.url.pathname}`;
+const absOgImage = ogImage.startsWith("http")
+  ? ogImage
+  : new URL(ogImage, Astro.site).href;
+const ogDisplayTitle = openGraphTitle ?? title;
 ---
 
 <!doctype html>
@@ -39,14 +48,31 @@ const resolvedCanonical = canonical || `https://www.maxsoft.pl${Astro.url.pathna
       canonical={resolvedCanonical}
       openGraph={{
         basic: {
-          title: title,
-          type: "website",
-          image: ogImage,
+          title: ogDisplayTitle,
+          type: openGraphType,
+          image: absOgImage,
           url: resolvedCanonical,
         },
-        // ...
+        optional: {
+          description,
+          siteName: "Maxsoft",
+        },
+        image: {
+          alt: openGraphImageAlt,
+        },
+        ...(openGraphArticle ? { article: openGraphArticle } : {}),
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: ogDisplayTitle,
+        description,
+        image: absOgImage,
+        imageAlt: openGraphImageAlt,
+        ...(twitterSite ? { site: twitterSite } : {}),
+        ...(twitterCreator ? { creator: twitterCreator } : {}),
       }}
     />
+    <slot name="head" />
   </head>
   <body>
     <div class="mil-wrapper" id="top">
@@ -55,7 +81,7 @@ const resolvedCanonical = canonical || `https://www.maxsoft.pl${Astro.url.pathna
 
       <div class="mil-frame">
         <div class="mil-frame-top mil-logo-fixed">
-          <a href={langPrefix || "/"} class="mil-logo">Maxsoft</a>
+          <a href={langPrefix ? `${langPrefix}/` : "/"} class="mil-logo">Maxsoft</a>
 
           <div class="mil-lang-switch">
                 <a href="/" class:list={["mil-lang-flag", lang === 'pl' ? 'mil-active' : '']}>PL</a>

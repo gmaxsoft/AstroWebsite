@@ -6,6 +6,12 @@ import ContentProjectsSingle from "../../../components/ContentProjectsSingle.ast
 import pl from "../../../i18n/pl.json";
 import en from "../../../i18n/en.json";
 import type { GetStaticPathsResult } from "astro";
+import {
+  type ProjectJson,
+  getProjectMetaDescription,
+  getProjectOgImagePath,
+  getProjectPageTitle,
+} from "../../../utils/projectMeta";
 
 type Project = Record<string, any>;
 
@@ -84,13 +90,36 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   return paths;
 }
 
-const { projectData, lang, prevProject, nextProject } = Astro.props;
+const { projectData: rawProject, lang, prevProject, nextProject } = Astro.props;
+const projectData = rawProject as ProjectJson;
+
+const labels = lang === "en" ? en : pl;
+const pageTitle = getProjectPageTitle(
+  projectData.title,
+  labels.projekty.projektytxt01,
+);
+const description = getProjectMetaDescription(projectData);
+const ogImage = getProjectOgImagePath(String(projectData.number));
+const canonical = `https://www.maxsoft.pl/${lang}/projekty/${projectData.slug}/`;
+const ogImageAlt = (labels.projekty.altGalleryView1 as string).replace(
+  "{title}",
+  projectData.title,
+);
 ---
 
-<PageLayout>
+<PageLayout
+  lang={lang as "en" | "pl"}
+  title={pageTitle}
+  description={description}
+  ogImage={ogImage}
+  canonical={canonical}
+  openGraphImageAlt={ogImageAlt}
+>
   <ContentProjectsSingle
     data={projectData}
     prevProject={prevProject}
     nextProject={nextProject}
+    langPrefix={`/${lang}`}
+    lang={lang}
   />
 </PageLayout>

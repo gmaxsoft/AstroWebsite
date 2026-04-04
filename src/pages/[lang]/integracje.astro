@@ -1,0 +1,32 @@
+---
+export const prerender = true;
+
+import PageLayout from "../../layouts/PageLayout.astro";
+import ContentIntegracje from "../../components/ContentIntegracje.astro";
+import pl from "../../i18n/pl.json";
+import en from "../../i18n/en.json";
+
+const translations = { pl, en };
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: "pl" | "en" };
+const langPrefix = `/${lang}`;
+
+const pageData = translations[lang]?.integracje || translations.pl.integracje;
+const contentFooter = translations[lang].footer;
+const contentMenu = translations[lang].menu;
+---
+
+<PageLayout
+  title={pageData.title}
+  description={pageData.description}
+  ogImage={pageData.ogimage || "/img/default-og.webp"}
+  currentLocale={lang}
+  contentMenu={contentMenu}
+  contentFooter={contentFooter}
+>
+  <ContentIntegracje data={pageData} langPrefix={langPrefix} />
+</PageLayout>

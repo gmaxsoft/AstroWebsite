@@ -1,0 +1,47 @@
+---
+/** Menu główne serwisu (skróty) w panelu bocznym bloga – linki jak w Menu.astro (PL). */
+
+type MainMenu = {
+  menutxt5: string;
+  menutxt6: string;
+  menutxtEcommerce: string;
+  menutxtSeo: string;
+  menutxtIntegracje: string;
+  menutxt7: string;
+  menutxt8: string;
+};
+
+interface Props {
+  sectionLabel: string;
+  startLabel: string;
+  menu: MainMenu;
+}
+
+const { sectionLabel, startLabel, menu: m } = Astro.props;
+
+const links: { href: string; label: string }[] = [
+  { href: "/", label: startLabel },
+  { href: "/oferta/", label: m.menutxt5 },
+  { href: "/projekty/", label: m.menutxt6 },
+  { href: "/e-commerce/", label: m.menutxtEcommerce },
+  { href: "/seo/", label: m.menutxtSeo },
+  { href: "/integracje/", label: m.menutxtIntegracje },
+  { href: "/wspolpraca/", label: m.menutxt7 },
+  { href: "/kontakt/", label: m.menutxt8 },
+];
+---
+
+<nav class="mil-blog-sidebar-main" aria-label={sectionLabel}>
+  <p class="mil-blog-sidebar-main__label">{sectionLabel}</p>
+  <ul class="mil-blog-sidebar-main__list">
+    {
+      links.map((item) => (
+        <li class="mil-blog-sidebar-main__item">
+          <a href={`${item.href}`} class="mil-blog-sidebar-main__link">
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

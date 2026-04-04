@@ -1,7 +1,16 @@
 ---
-const { langPrefix } = Astro.props;
+import pl from "../i18n/pl.json";
+import en from "../i18n/en.json";
+
+const { langPrefix, lang: langProp } = Astro.props;
+const lang = (langProp as string) || "pl";
 const prefix = langPrefix ?? "/";
 const { data, prevProject, nextProject } = Astro.props;
+
+const projektyLabels = lang === "en" ? en.projekty : pl.projekty;
+const altGallery1 = (projektyLabels.altGalleryView1 as string).replace("{title}", data.title);
+const altGallery2 = (projektyLabels.altGalleryView2 as string).replace("{title}", data.title);
+const altZoom = projektyLabels.altZoomGallery as string;
 
 // Ustalenie ścieżek nawigacyjnych (trailingSlash: always)
 const prevHref = prevProject.slug ? `/${prevProject.slug}/` : null;
@@ -21,7 +30,7 @@ const nextHref = nextProject.slug ? `/${nextProject.slug}/` : null;
     </div>
     <div class="container">
       <ul class="mil-breadcrumbs mil-mb-60">
-        <li><a href={prefix}>Start</a></li>
+        <li><a href={prefix ? `${prefix}/` : "/"}>Start</a></li>
         <li>
           <a href={`${prefix}/projekty/`} title={data.projekttxt01}
             >{data.projekttxt01}</a
@@ -87,27 +96,27 @@ const nextHref = nextProject.slug ? `/${nextProject.slug}/` : null;
       </div>
       <div class="col-lg-7">
         <div class="mil-image-frame mil-horizontal mil-up mil-mb-30">
-          <img src={`/img/works/${data.number}/1.webp`} alt={data.title} loading="lazy" width="800" height="600" />
+          <img src={`/img/works/${data.number}/1.webp`} alt={altGallery1} loading="lazy" width="800" height="600" />
           <a
             data-fancybox="gallery"
             data-no-swup
             href={`/img/works/${data.number}/1.webp`}
             class="mil-zoom-btn"
-            title="Zoom"
+            title={altZoom}
           >
-            <img src="/img/icons/zoom.svg" alt="zoom" />
+            <img src="/img/icons/zoom.svg" alt={altZoom} />
           </a>
         </div>
         <div class="mil-image-frame mil-horizontal mil-up mil-mb-30">
-          <img src={`/img/works/${data.number}/2.webp`} alt={data.title} loading="lazy" width="800" height="600" />
+          <img src={`/img/works/${data.number}/2.webp`} alt={altGallery2} loading="lazy" width="800" height="600" />
           <a
             data-fancybox="gallery"
             data-no-swup
             href={`/img/works/${data.number}/2.webp`}
             class="mil-zoom-btn"
-            title="Zoom"
+            title={altZoom}
           >
-            <img src="/img/icons/zoom.svg" alt="zoom" />
+            <img src="/img/icons/zoom.svg" alt={altZoom} />
           </a>
         </div>
       </div>

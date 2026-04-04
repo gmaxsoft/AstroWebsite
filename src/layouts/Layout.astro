@@ -23,7 +23,6 @@ const {
   canonical,
   title = content.title, // Tytuł strony (np. z JSON)
   description = content.description, // Opis strony (np. z JSON)
-  currentLocale = lang, // Język strony
   ogImage = "/img/default-og.webp", // Obrazek OG
 } = Astro.props;
 
@@ -36,25 +35,25 @@ const mainLogo = `${mainWebsite}/img/logo-czarne.png`; // Upewnij się, że masz
 // Dane dla obu lokalizacji
 const locations = [
   {
-    name: "MAXSOFT Lubrza (Biuro Główne)",
+    name: "MAXSOFT Świebodzin",
     address: {
       streetAddress: "Nowa Wioska 39",
       addressLocality: "Lubrza",
       postalCode: "66-218",
       addressCountry: "PL",
     },
-    telephone: "+48791821908",
+    telephone: "+48453645286",
     isPrimary: true, // Wskażemy, która jest główna
   },
   {
-    name: "MAXSOFT Zielona Góra (Oddział)",
+    name: "MAXSOFT Zielona Góra",
     address: {
       streetAddress: "ul. Prosta 45A",
       addressLocality: "Zielona Góra",
       postalCode: "65-463",
       addressCountry: "PL",
     },
-    telephone: "+48453645286",
+    telephone: "+48791821908",
     isPrimary: false,
   },
 ];
@@ -134,6 +133,7 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
     <link rel="alternate" hreflang="en" href="https://www.maxsoft.pl/en/" />
     <link rel="alternate" hreflang="x-default" href="https://www.maxsoft.pl/" />
     <script
+      is:inline
       type="application/ld+json"
       set:html={JSON.stringify(allSchemas, null, 2)}
     />
@@ -146,7 +146,7 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
 
       <div class="mil-frame">
         <div class="mil-frame-top mil-logo-fixed">
-          <a href={langPrefix || "/"} class="mil-logo">Maxsoft</a>
+          <a href={langPrefix ? `${langPrefix}/` : "/"} class="mil-logo">Maxsoft</a>
 
           <div class="mil-lang-switch">
                 <a href="/" class:list={["mil-lang-flag", lang === 'pl' ? 'mil-active' : '']}>PL</a>

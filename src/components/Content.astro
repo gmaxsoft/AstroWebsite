@@ -2,6 +2,45 @@
 const { langPrefix } = Astro.props;
 const prefix = langPrefix ?? "/";
 const { data } = Astro.props;
+
+const techAlt = (name: string) =>
+  (data.altTechTemplate || "Logo {tech} – Maxsoft Zielona Góra").replace("{tech}", name);
+
+const headingRotate = (data as { headingRotate?: string[] }).headingRotate;
+const useHeadingRotator =
+  Array.isArray(headingRotate) && headingRotate.length > 0;
+const headingSeoCombined = (data as { headingSeoCombined?: string })
+  .headingSeoCombined;
+
+const canonicalHome =
+  !prefix || prefix === "/"
+    ? "https://www.maxsoft.pl/"
+    : `https://www.maxsoft.pl${String(prefix).replace(/\/$/, "")}/`;
+
+/** Blog jest pod `/blog/` (bez wersji językowej). */
+const blogHomeHref = "/blog/";
+
+const firstHeadingHtml =
+  useHeadingRotator && headingRotate ? headingRotate[0] : "";
+
+const webPageSchema =
+  useHeadingRotator && headingSeoCombined
+    ? {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${canonicalHome}#webpage`,
+        url: canonicalHome,
+        name: headingSeoCombined,
+        headline: headingSeoCombined,
+        description: data.description,
+        inLanguage: !prefix || prefix === "/" ? "pl-PL" : "en",
+        isPartOf: {
+          "@type": "WebSite",
+          url: "https://www.maxsoft.pl",
+          name: "Maxsoft",
+        },
+      }
+    : null;
 ---
 
 <section class="mil-banner mil-dark-bg">
@@ -31,7 +70,42 @@ const { data } = Astro.props;
 
     <div class="container">
       <div class="mil-banner-content mil-up">
-        <h1 class="mil-muted mil-mb-60" set:html={data.heading} />
+        {
+          useHeadingRotator ? (
+            <h1 class="mil-muted mil-mb-60 mil-heading-rotator-wrap">
+              <span class="mil-sr-only">{headingSeoCombined}</span>
+              <span
+                id="hero-title-rotator"
+                class="mil-heading-rotator"
+                aria-hidden="true"
+                set:html={firstHeadingHtml}
+              />
+            </h1>
+          ) : (
+            <h1 class="mil-muted mil-mb-60" set:html={data.heading} />
+          )
+        }
+        {useHeadingRotator && (
+          <script
+            is:inline
+            type="application/json"
+            id="hero-h1-data"
+            set:html={JSON.stringify(headingRotate)}
+          />
+        )}
+        {webPageSchema && (
+          <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(webPageSchema)}
+          />
+        )}
+        {useHeadingRotator && (
+          <script>
+            import { initHeroH1Rotator } from "../scripts/hero-h1-rotator.js";
+            initHeroH1Rotator();
+          </script>
+        )}
         <div class="row">
           <div class="col-md-7 col-lg-5">
             <p class="mil-light mil-mb-60">
@@ -93,6 +167,26 @@ const { data } = Astro.props;
   </div>
 </section>
 
+<style lang="scss">
+  .mil-heading-rotator-wrap {
+    position: relative;
+  }
+
+  .mil-heading-rotator {
+    display: block;
+    min-height: 3.2em;
+    transition: opacity 0.26s ease;
+
+    @media (min-width: 992px) {
+      min-height: 2.4em;
+    }
+  }
+
+  .mil-heading-rotator.mil-heading-rotator--fade {
+    opacity: 0;
+  }
+</style>
+
 <section id="about" class="">
   <div class="container mil-p-120-30">
     <div class="row justify-content-between align-items-center">
@@ -105,13 +199,20 @@ const { data } = Astro.props;
           <p class="mil-up mil-mb-60 mil-txt-just">
             {data.abouttxt2}
           </p>
-          <div class="mil-about-quote">
+          <div class="mil-about-quote mil-mb-30">
             <div class="mil-avatar mil-up">
-              <img src="/img/logo-czarne.png" alt="Logo Maxsoft" fetchpriority="high" width="120" height="120" />
+              <img src="/img/logo-czarne.png" alt={data.altLogoAbout || "Logo Maxsoft – agencja stron WWW, Zielona Góra"} fetchpriority="high" width="120" height="120" />
             </div>
-            <p class="mil-quote mil-up">
-              <span class="mil-thin">{data.abouttxt3}</span>
-            </p>
+            <p class="mil-quote mil-up">{data.abouttxt3}</p>
+          </div>
+          <div class="mil-about-blog-cta mil-up">
+            <a
+              href={blogHomeHref}
+              class="mil-button mil-arrow-place"
+              title={data.aboutBlogCtaTitle}
+            >
+              <span>{data.aboutBlogCta}</span>
+            </a>
           </div>
         </div>
       </div>
@@ -124,7 +225,7 @@ const { data } = Astro.props;
           >
             <img
               src="/img/photo/programowanie.webp"
-              alt="Programista Zielona Góra"
+              alt={data.altPhotoAbout || "Projektowanie stron internetowych – zespół Maxsoft, Zielona Góra"}
               class="mil-scale effect-image"
               fetchpriority="high"
               width="600"
@@ -384,76 +485,76 @@ const { data } = Astro.props;
   </div>
 </section>
 
-<div class="mil-soft-bg">
+<section class="mil-soft-bg">
   <div class="container mil-p-0-120">
     <div class="swiper-container mil-infinite-show mil-up">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/php.svg" alt="PHP" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/php.svg" alt={techAlt("PHP")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/react.svg" alt="React" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/react.svg" alt={techAlt("React")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/vuejs.svg" alt="Vue.js" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/vuejs.svg" alt={techAlt("Vue.js")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/postgresql.svg" alt="PostgreSQL" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/postgresql.svg" alt={techAlt("PostgreSQL")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/nodejs.svg" alt="Node.js" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/nodejs.svg" alt={techAlt("Node.js")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/mysql.svg" alt="MySQL" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/mysql.svg" alt={techAlt("MySQL")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/javascript.svg" alt="JavaScript" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/javascript.svg" alt={techAlt("JavaScript")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/jquery.svg" alt="jQuery" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/jquery.svg" alt={techAlt("jQuery")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/css3.svg" alt="CSS3" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/css3.svg" alt={techAlt("CSS3")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/html5.svg" alt="HTML5" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/html5.svg" alt={techAlt("HTML5")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/angularjs.svg" alt="AngularJS" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/angularjs.svg" alt={techAlt("AngularJS")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/angular2.svg" alt="Angular" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/angular2.svg" alt={techAlt("Angular")} loading="lazy" width="60" height="60" /></a
           >
         </div>
         <div class="swiper-slide">
           <a href="#." class="mil-partner-frame max60"
-            ><img src="/img/tech/laravel.svg" alt="Laravel" loading="lazy" width="60" height="60" /></a
+            ><img src="/img/tech/laravel.svg" alt={techAlt("Laravel")} loading="lazy" width="60" height="60" /></a
           >
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
