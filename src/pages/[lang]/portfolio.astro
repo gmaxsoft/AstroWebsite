@@ -1,0 +1,82 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import PortfolioIndexContent from "../../components/portfolio/PortfolioIndexContent.astro";
+import pl from "../../i18n/pl.json";
+import en from "../../i18n/en.json";
+import {
+  sortPortfolioEntries,
+  PORTFOLIO_INDEX_PAGE_SIZE,
+} from "../../utils/portfolio";
+
+const translations = { pl, en };
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: "pl" | "en" };
+const langPrefix = `/${lang}`;
+const portfolioUi = translations[lang]?.portfolio ?? translations.pl.portfolio;
+
+const raw = await getCollection("portfolio");
+const items = sortPortfolioEntries(raw);
+const totalPages = Math.max(1, Math.ceil(items.length / PORTFOLIO_INDEX_PAGE_SIZE));
+const pageItems = items.slice(0, PORTFOLIO_INDEX_PAGE_SIZE);
+
+const canonical = `https://www.maxsoft.pl${langPrefix}/portfolio/`;
+---
+
+<PageLayout
+  lang={lang}
+  title={portfolioUi.indexTitle}
+  description={portfolioUi.indexDescription}
+  ogImage="/img/default-og.webp"
+  canonical={canonical}
+  openGraphImageAlt={portfolioUi.breadcrumb}
+>
+  <div class="mil-inner-banner mil-blog-banner">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="mil-banner-content mil-up">
+      <div class="container">
+        <ul class="mil-breadcrumbs mil-mb-60">
+          <li>
+            <a href={`${langPrefix}/`} title="Start">Start</a>
+          </li>
+          <li>
+            <span title={portfolioUi.breadcrumb}>{portfolioUi.breadcrumb}</span>
+          </li>
+        </ul>
+        <h1 class="mil-mb-15" set:html={portfolioUi.indexHeading} />
+        <p class="mil-text-sm mil-dark-soft mil-up mil-mb-60">
+          {portfolioUi.indexSubheading}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="mil-soft-bg">
+    <div class="container mil-p-120-90">
+      <PortfolioIndexContent
+        pageItems={pageItems}
+        allItemsSorted={items}
+        currentPage={1}
+        totalPages={totalPages}
+        pathPrefix={`${langPrefix}/portfolio`}
+        readMore={portfolioUi.readMore}
+        pagerPrev={portfolioUi.pagerPrev}
+        pagerNext={portfolioUi.pagerNext}
+        pagerAria={portfolioUi.pagerAria}
+      />
+    </div>
+  </section>
+</PageLayout>

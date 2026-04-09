@@ -1,0 +1,215 @@
+---
+/**
+ * Widok pojedynczej realizacji portfolio – układ jak ContentProjectsSingle (projekty/),
+ * z linkami do sekcji Portfolio zamiast Projekty.
+ */
+import pl from "../i18n/pl.json";
+import en from "../i18n/en.json";
+
+const { langPrefix, lang: langProp } = Astro.props;
+const lang = (langProp as string) || "pl";
+const prefix = langPrefix ?? "/";
+const { data, prevProject, nextProject } = Astro.props;
+
+const projektyLabels = lang === "en" ? en.projekty : pl.projekty;
+const altGallery1 = (projektyLabels.altGalleryView1 as string).replace(
+  "{title}",
+  data.title,
+);
+const altGallery2 = (projektyLabels.altGalleryView2 as string).replace(
+  "{title}",
+  data.title,
+);
+const altZoom = projektyLabels.altZoomGallery as string;
+
+const prevHref = prevProject.slug ? `/${prevProject.slug}/` : null;
+const nextHref = nextProject.slug ? `/${nextProject.slug}/` : null;
+
+const portfolioBase = prefix ? `${prefix}/portfolio/` : "/portfolio/";
+
+const tagList = Array.isArray((data as { tags?: string[] }).tags)
+  ? (data as { tags: string[] }).tags.filter(Boolean)
+  : [];
+const tagsLabel = (data as { tagsLabel?: string }).tagsLabel ?? "Tagi";
+---
+
+<!-- banner -->
+<div class="mil-inner-banner">
+  <div class="mil-banner-content mil-up">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="container">
+      <ul class="mil-breadcrumbs mil-mb-60">
+        <li><a href={prefix ? `${prefix}/` : "/"}>Start</a></li>
+        <li>
+          <a href={portfolioBase} title={data.projekttxt01}>{data.projekttxt01}</a>
+        </li>
+        <li><a href="#project" title={data.title}>{data.title}</a></li>
+      </ul>
+      <h1 class="mil-mb-60" set:html={data.heading} />
+      <a
+        href="#project"
+        class="mil-link mil-dark mil-arrow-place mil-down-arrow"
+      >
+        <span>{data.projekttxt02}</span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- banner end -->
+
+<!-- project -->
+<section>
+  <div class="container mil-p-120-120" id="project">
+    <div class="row justify-content-between mil-mb-120">
+      <div class="col-lg-4">
+        <div class="mil-p-0-120">
+          <ul class="mil-service-list mil-dark mil-mb-60">
+            <li class="mil-up">
+              {data.projekttxt03}: &nbsp;<span class="mil-dark"
+                >{data.projekttxt14}</span
+              >
+            </li>
+            <li class="mil-up">
+              {data.projekttxt04}: &nbsp;<span class="mil-dark"
+                >{data.projekttxt15}</span
+              >
+            </li>
+            <li class="mil-up">
+              {data.projekttxt05}: &nbsp;<span class="mil-dark"
+                >{data.authorName}</span
+              >
+            </li>
+          </ul>
+
+          <h2 class="mil-up mil-mb-30">{data.projekttxt06}</h2>
+
+          <p
+            class:list={[
+              "mil-up",
+              data.projekttxt08 || tagList.length > 0 ? "mil-mb-30" : "mil-mb-60",
+            ]}
+          >
+            {data.projekttxt07}
+          </p>
+
+          {
+            data.projekttxt08 ? (
+              <p
+                class:list={[
+                  "mil-up",
+                  tagList.length > 0 ? "mil-mb-30" : "mil-mb-60",
+                ]}
+              >
+                {data.projekttxt08}
+              </p>
+            ) : null
+          }
+
+          {
+            tagList.length > 0 && (
+              <ul class="mil-service-list mil-dark mil-up mil-mb-60">
+                <li class="mil-up">
+                  {tagsLabel}: &nbsp;<span class="mil-dark">{tagList.join(", ")}</span>
+                </li>
+              </ul>
+            )
+          }
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="mil-image-frame mil-horizontal mil-up mil-mb-30">
+          <img
+            src={`/img/works/${data.number}/1.webp`}
+            alt={altGallery1}
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+          <a
+            data-fancybox="gallery"
+            data-no-swup
+            href={`/img/works/${data.number}/1.webp`}
+            class="mil-zoom-btn"
+            title={altZoom}
+          >
+            <img src="/img/icons/zoom.svg" alt={altZoom} />
+          </a>
+        </div>
+        <div class="mil-image-frame mil-horizontal mil-up mil-mb-30">
+          <img
+            src={`/img/works/${data.number}/2.webp`}
+            alt={altGallery2}
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+          <a
+            data-fancybox="gallery"
+            data-no-swup
+            href={`/img/works/${data.number}/2.webp`}
+            class="mil-zoom-btn"
+            title={altZoom}
+          >
+            <img src="/img/icons/zoom.svg" alt={altZoom} />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mil-works-nav mil-up">
+      <a
+        href={prevHref}
+        class="mil-link mil-dark mil-arrow-place mil-icon-left"
+        title={data.projekttxt12}
+      >
+        <span>{data.projekttxt12}</span>
+      </a>
+      <a
+        href={portfolioBase}
+        class="mil-link mil-dark"
+        title={data.projekttxt11}
+      >
+        <span>{data.projekttxt11}</span>
+      </a>
+      <a
+        href={nextHref}
+        class="mil-link mil-dark mil-arrow-place"
+        title={data.projekttxt13}
+      >
+        <span>{data.projekttxt13}</span>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- project end -->
+
+<!-- call to action -->
+<section class="mil-soft-bg">
+  <div class="container mil-p-120-120">
+    <div class="row">
+      <div class="col-lg-10">
+        <span
+          class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up"
+          set:html={data.content}
+        />
+      </div>
+      <div class="mil-center">
+        <h3 class="mil-up mil-mb-60" set:html={data.projekttxt16} />
+        <div class="mil-up">
+          <a
+            href={`${prefix}/kontakt/`}
+            class="mil-button mil-arrow-place"
+            title={data.projekttxt17}><span>{data.projekttxt17}</span></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- call to action end -->
+</section>

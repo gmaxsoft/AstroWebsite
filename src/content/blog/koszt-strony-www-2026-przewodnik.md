@@ -8,7 +8,7 @@ tags:
   - "koszt strony internetowej"
   - "cennik stron www"
   - "od czego zależy cena witryny"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/koszt-strony-www-2026-przewodnik.webp
 ---
 
 Planujesz budżet na nową stronę i szukasz konkretów? **Koszt strony internetowej** w 2026 roku nie jest jedną liczbą z cennika – zależy od zakresu, technologii, integracji i poziomu dopracowania UX oraz SEO. W tym przewodniku po **cennik stron www** zestawiamy typowe widełki i pokazujemy, **od czego zależy cena witryny**, żebyś mógł realnie porównać oferty i uniknąć „tania strona, drogie poprawki”.

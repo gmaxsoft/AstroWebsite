@@ -8,7 +8,7 @@ tags:
   - "porzucone koszyki"
   - "optymalizacja e-commerce"
   - "UX sklepu internetowego"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/optymalizacja-koszyka-porzucone-zamowienia.webp
 ---
 
 **Porzucone koszyki** to jeden z najbardziej bolesnych leaków w raportach sklepu: klient był już blisko zakupu, ale zniknął. **Optymalizacja e-commerce** pod checkout nie jest „kosmetyką” – bezpośrednio przekłada się na przychód. Dobry **UX sklepu internetowego** oznacza przejrzystość kosztów, zaufania do płatności i minimalne tarcie na mobile.

@@ -8,7 +8,7 @@ tags:
   - "certyfikat SSL"
   - "bezpieczeństwo stron internetowych"
   - "ochrona przed atakami hakerskimi"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/cyberbezpieczenstwo_stron_www.webp
 ---
 
 **Bezpieczeństwo stron internetowych** to nie tylko „antywirus na biurku” – to warstwy ochrony od serwera po formularze kontaktowe. Wyciek kont użytkowników lub zainfekowany CMS niszczy zaufanie latami. **Certyfikat SSL** to podstawa szyfrowania ruchu, bez której przeglądarki ostrzegają klientów i niżej oceniają witrynę, lecz sama pieczęć TLS nie wystarczy przy złej konfiguracji lub przestarzałym oprogramowaniu.

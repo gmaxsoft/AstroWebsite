@@ -1,0 +1,104 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import PageLayout from "../../../../layouts/PageLayout.astro";
+import PortfolioIndexContent from "../../../../components/portfolio/PortfolioIndexContent.astro";
+import pl from "../../../../i18n/pl.json";
+import en from "../../../../i18n/en.json";
+import {
+  sortPortfolioEntries,
+  PORTFOLIO_INDEX_PAGE_SIZE,
+} from "../../../../utils/portfolio";
+
+const translations = { pl, en };
+
+export async function getStaticPaths() {
+  const raw = await getCollection("portfolio");
+  const items = sortPortfolioEntries(raw);
+  const totalPages = Math.max(1, Math.ceil(items.length / PORTFOLIO_INDEX_PAGE_SIZE));
+  if (totalPages <= 1) return [];
+  return Array.from({ length: totalPages - 1 }, (_, i) => ({
+    params: { lang: "en" as const, page: String(i + 2) },
+  }));
+}
+
+const { lang, page: pageParam } = Astro.params as {
+  lang: "en";
+  page: string;
+};
+const langPrefix = `/${lang}`;
+const portfolioUi = translations[lang]?.portfolio ?? translations.pl.portfolio;
+
+const pageNum = Math.max(2, parseInt(pageParam ?? "2", 10) || 2);
+
+const raw = await getCollection("portfolio");
+const items = sortPortfolioEntries(raw);
+const totalPages = Math.max(1, Math.ceil(items.length / PORTFOLIO_INDEX_PAGE_SIZE));
+
+if (pageNum > totalPages) {
+  return Astro.redirect(`${langPrefix}/portfolio/`);
+}
+
+const start = (pageNum - 1) * PORTFOLIO_INDEX_PAGE_SIZE;
+const pageItems = items.slice(start, start + PORTFOLIO_INDEX_PAGE_SIZE);
+
+const canonical = `https://www.maxsoft.pl${langPrefix}/portfolio/page/${pageNum}/`;
+---
+
+<PageLayout
+  lang={lang}
+  title={`${portfolioUi.breadcrumb} – page ${pageNum} | Maxsoft`}
+  description={portfolioUi.indexDescription}
+  ogImage="/img/default-og.webp"
+  canonical={canonical}
+  openGraphImageAlt={portfolioUi.breadcrumb}
+>
+  <div class="mil-inner-banner mil-blog-banner">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="mil-banner-content mil-up">
+      <div class="container">
+        <ul class="mil-breadcrumbs mil-mb-60">
+          <li>
+            <a href={`${langPrefix}/`} title="Start">Start</a>
+          </li>
+          <li>
+            <a href={`${langPrefix}/portfolio/`} title={portfolioUi.breadcrumb}
+              >{portfolioUi.breadcrumb}</a
+            >
+          </li>
+          <li>
+            <span>Page {pageNum}</span>
+          </li>
+        </ul>
+        <h1 class="mil-mb-15" set:html={portfolioUi.indexHeading} />
+        <p class="mil-text-sm mil-dark-soft mil-up mil-mb-60">
+          {portfolioUi.indexSubheading}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="mil-soft-bg">
+    <div class="container mil-p-120-90">
+      <PortfolioIndexContent
+        pageItems={pageItems}
+        allItemsSorted={items}
+        currentPage={pageNum}
+        totalPages={totalPages}
+        pathPrefix={`${langPrefix}/portfolio`}
+        readMore={portfolioUi.readMore}
+        pagerPrev={portfolioUi.pagerPrev}
+        pagerNext={portfolioUi.pagerNext}
+        pagerAria={portfolioUi.pagerAria}
+      />
+    </div>
+  </section>
+</PageLayout>

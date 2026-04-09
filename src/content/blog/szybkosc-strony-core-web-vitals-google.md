@@ -8,7 +8,7 @@ tags:
   - "szybkość ładowania strony"
   - "Core Web Vitals 2026"
   - "optymalizacja wydajności"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/szybkosc-strony-core-web-vitals-google.webp
 ---
 
 Użytkownicy i Google mają podobny priorytet: strona ma działać od razu, bez czekania na „magiczne” pojawienie się treści. **Szybkość ładowania strony** przekłada się bezpośrednio na satysfakcję, liczbę zapytań i – w dłuższej perspektywie – na widoczność w wynikach. W 2026 roku **Core Web Vitals 2026** to już standard dobrego wdrożenia, nie dodatek premium.

@@ -8,7 +8,7 @@ tags:
   - "audyt strony www"
   - "błędy na stronie internetowej"
   - "optymalizacja konwersji"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/siedem-bledow-stron-firmowych-konwersja.webp
 ---
 
 Słaba strona nie tylko „nie pomaga” – aktywnie kosztuje Cię zapytania i zaufanie. Z perspektywy **audyt strony www** w Maxsoft wielokrotnie widzimy te same **błędy na stronie internetowej**: od chaosu treści po brak jasnego CTA. Poniżej siedem problemów, które najczęściej tną **optymalizację konwersji**, zanim zdążysz zainwestować w reklamy.

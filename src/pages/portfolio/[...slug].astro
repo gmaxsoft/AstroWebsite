@@ -1,0 +1,98 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import ContentPortfolioSingle from "../../components/ContentPortfolioSingle.astro";
+import pl from "../../i18n/pl.json";
+import type { GetStaticPathsResult } from "astro";
+import {
+  sortPortfolioEntries,
+  getPortfolioMetaDescription,
+  getPortfolioOgImagePath,
+  type PortfolioEntry,
+} from "../../utils/portfolio";
+
+type Neighbor = {
+  slug: string | null;
+  title: string | null;
+};
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  const entries = await getCollection("portfolio");
+  const sorted = sortPortfolioEntries(entries);
+
+  return sorted.map((entry, index) => {
+    const prevEntry = index > 0 ? sorted[index - 1] : null;
+    const nextEntry =
+      index < sorted.length - 1 ? sorted[index + 1] : null;
+
+    const prevProject: Neighbor = {
+      slug: prevEntry ? `portfolio/${prevEntry.id}` : null,
+      title: prevEntry?.data.title ?? null,
+    };
+    const nextProject: Neighbor = {
+      slug: nextEntry ? `portfolio/${nextEntry.id}` : null,
+      title: nextEntry?.data.title ?? null,
+    };
+
+    return {
+      params: { slug: entry.id },
+      props: {
+        entry,
+        prevProject,
+        nextProject,
+      },
+    };
+  });
+}
+
+const { entry, prevProject, nextProject } = Astro.props as {
+  entry: PortfolioEntry;
+  prevProject: Neighbor;
+  nextProject: Neighbor;
+};
+
+const labels = pl.portfolio.labels as Record<string, string>;
+
+const data = {
+  ...labels,
+  title: entry.data.title,
+  heading: entry.data.heading,
+  content: entry.data.ctaIntro,
+  projekttxt06: entry.data.tagline,
+  projekttxt07: entry.data.bodyLead,
+  projekttxt08: entry.data.bodyExtra ?? "",
+  authorName: entry.data.author,
+  projekttxt14: entry.data.client,
+  projekttxt15: entry.data.technologies,
+  number: entry.data.galleryNumber,
+  tags: entry.data.tags,
+};
+
+const pageTitle = `${entry.data.title} | ${pl.portfolio.breadcrumb} Maxsoft`;
+const description = getPortfolioMetaDescription(entry);
+const ogImage = getPortfolioOgImagePath(entry.data.galleryNumber);
+const canonical = `https://www.maxsoft.pl/portfolio/${entry.id}/`;
+const ogImageAlt = (pl.projekty.altGalleryView1 as string).replace(
+  "{title}",
+  entry.data.title,
+);
+---
+
+<PageLayout
+  lang="pl"
+  title={pageTitle}
+  description={description}
+  ogImage={ogImage}
+  canonical={canonical}
+  openGraphImageAlt={ogImageAlt}
+>
+  <ContentPortfolioSingle
+    data={data}
+    prevProject={prevProject}
+    nextProject={nextProject}
+    langPrefix=""
+    lang="pl"
+  />
+</PageLayout>

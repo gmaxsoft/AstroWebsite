@@ -8,7 +8,7 @@ tags:
   - "dedykowane aplikacje webowe"
   - "automatyzacja biznesu"
   - "systemy CRM na zamówienie"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/cover_aplikacje_webowe_na_zamowienie.webp
 ---
 
 Arkusze kalkulacyjne i darmowe narzędzia dobrze rozpoczynają drogę, ale gdy procesów przybywa, zaczyna się chaos wersji i ręczne kopiowanie danych. **Dedykowane aplikacje webowe** adresują Twój workflow: formularze, role użytkowników, integracje z ERP czy sklep – wszystko w jednym miejscu dostępnym z przeglądarki. **Automatyzacja biznesu** przez oprogramowanie szybkiej niż „kolejny makro w Excelu”.

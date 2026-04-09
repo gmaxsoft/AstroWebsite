@@ -8,7 +8,7 @@ tags:
   - "chatboty AI na stronę"
   - "wdrożenie sztucznej inteligencji"
   - "nowoczesne technologie w biznesie"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/sztuczna-inteligencja-strona-mala-firma.webp
 ---
 
 **Nowoczesne technologie w biznesie** nie muszą oznaczać budżetu korporacji. **Wdrożenie sztucznej inteligencji** na stronie może zacząć się od prostych, kontrolowanych przypadków: asystent odpowiadający na FAQ, klasyfikacja zgłoszeń z formularza, generowanie podsumowań dla handlowca. **Chatboty AI na stronę** warto projektować tak, by nie obiecywały więcej niż wiedza firmy – halucynacje kosztują zaufanie.

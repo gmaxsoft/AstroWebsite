@@ -8,7 +8,7 @@ tags:
   - "budowa sklepu internetowego"
   - "e-commerce dla początkujących"
   - "jak zacząć sprzedawać online"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/sklep-internetowy-10-krokow-zarabianie.webp
 ---
 
 Marzenia o sprzedaży 24/7 często napotykają na rzeczywistość logistyki, prawa i technologii. **Budowa sklepu internetowego** to nie tylko „włączenie WooCommerce” – to proces, w którym **e-commerce dla początkujących** najczęściej wypala się na braku planu kosztów i kanałów pozyskania klienta. Poniżej dziesięć kroków, które pomagają **jak zacząć sprzedawać online** w sposób uporządkowany.

@@ -8,7 +8,7 @@ tags:
   - "pozycjonowanie lokalne"
   - "wizytówka Google Moja Firma"
   - "marketing lokalny"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/Glokalne-seo-klienci-z-miasta.webp
 ---
 
 **Marketing lokalny** to jedna z niewielu dźwigni, które mała firma może pociągnąć skutecznie bez ogromnego budżetu mediów. **Pozycjonowanie lokalne** skupia się na tym, by Google i klienci w promieniu kilku kilometrów widzieli Cię jako realną, dostępną opcję. Kluczem jest spójność danych i aktywna **wizytówka Google Moja Firma**.

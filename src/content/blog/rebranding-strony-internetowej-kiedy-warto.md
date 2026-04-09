@@ -8,7 +8,7 @@ tags:
   - "modernizacja stron www"
   - "rebranding firmy"
   - "nowa strona internetowa"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/rebranding-strony-internetowej-kiedy-warto.webp
 ---
 
 Stara strona bywa jak wyblakły szyld: technicznie „działa”, ale już nie budzi zaufania ani nie oddaje tego, kim firma jest dziś. **Rebranding firmy** w internecie to nie tylko nowe logo – to spójna historia, aktualna oferta i technologia, na której można budować kolejne lata. Kiedy **modernizacja stron www** powinna trafić na listę priorytetów?

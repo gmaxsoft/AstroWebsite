@@ -1,0 +1,158 @@
+---
+import { Picture } from "astro:assets";
+import type { PortfolioEntry } from "../../utils/portfolio";
+import { blogTagToId } from "../../utils/blogTagSlug";
+
+type PagerEntry = { kind: "num"; num: number } | { kind: "ellipsis" };
+
+interface Props {
+  pageItems: PortfolioEntry[];
+  allItemsSorted: PortfolioEntry[];
+  currentPage: number;
+  totalPages: number;
+  pathPrefix: string;
+  readMore: string;
+  pagerPrev: string;
+  pagerNext: string;
+  pagerAria: string;
+}
+
+const {
+  pageItems,
+  allItemsSorted,
+  currentPage,
+  totalPages,
+  pathPrefix,
+  readMore,
+  pagerPrev,
+  pagerNext,
+  pagerAria,
+} = Astro.props;
+
+const uniqueTags = [
+  ...new Set(allItemsSorted.flatMap((p) => p.data.tags)),
+].sort((a, b) => a.localeCompare(b, "pl"));
+
+function pageHref(pageNum: number): string {
+  if (pageNum <= 1) {
+    return `${pathPrefix}/`;
+  }
+  return `${pathPrefix}/page/${pageNum}/`;
+}
+
+const pagerNums: number[] = [];
+if (totalPages > 1) {
+  const window = 2;
+  const add = (n: number) => {
+    if (!pagerNums.includes(n)) pagerNums.push(n);
+  };
+  add(1);
+  add(totalPages);
+  for (let d = -window; d <= window; d++) {
+    const n = currentPage + d;
+    if (n > 1 && n < totalPages) add(n);
+  }
+  pagerNums.sort((a, b) => a - b);
+}
+
+const pagerEntries: PagerEntry[] = [];
+for (let i = 0; i < pagerNums.length; i++) {
+  const num = pagerNums[i];
+  const prevNum = i > 0 ? pagerNums[i - 1] : undefined;
+  if (prevNum !== undefined && num - prevNum > 1) {
+    pagerEntries.push({ kind: "ellipsis" });
+  }
+  pagerEntries.push({ kind: "num", num });
+}
+---
+
+<div class="mil-portfolio-index-root" id="mil-portfolio-index-root">
+  <div class="mil-blog-tag-anchors" aria-hidden="true">
+    {
+      uniqueTags.map((tag) => (
+        <span class="mil-blog-tag-target" id={`tag-${blogTagToId(tag)}`} />
+      ))
+    }
+  </div>
+
+  <div class="mil-portfolio-index-feed mil-up">
+    <div class="row">
+      {
+        pageItems.map((entry) => (
+          <div class="col-lg-4 col-md-6 mil-mb-90">
+            <article class="mil-up mil-blog-list-card">
+              <a href={`/portfolio/${entry.id}/`} class="mil-blog-card">
+                <div class="mil-blog-card__thumb">
+                  <Picture
+                    src={entry.data.image}
+                    alt={entry.data.title}
+                    width={800}
+                    height={450}
+                    formats={["avif", "webp"]}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <p class="mil-blog-card__meta">{entry.data.author}</p>
+                <h3 class="mil-blog-card__heading">{entry.data.title}</h3>
+                <p class="mil-blog-card__excerpt">{entry.data.description}</p>
+                <span class="mil-link mil-dark mil-arrow-place mil-blog-card__more">
+                  <span>{readMore}</span>
+                </span>
+              </a>
+            </article>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    totalPages > 1 && (
+      <nav class="mil-blog-pagination mil-up" aria-label={pagerAria}>
+        {currentPage > 1 ? (
+          <a href={pageHref(currentPage - 1)} class="mil-blog-pagination__link">
+            {pagerPrev}
+          </a>
+        ) : (
+          <span class="mil-blog-pagination__link mil-blog-pagination__prev is-disabled">
+            {pagerPrev}
+          </span>
+        )}
+        <ul class="mil-blog-pagination__pages">
+          {pagerEntries.map((entry) =>
+            entry.kind === "ellipsis" ? (
+              <li class="mil-blog-pagination__ellipsis" aria-hidden="true">
+                …
+              </li>
+            ) : (
+              <li>
+                {entry.num === currentPage ? (
+                  <span
+                    class="mil-blog-pagination__current"
+                    aria-current="page"
+                  >
+                    {entry.num}
+                  </span>
+                ) : (
+                  <a href={pageHref(entry.num)} class="mil-blog-pagination__num">
+                    {entry.num}
+                  </a>
+                )}
+              </li>
+            ),
+          )}
+        </ul>
+        {currentPage < totalPages ? (
+          <a href={pageHref(currentPage + 1)} class="mil-blog-pagination__link">
+            {pagerNext}
+          </a>
+        ) : (
+          <span class="mil-blog-pagination__link mil-blog-pagination__next is-disabled">
+            {pagerNext}
+          </span>
+        )}
+      </nav>
+    )
+  }
+</div>

@@ -8,7 +8,7 @@ tags:
   - "prowadzenie bloga firmowego"
   - "korzyści z content marketingu"
   - "teksty SEO"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/content_marketing.webp
 ---
 
 **Prowadzenie bloga firmowego** często budzi opór: „kto to przeczyta?”, „nie mam czasu”. Tymczasem **korzyści z content marketingu** są mierzalne: dłuższy czas na stronie, więcej wejść z long tail, materiały dla handlowców i odpowiedzi na pytania klientów zanim zadzwonią. Dobrze napisane **teksty SEO** to nie manipulacja algorytmem, lecz edukacja pod kątem realnych zapytań.

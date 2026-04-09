@@ -8,7 +8,7 @@ tags:
   - "sukces w biznesie online"
   - "metamorfoza strony www"
   - "efekty pozycjonowania"
-image: ../../assets/blog/cover.webp
+image: ../../assets/blog/case_study_maxsoft.webp
 ---
 
 Opowieść typu case study łączy **sukces w biznesie online** z konkretnymi decyzjami projektowymi. Poniższy scenariusz (uprośczony i zagregowany z kilku wdrożeń) pokazuje, jak **metamorfoza strony www** może zmienić lejki sprzedażowe, gdy połączymy architekturę, treść i pomiar.
