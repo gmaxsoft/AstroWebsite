@@ -152,7 +152,7 @@ const webPageSchema =
             <circle cx="150" cy="100" r="75" fill="none"></circle>
             <g>
               <use xlink:href="#circlePath" fill="none"></use>
-              <text style="letter-spacing: 5.5px">
+              <text>
                 <textPath xlink:href="#circlePath">{data.circletxt}</textPath>
               </text>
             </g>
@@ -220,11 +220,10 @@ const webPageSchema =
         <div class="mil-about-photo mil-mb-90">
           <div class="mil-lines-place"></div>
           <div
-            class="mil-up mil-img-frame mil-img-effect"
-            style="padding-bottom: 160%;"
+            class="mil-up mil-img-frame mil-img-effect mil-img-horizontal"
           >
             <img
-              src="/img/photo/programowanie.webp"
+              src="/img/photo/tworzeniestronwww.webp"
               alt={data.altPhotoAbout || "Projektowanie stron internetowych – zespół Maxsoft, Zielona Góra"}
               class="mil-scale effect-image"
               fetchpriority="high"
@@ -238,21 +237,19 @@ const webPageSchema =
   </div>
 </section>
 
-<section class="mil-dark-bg">
+<section class="mil-dark-bg mil-section-home-oferta">
   <div class="mi-invert-fix">
     <div class="mil-animation-frame">
       <div
         class="mil-animation mil-position-1 mil-scale"
         data-value-1="2.4"
         data-value-2="1.4"
-        style="top: 300px; right: -100px"
       >
       </div>
       <div
         class="mil-animation mil-position-2 mil-scale"
         data-value-1="2"
         data-value-2="1"
-        style="left: 150px"
       >
       </div>
     </div>

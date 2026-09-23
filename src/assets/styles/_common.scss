@@ -386,6 +386,10 @@ a {
     background-color: vars.$lt-10;
 }
 
+.mil-u-hidden {
+    display: none;
+}
+
 .mil-txt-just {
     text-align: justify
 }
@@ -405,6 +409,10 @@ a {
         object-fit: cover;
         object-position: center;
     }
+}
+
+.mil-img-horizontal {
+    padding-bottom: 120%;
 }
 
 /* -------------------------------------------

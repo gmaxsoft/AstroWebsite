@@ -971,6 +971,7 @@ circle text
             text-transform: uppercase;
             font-size: 12px;
             font-weight: 500;
+            letter-spacing: 5.5px;
             transition: vars.$t-md;
         }
     }
@@ -1155,6 +1156,25 @@ dodecahedron
             }
         }
     }
+}
+
+/* Pozycje dekoracji – wcześniej inline style */
+.mil-404-banner .mil-animation.mil-position-4 {
+    right: 40%;
+}
+
+.mil-portfolio-slider-frame .mil-animation.mil-position-4.mil-dark {
+    top: -60px;
+    right: -4px;
+}
+
+.mil-section-home-oferta .mil-animation-frame .mil-animation.mil-position-1 {
+    top: 300px;
+    right: -100px;
+}
+
+.mil-section-home-oferta .mil-animation-frame .mil-animation.mil-position-2 {
+    left: 150px;
 }
 
 .mil-dodecahedron {
@@ -1342,6 +1362,34 @@ about
         display: flex;
         justify-content: center;
         width: 100%;
+    }
+
+    /* Zdjęcie O nas: bez cienia, wyśrodkowane, nieco większe */
+    .mil-about-photo {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+
+        .mil-img-frame.mil-img-effect {
+            width: 100%;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: scale(1.08);
+            transform-origin: center center;
+
+            @media screen and (max-width: 991px) {
+                transform: scale(1);
+                max-width: 100%;
+            }
+        }
+
+        .mil-img-effect img {
+            box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            -moz-box-shadow: none !important;
+        }
     }
 }
 
@@ -1784,9 +1832,9 @@ revievs
 
     & .swiper-pagination-bullet {
         padding: 0;
-        width: 110px;
-        height: 110px;
-        padding: 10px;
+        width: 102px;
+        height: 102px;
+        padding: 8px;
         opacity: 1;
         border: none;
         background-color: transparent;
@@ -1794,8 +1842,8 @@ revievs
         transition: vars.$t-md !important;
 
         @media screen and (max-width: 992px) {
-            width: 90px;
-            height: 90px;
+            width: 86px;
+            height: 86px;
         }
 
         &:nth-child(2n) {
@@ -1808,15 +1856,21 @@ revievs
 
         &:hover {
             box-shadow: inset 0 0 0 4px vars.$light;
+
+            & .mil-custom-dot {
+                filter: grayscale(0%);
+            }
         }
 
         & .mil-custom-dot {
-            width: 90px;
-            height: 90px;
+            width: 86px;
+            height: 86px;
             border-radius: 50%;
-            background-size: cover;
-            background-position: top;
-            transition: vars.$t-md !important;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: grayscale(100%);
+            transition: filter vars.$t-md !important;
 
             @media screen and (max-width: 992px) {
                 width: 70px;
@@ -1854,8 +1908,11 @@ revievs
         }
 
         &.swiper-pagination-bullet-active {
-
             box-shadow: inset 0 0 0 4px vars.$accent;
+
+            & .mil-custom-dot {
+                filter: grayscale(0%);
+            }
         }
     }
 
