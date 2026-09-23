@@ -1,10 +1,10 @@
 {
   "index": {
     "title": "Tworzenie stron internetowych Zielona Góra, Sklepy Internetowe Zielona Góra, Strony www Świebodzin",
-    "description": "Tworzenie stron WWW Zielona Góra, Tworzenie sklepów internetowych Zielona Góra i Świebodzin. Systemy CRM/ERP. Indywidualne projekty, integracje API. Projektowanie stron Świebodzin.",
+    "description": "Tworzenie stron WWW Zielona Góra, Tworzenie sklepów internetowych Zielona Góra i Świebodzin. Systemy CRM/ERP. Budowa stron www, projektowanie stron Świebodzin.",
     "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Usługi</span> Programistyczne<br /><span class=\"mil-thin\">Dla</span> Biznesu Świebodzin",
-    "headingSeoCombined": "Usługi programistyczne dla biznesu. Tworzenie stron internetowych Zielona Góra. Tworzenie sklepów internetowych Zielona Góra.",
+    "headingSeoCombined": "Budowa stron www Świebodzin. Tworzenie stron internetowych Zielona Góra. Tworzenie sklepów internetowych Zielona Góra.",
     "headingRotate": [
       "<span class=\"mil-thin\">Usługi</span> Programistyczne<br /><span class=\"mil-thin\">Dla</span> Biznesu",
       "Tworzenie stron internetowych <span class=\"mil-thin\">Zielona Góra</span>",
@@ -55,10 +55,10 @@
   },
   "footer": {
     "footertxt1": "Zapisz się na nasz newsletter:",
-    "footertxt2": "Tworzenie stron WWW, sklepy internetowe Zielona Góra, Świebodzin, systemy CRM i ERP, integracje API - Maxsoft realizuje projekty IT dla firm z Zielonej Góry, Świebodzina i okolic.<br /><br /><strong>Świebodzin</strong>, <strong>Zielona Góra</strong>, <strong>Sulechów</strong>, <strong>Międzyrzecz</strong>, <strong>Nowa Sól</strong>, <strong>Lubuskie</strong>",
+    "footertxt2": "Tworzenie stron WWW Zielona Góra, sklepy internetowe Zielona Góra, <strong>Budowa stron www</strong>, Projektowanie stron www Świebodzin, <strong>Strony www Świebodzin</strong>, <strong>strony www</strong>, <strong>Systemy CRM i ERP</strong>, <strong>integracje API</strong> - Maxsoft realizuje projekty IT dla firm z Zielonej Góry, Świebodzina i okolic.<br /><br /><strong>Świebodzin</strong>, <strong>Zielona Góra</strong>, <strong>Sulechów</strong>, <strong>Międzyrzecz</strong>, <strong>Nowa Sól</strong>, <strong>Lubuskie</strong>",
     "footertxt3": "© Copyright 2025 - Maxsoft. Wszystkie prawa zastrzeżone.",
-    "footertxt4": "66-218 Lubrza, Świebodzin<br />Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 453 645 286</span>",
-    "footertxt5": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
+    "footertxt4": "<span class=\"mil-no-wrap\">(+48) 511 952 615</span><br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span><br /><span class=\"mil-no-wrap\"><a href=\"mailto:biuro@maxsoft.pl\">biuro@maxsoft.pl</a></span>",
+    "footertxt5": "<span class=\"mil-no-wrap\">(+48) 791 821 908</span><br /><span class=\"mil-no-wrap\">(+48) 511 952 615</span><br /><span class=\"mil-no-wrap\"><a href=\"mailto:biuro@maxsoft.pl\">biuro@maxsoft.pl</a></span>",
     "footertxt6": "Oferta",
     "footertxt7": "Portfolio",
     "footertxtEcommerce": "E-commerce",
@@ -73,8 +73,8 @@
   "menu": {
     "menutxt1": "Projekty",
     "menutxt2": "Pozostałe Linki",
-    "menutxt3": "66-218 Lubrza<br />Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 453 645 286</span>",
-    "menutxt4": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
+    "menutxt3": "<span class=\"mil-no-wrap\">(+48) 511 952 615</span><br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span><br /><span class=\"mil-no-wrap\"><a href=\"mailto:biuro@maxsoft.pl\">biuro@maxsoft.pl</a></span>",
+    "menutxt4": "<span class=\"mil-no-wrap\">(+48) 791 821 908</span><br /><span class=\"mil-no-wrap\">(+48) 511 952 615</span><br /><span class=\"mil-no-wrap\"><a href=\"mailto:biuro@maxsoft.pl\">biuro@maxsoft.pl</a></span>",
     "menutxt5": "Oferta",
     "menutxt6": "Portfolio",
     "menutxtEcommerce": "E-commerce",
@@ -429,8 +429,8 @@
     "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Skontaktuj się</span><br />z Nami",
     "kontakttxt01": "Kontakt",
-    "kontakttxt02": "66-218 Lubrza, Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">+(48) 453 645 286</span>",
-    "kontakttxt03": "65-463 Zielona Góra, ul.Prosta 45<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
+    "kontakttxt02": "<span class=\"mil-no-wrap\">(+48) 511 952 615</span><br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span><br /><span class=\"mil-no-wrap\"><a href=\"mailto:biuro@maxsoft.pl\">biuro@maxsoft.pl</a></span>",
+    "kontakttxt03": "<span class=\"mil-no-wrap\">(+48) 791 821 908</span><br /><span class=\"mil-no-wrap\">(+48) 511 952 615</span><br /><span class=\"mil-no-wrap\"><a href=\"mailto:biuro@maxsoft.pl\">biuro@maxsoft.pl</a></span>",
     "kontakttxt04": "Wyślij wiadomość",
     "kontakttxt05": "Formularz <span class=\"mil-thin\">Kontaktowy</span>",
     "kontakttxt06": "Wybierz temat",
