@@ -1,0 +1,291 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Maxsoft CMS – Autorski system CMS | Zarządzanie treścią stron internetowych"
+  description="Maxsoft CMS to autorski system zarządzania treścią. Edycja stron bez znajomości kodu, optymalizacja SEO, responsywne szablony. Dla firm z Zielonej Góry i okolic."
+  canonical="https://cms.maxsoft.pl/"
+>
+  <header class="crm-header" id="header">
+    <div class="container">
+      <a href="https://www.maxsoft.pl" class="crm-logo" title="Maxsoft – strona główna">
+        Maxsoft
+      </a>
+      <nav class="crm-nav" aria-label="Menu główne">
+        <a href="#funkcje">Funkcje</a>
+        <a href="#technologie">Technologie</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="https://www.maxsoft.pl/oferta/" title="Oferta Maxsoft">Oferta</a>
+        <a href="https://www.maxsoft.pl/kontakt/" class="crm-btn" title="Skontaktuj się z Maxsoft">
+          Skontaktuj się
+        </a>
+      </nav>
+      <button class="crm-menu-btn" aria-label="Otwórz menu" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="crm-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="crm-hero-content">
+          <h1 id="hero-heading">
+            <span class="mil-thin">System CMS</span><br />
+            Autorski framework
+          </h1>
+          <p>
+            Zarządzaj treścią swojej strony internetowej bez znajomości kodu. 
+            Intuicyjny panel, optymalizacja SEO i responsywne szablony dopasowane do Twojego biznesu.
+          </p>
+          <div class="crm-hero-buttons">
+            <a href="https://www.maxsoft.pl/kontakt/" class="crm-btn" title="Poproś o wycenę CMS">
+              Poproś o wycenę
+            </a>
+            <a href="#funkcje" class="crm-btn crm-btn-outline" title="Poznaj funkcje CMS">
+              Poznaj funkcje
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="crm-section crm-section-dark" id="funkcje" aria-labelledby="funkcje-heading">
+      <div class="container">
+        <div class="crm-section-title">
+          <span>Co oferuje</span>
+          <h2 id="funkcje-heading">Kluczowe Funkcje Systemu</h2>
+        </div>
+        <div class="crm-features">
+          <article class="crm-feature-card">
+            <div class="crm-feature-icon" aria-hidden="true">✏️</div>
+            <h3>Edycja bez kodu</h3>
+            <p>
+              Intuicyjny edytor WYSIWYG. Aktualizuj teksty, zdjęcia i sekcje strony 
+              bez wiedzy programistycznej – wystarczy przeglądarka.
+            </p>
+          </article>
+          <article class="crm-feature-card">
+            <div class="crm-feature-icon" aria-hidden="true">🔍</div>
+            <h3>Optymalizacja SEO</h3>
+            <p>
+              Wbudowane narzędzia SEO: meta tagi, nagłówki, mapy strony. 
+              Twoja strona będzie lepiej widoczna w wyszukiwarkach.
+            </p>
+          </article>
+          <article class="crm-feature-card">
+            <div class="crm-feature-icon" aria-hidden="true">📱</div>
+            <h3>Responsywne szablony</h3>
+            <p>
+              Strony automatycznie dostosowują się do urządzeń. 
+              Idealny wygląd na komputerze, tablecie i smartfonie.
+            </p>
+          </article>
+          <article class="crm-feature-card">
+            <div class="crm-feature-icon" aria-hidden="true">⚙️</div>
+            <h3>Indywidualne dopasowanie</h3>
+            <p>
+              System tworzony pod Twoje potrzeby. Moduły, layout i funkcje 
+              zaprojektowane specjalnie dla Twojej firmy.
+            </p>
+          </article>
+          <article class="crm-feature-card">
+            <div class="crm-feature-icon" aria-hidden="true">🧩</div>
+            <h3>Modułowość i skalowalność</h3>
+            <p>
+              Możliwość rozbudowy systemu CMS bez ograniczeń – dodawaj nowe moduły i funkcje
+              wraz z rozwojem Twojego biznesu.
+            </p>
+          </article>
+          <article class="crm-feature-card">
+            <div class="crm-feature-icon" aria-hidden="true">🚀</div>
+            <h3>Szybkość i elastyczność wdrożenia</h3>
+            <p>
+              Dzięki gotowym motywom i wtyczkom strona może powstać w krótkim czasie,
+              a system łatwo dopasujesz do zmieniających się potrzeb.
+            </p>
+          </article>
+        </div>
+
+        <!-- Carousel – dodaj 01.jpg–06.jpg do /img/carousel/ i podmień src w każdym img -->
+        <div class="crm-carousel-wrapper">
+          <div class="crm-carousel" aria-label="Galeria zdjęć systemu CMS">
+            <button type="button" class="crm-carousel-btn crm-carousel-prev" aria-label="Poprzedni slajd">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <div class="crm-carousel-track">
+              <div class="crm-carousel-slide crm-carousel-active">
+                <a
+                  class="crm-carousel-link glightbox"
+                  href="/img/carousel/logowanie.webp"
+                  data-gallery="cms-carousel"
+                  data-title="Zrzut ekranu systemu CMS 1"
+                >
+                  <img src="/img/carousel/logowanie.webp" alt="Zrzut ekranu systemu CMS 1" width="800" height="500" loading="eager" />
+                </a>
+              </div>
+              <div class="crm-carousel-slide">
+                <a
+                  class="crm-carousel-link glightbox"
+                  href="/img/carousel/panel.webp"
+                  data-gallery="cms-carousel"
+                  data-title="Zrzut ekranu systemu CMS 2"
+                >
+                  <img src="/img/carousel/panel.webp" alt="Zrzut ekranu systemu CMS 2" width="800" height="500" loading="lazy" />
+                </a>
+              </div>
+              <div class="crm-carousel-slide">
+                <a
+                  class="crm-carousel-link glightbox"
+                  href="/img/carousel/nawigacja.webp"
+                  data-gallery="cms-carousel"
+                  data-title="Zrzut ekranu systemu CMS 3"
+                >
+                  <img src="/img/carousel/nawigacja.webp" alt="Zrzut ekranu systemu CMS 3" width="800" height="500" loading="lazy" />
+                </a>
+              </div>
+              <div class="crm-carousel-slide">
+                <a
+                  class="crm-carousel-link glightbox"
+                  href="/img/carousel/przerwa.webp"
+                  data-gallery="cms-carousel"
+                  data-title="Zrzut ekranu systemu CMS 4"
+                >
+                  <img src="/img/carousel/przerwa.webp" alt="Zrzut ekranu systemu CMS 4" width="800" height="500" loading="lazy" />
+                </a>
+              </div>
+              <div class="crm-carousel-slide">
+                <a
+                  class="crm-carousel-link glightbox"
+                  href="/img/carousel/wyswig.webp"
+                  data-gallery="cms-carousel"
+                  data-title="Zrzut ekranu systemu CMS 5"
+                >
+                  <img src="/img/carousel/wyswig.webp" alt="Zrzut ekranu systemu CMS 5" width="800" height="500" loading="lazy" />
+                </a>
+              </div>
+              <div class="crm-carousel-slide">
+                <a
+                  class="crm-carousel-link glightbox"
+                  href="/img/carousel/galeria.webp"
+                  data-gallery="cms-carousel"
+                  data-title="Zrzut ekranu systemu CMS 6"
+                >
+                  <img src="/img/carousel/galeria.webp" alt="Zrzut ekranu systemu CMS 6" width="800" height="500" loading="lazy" />
+                </a>
+              </div>
+            </div>
+            <button type="button" class="crm-carousel-btn crm-carousel-next" aria-label="Następny slajd">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+          </div>
+          <div class="crm-carousel-dots" role="tablist" aria-label="Wybierz slajd">
+            <button type="button" role="tab" aria-selected="true" aria-label="Slajd 1" data-slide="0" class="crm-carousel-dot crm-carousel-dot-active"></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Slajd 2" data-slide="1" class="crm-carousel-dot"></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Slajd 3" data-slide="2" class="crm-carousel-dot"></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Slajd 4" data-slide="3" class="crm-carousel-dot"></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Slajd 5" data-slide="4" class="crm-carousel-dot"></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Slajd 6" data-slide="5" class="crm-carousel-dot"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="crm-section" id="technologie" aria-labelledby="tech-heading">
+      <div class="container">
+        <div class="crm-section-title">
+          <span>Stack technologiczny</span>
+          <h2 id="tech-heading">Zbudowany na Autorskim Frameworku</h2>
+        </div>
+        <p class="crm-section-title" style="margin-top: -40px; margin-bottom: 0;">
+          Własny framework CMS – lekki, szybki i w pełni dopasowany do potrzeb Twojej strony.
+        </p>
+        <div class="crm-tech">
+          <span class="crm-tech-item"><span>Autorski framework</span> – rdzeń systemu</span>
+          <span class="crm-tech-item"><span>PHP / Node.js</span> – backend</span>
+          <span class="crm-tech-item"><span>HTML5 / CSS / JavaScript / Astro / Next.js</span> – frontend</span>
+          <span class="crm-tech-item"><span>MySQL / PostgreSQL</span> – baza danych</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="crm-section crm-section-dark" id="kontakt" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="crm-cta">
+          <h2 id="cta-heading">Gotowy na <span class="mil-accent">własny system CMS</span>?</h2>
+          <p>
+            Skontaktuj się z nami. Przygotujemy indywidualną wycenę i zaproponujemy 
+            rozwiązanie dopasowane do Twojej firmy.
+          </p>
+          <a href="https://www.maxsoft.pl/kontakt/" class="crm-btn" title="Kontakt z Maxsoft">
+            Skontaktuj się z Maxsoft
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="crm-footer">
+    <div class="container">
+      <nav class="crm-footer-links" aria-label="Linki w stopce">
+        <a href="https://www.maxsoft.pl" title="Strona główna Maxsoft">Maxsoft.pl</a>
+        <a href="https://www.maxsoft.pl/oferta/" title="Oferta">Oferta</a>
+        <a href="https://www.maxsoft.pl/kontakt/" title="Kontakt">Kontakt</a>
+        <a href="https://crm.maxsoft.pl" title="Maxsoft CRM">CRM</a>
+        <a href="https://erp.maxsoft.pl" title="Maxsoft ERP">ERP</a>
+      </nav>
+      <p class="crm-footer-copy">© {new Date().getFullYear()} Maxsoft. Wszystkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js" is:inline></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof GLightbox === 'undefined') return;
+      GLightbox({
+        selector: '.crm-carousel .glightbox',
+        loop: true,
+        touchNavigation: true,
+        openEffect: 'zoom',
+        closeEffect: 'fade',
+      });
+    });
+  </script>
+
+  <script>
+    const header = document.getElementById('header');
+    if (header) {
+      const onScroll = () => { header.classList.toggle('scrolled', window.scrollY > 50); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+    const slides = document.querySelectorAll('.crm-carousel-slide');
+    const dots = document.querySelectorAll('.crm-carousel-dot');
+    const prevBtn = document.querySelector('.crm-carousel-prev');
+    const nextBtn = document.querySelector('.crm-carousel-next');
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    function goToSlide(index: number) {
+      currentIndex = (index + totalSlides) % totalSlides;
+      slides.forEach((s, i) => s.classList.toggle('crm-carousel-active', i === currentIndex));
+      dots.forEach((d, i) => {
+        d.classList.toggle('crm-carousel-dot-active', i === currentIndex);
+        d.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+      });
+    }
+    prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
+  </script>
+</Layout>
+
+<style is:global>
+  @import url('https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css');
+  @import '../styles/global.css';
+</style>

@@ -1,0 +1,54 @@
+---
+import { SEO } from "astro-seo";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical = "https://cms.maxsoft.pl/" } = Astro.props;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Maxsoft CMS",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://cms.maxsoft.pl",
+  "description": "Autorski system CMS do zarządzania treścią stron internetowych. Edycja bez znajomości kodu, optymalizacja SEO, responsywne szablony.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Maxsoft",
+    "url": "https://www.maxsoft.pl"
+  }
+};
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: "https://www.maxsoft.pl/img/default-og.webp",
+          url: canonical,
+        },
+      }}
+    />
+    <link rel="canonical" href={canonical} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

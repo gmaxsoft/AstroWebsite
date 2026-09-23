@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cms.maxsoft.pl/sitemap-index.xml

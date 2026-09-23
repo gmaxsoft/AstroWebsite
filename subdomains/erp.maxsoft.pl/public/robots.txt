@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://erp.maxsoft.pl/sitemap-index.xml

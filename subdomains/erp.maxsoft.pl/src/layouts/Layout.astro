@@ -1,0 +1,54 @@
+---
+import { SEO } from "astro-seo";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical = "https://erp.maxsoft.pl/" } = Astro.props;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Maxsoft ERP",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://erp.maxsoft.pl",
+  "description": "System ERP oparty o Laravel 12 i React. Zarządzanie finansami, kadrami, produkcją, logistyką i sprzedażą w jednej platformie.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Maxsoft",
+    "url": "https://www.maxsoft.pl"
+  }
+};
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: "https://www.maxsoft.pl/img/default-og.webp",
+          url: canonical,
+        },
+      }}
+    />
+    <link rel="canonical" href={canonical} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
