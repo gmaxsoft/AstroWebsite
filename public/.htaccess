@@ -61,7 +61,6 @@ Options -Indexes
     RewriteRule ^pl/wspolpraca/?$ /wspolpraca/ [R=301,L]
     RewriteRule ^pl/projekty/?$ /projekty/ [R=301,L]
     RewriteRule ^pl/e-commerce/?$ /e-commerce/ [R=301,L]
-    RewriteRule ^pl/seo/?$ /seo/ [R=301,L]
     RewriteRule ^pl/integracje/?$ /integracje/ [R=301,L]
     RewriteRule ^pl/polityka_prywatnosci/?$ /polityka_prywatnosci/ [R=301,L]
     RewriteRule ^pl/polityka_cookies/?$ /polityka_cookies/ [R=301,L]
@@ -70,9 +69,10 @@ Options -Indexes
 	
 	# Użycie `Redirect 301` jest w porządku, ale musi być przed regułą Proxy
 	Redirect 301 /index.html https://www.maxsoft.pl/
-	Redirect 301 /index.php 
+	Redirect 301 /index.php https://www.maxsoft.pl/
 	Redirect 301 /contact https://www.maxsoft.pl/kontakt/
-	Redirect 301 /policy https://www.maxsoft.pl/polityka_prywatnosci/https://www.maxsoft.pl/
+	Redirect 301 /policy https://www.maxsoft.pl/polityka_prywatnosci/
+    Redirect 301 /cdn-cgi/l/email-protection https://www.maxsoft.pl/
 
     # 4. Brak trailing slash → dodaj slash (301, zgodnie z trailingSlash Astro)
     RewriteCond %{REQUEST_FILENAME} !-f
