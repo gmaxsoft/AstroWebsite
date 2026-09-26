@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# lokalna konfiguracja serwera (NGINX itd.)
+deploy/
+
+# SMTP formularza (na serwerze poza www – nie commituj haseł)
+config/smtp.php
+**/config/smtp.php
