@@ -321,6 +321,19 @@ runWhenReady(() => {
             const formData = new FormData(form);
             const statusMessage = document.createElement('p');
             statusMessage.classList.add('mil-up');
+
+            const turnstileToken = formData.get('cf-turnstile-response');
+            if (form.querySelector('.cf-turnstile') && !turnstileToken) {
+                statusMessage.style.color = 'red';
+                statusMessage.textContent =
+                    form.dataset.turnstileMissing ||
+                    'Potwierdź, że nie jesteś robotem, a potem wyślij formularz.';
+                form.querySelectorAll('.mil-form-status').forEach((el) => el.remove());
+                statusMessage.classList.add('mil-form-status');
+                form.after(statusMessage);
+                return;
+            }
+
             try {
                 const response = await fetch(form.action, { method: form.method, body: formData });
                 const result = await response.json();
@@ -328,14 +341,22 @@ runWhenReady(() => {
                     statusMessage.style.color = 'green';
                     statusMessage.textContent = result.message || 'Wiadomość wysłana pomyślnie!';
                     form.reset();
+                    if (typeof turnstile !== 'undefined' && turnstile.reset) {
+                        turnstile.reset();
+                    }
                 } else {
                     statusMessage.style.color = 'red';
                     statusMessage.textContent = result.message || 'Błąd wysyłki!';
+                    if (typeof turnstile !== 'undefined' && turnstile.reset) {
+                        turnstile.reset();
+                    }
                 }
             } catch (error) {
                 statusMessage.style.color = 'red';
                 statusMessage.textContent = 'Błąd serwera. Spróbuj ponownie.';
             }
+            form.querySelectorAll('.mil-form-status').forEach((el) => el.remove());
+            statusMessage.classList.add('mil-form-status');
             form.after(statusMessage);
         });
     }

@@ -423,7 +423,8 @@
     "kontakttxt12": "Send Message",
     "kontakttxt13": "Enter Name and Surname",
     "kontakttxt14": "Enter email address",
-    "kontakttxt15": "Message content"
+    "kontakttxt15": "Message content",
+    "kontakttxt16": "Please complete the spam check (Turnstile), then submit the form."
   },
   "projekt": [
     {

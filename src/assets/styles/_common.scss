@@ -390,6 +390,16 @@ a {
     display: none;
 }
 
+/* Honeypot formularza – poza ekranem (nie display:none – boty to omijają) */
+.mil-hp {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 .mil-txt-just {
     text-align: justify
 }

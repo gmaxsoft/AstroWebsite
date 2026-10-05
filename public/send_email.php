@@ -1,6 +1,6 @@
 <?php
 /**
- * Formularz kontaktowy Maxsoft – wysyłka przez SMTP (nie mail()).
+ * Formularz kontaktowy Maxsoft – SMTP + honeypot + Cloudflare Turnstile.
  * Config: /var/www/html/maxsoft.pl/config/smtp.php  (POZA document root)
  * Szablon: deploy/nginx/smtp.php.example
  */
@@ -15,9 +15,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Honeypot – boty wypełniają ukryte pole; człowiek nie. Cisza = sukces bez maila.
+$honeypot = trim((string) ($_POST['company_url'] ?? ''));
+if ($honeypot !== '') {
+    http_response_code(200);
+    echo json_encode(['message' => 'Wiadomość została wysłana!']);
+    exit;
+}
+
 $configPath = dirname($_SERVER['DOCUMENT_ROOT']) . '/config/smtp.php';
 if (!is_readable($configPath)) {
-    // fallback: katalog obok www na typowej strukturze Maxsoft
     $configPath = '/var/www/html/maxsoft.pl/config/smtp.php';
 }
 if (!is_readable($configPath)) {
@@ -26,8 +33,22 @@ if (!is_readable($configPath)) {
     exit;
 }
 
-/** @var array{host:string,port:int,user:string,pass:string,from:string,to:string,secure?:string} $smtp */
+/** @var array{host:string,port:int,user:string,pass:string,from:string,to:string,secure?:string,turnstile_secret?:string} $smtp */
 $smtp = require $configPath;
+
+$turnstileSecret = trim((string) ($smtp['turnstile_secret'] ?? ''));
+if ($turnstileSecret === '') {
+    http_response_code(500);
+    echo json_encode(['message' => 'Brak konfiguracji Turnstile na serwerze.']);
+    exit;
+}
+
+$turnstileToken = trim((string) ($_POST['cf-turnstile-response'] ?? ''));
+if ($turnstileToken === '' || !turnstile_verify($turnstileSecret, $turnstileToken, $_SERVER['REMOTE_ADDR'] ?? null)) {
+    http_response_code(403);
+    echo json_encode(['message' => 'Weryfikacja antyspamowa nie powiodła się. Odśwież stronę i spróbuj ponownie.']);
+    exit;
+}
 
 $name = trim((string) ($_POST['name'] ?? ''));
 $email = filter_var(trim((string) ($_POST['email'] ?? '')), FILTER_VALIDATE_EMAIL);
@@ -70,8 +91,36 @@ try {
 }
 
 /**
- * Minimalny klient SMTP (AUTH LOGIN + STARTTLS na 587 lub SSL na 465).
- *
+ * @see https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+ */
+function turnstile_verify(string $secret, string $token, ?string $remoteIp): bool
+{
+    $payload = [
+        'secret' => $secret,
+        'response' => $token,
+    ];
+    if ($remoteIp) {
+        $payload['remoteip'] = $remoteIp;
+    }
+
+    $ctx = stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'content' => http_build_query($payload),
+            'timeout' => 10,
+        ],
+    ]);
+    $raw = @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, $ctx);
+    if ($raw === false) {
+        error_log('Maxsoft Turnstile: brak odpowiedzi siteverify');
+        return false;
+    }
+    $json = json_decode($raw, true);
+    return is_array($json) && !empty($json['success']);
+}
+
+/**
  * @param array{host:string,port:int,user:string,pass:string,secure?:string} $cfg
  * @param array{to:string,from:string,from_name:string,reply_to:string,subject:string,html:string} $mail
  */
@@ -79,24 +128,33 @@ function smtp_send(array $cfg, array $mail): void
 {
     $host = $cfg['host'];
     $port = (int) $cfg['port'];
-    $secure = strtolower((string) ($cfg['secure'] ?? 'tls'));
-    // secure=true / ssl → ssl:// ; false/tls → STARTTLS po połączeniu plaintext
-    $useSsl = in_array($secure, ['1', 'true', 'ssl'], true);
-    $useStartTls = !$useSsl && $port !== 465;
+    $secure = strtolower((string) ($cfg['secure'] ?? ''));
+
+    $useSsl = $port === 465 || in_array($secure, ['1', 'true', 'ssl'], true);
+    $useStartTls = !$useSsl && ($port === 587 || $secure === 'tls' || $secure === '');
 
     $remote = ($useSsl ? 'ssl://' : '') . $host . ':' . $port;
-    $fp = @stream_socket_client($remote, $errno, $errstr, 20, STREAM_CLIENT_CONNECT);
+    $ctx = stream_context_create([
+        'ssl' => [
+            'crypto_method' => STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT,
+            'verify_peer' => true,
+            'verify_peer_name' => true,
+            'SNI_enabled' => true,
+            'peer_name' => $host,
+        ],
+    ]);
+    $fp = @stream_socket_client($remote, $errno, $errstr, 25, STREAM_CLIENT_CONNECT, $ctx);
     if (!$fp) {
         throw new RuntimeException("Połączenie SMTP: $errstr ($errno)");
     }
-    stream_set_timeout($fp, 20);
+    stream_set_timeout($fp, 25);
 
     smtp_expect($fp, [220]);
     smtp_cmd($fp, 'EHLO maxsoft.pl', [250]);
 
     if ($useStartTls) {
         smtp_cmd($fp, 'STARTTLS', [220]);
-        if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+        if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT)) {
             throw new RuntimeException('STARTTLS nieudane');
         }
         smtp_cmd($fp, 'EHLO maxsoft.pl', [250]);

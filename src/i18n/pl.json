@@ -442,7 +442,8 @@
     "kontakttxt12": "Wyślij wiadomość",
     "kontakttxt13": "Wpisz Imię i Nazwisko",
     "kontakttxt14": "Wpisz adres e-mail",
-    "kontakttxt15": "Treść wiadomości"
+    "kontakttxt15": "Treść wiadomości",
+    "kontakttxt16": "Potwierdź, że nie jesteś robotem (Turnstile), a potem wyślij formularz."
   },
   "projekt": [
     {
