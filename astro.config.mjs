@@ -24,6 +24,9 @@ export default defineConfig({
     '/pl/projekty/sklep-rolniczy/': '/projekty/sklep-rolniczy/',
     '/pl/projekty/api-olx/': '/projekty/api-olx/',
     '/pl/blog/': '/blog/',
+    '/pl/aplikacje-mobilne/': '/aplikacje-mobilne/',
+    '/pl/aplikacje-mobilne/calmsound/': '/aplikacje-mobilne/calmsound/',
+    '/pl/aplikacje-mobilne/calmsound/polityka-prywatnosci/': '/aplikacje-mobilne/calmsound/polityka-prywatnosci/',
   },
   i18n: {
     defaultLocale: 'pl',

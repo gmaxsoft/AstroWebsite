@@ -1,0 +1,245 @@
+---
+import { getImage } from "astro:assets";
+import pl from "../../i18n/pl.json";
+import en from "../../i18n/en.json";
+import type { AppEntry, AppLang } from "../../utils/apps";
+import { appBasePath, appEntryPath, appPrivacyPath } from "../../utils/apps";
+
+interface Neighbor {
+  slug: string;
+  title: string;
+}
+
+interface Props {
+  entry: AppEntry;
+  lang: AppLang;
+  langPrefix: string;
+  prev: Neighbor | null;
+  next: Neighbor | null;
+}
+
+const { entry, lang, langPrefix, prev, next } = Astro.props;
+const copy = entry.data[lang];
+const labels = (lang === "en" ? en.apps : pl.apps).labels;
+const listHref = appBasePath(langPrefix);
+const prefix = langPrefix || "/";
+
+const cover = await getImage({
+  src: entry.data.cover,
+  width: 1400,
+  format: "webp",
+});
+const shots = await Promise.all(
+  entry.data.screenshots.map((src) =>
+    getImage({ src, width: 1080, format: "webp" }),
+  ),
+);
+
+const privacyHref = entry.data.privacyPolicy
+  ? appPrivacyPath(langPrefix, entry.id)
+  : null;
+
+const prevHref = prev ? appEntryPath(langPrefix, prev.slug) : null;
+const nextHref = next ? appEntryPath(langPrefix, next.slug) : null;
+---
+
+<div class="mil-inner-banner">
+  <div class="mil-banner-content mil-up">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="container">
+      <ul class="mil-breadcrumbs mil-mb-60">
+        <li><a href={prefix === "/" ? "/" : `${prefix}/`}>Start</a></li>
+        <li>
+          <a href={listHref} title={lang === "en" ? en.apps.breadcrumb : pl.apps.breadcrumb}>
+            {lang === "en" ? en.apps.breadcrumb : pl.apps.breadcrumb}
+          </a>
+        </li>
+        <li><a href="#app" title={copy.title}>{copy.title}</a></li>
+      </ul>
+      <h1 class="mil-mb-60" set:html={copy.heading} />
+      <a href="#app" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
+        <span>{labels.seeMore}</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container mil-p-120-120" id="app">
+    <div class="row justify-content-between mil-mb-60">
+      <div class="col-lg-4">
+        <div class="mil-p-0-120">
+          <ul class="mil-service-list mil-dark mil-mb-60">
+            <li class="mil-up">
+              {labels.publisher}: &nbsp;<span class="mil-dark">{entry.data.publisher}</span>
+            </li>
+            <li class="mil-up">
+              {labels.platform}: &nbsp;<span class="mil-dark">{entry.data.platform}</span>
+            </li>
+            <li class="mil-up">
+              {labels.version}: &nbsp;<span class="mil-dark">{entry.data.version}</span>
+            </li>
+            <li class="mil-up">
+              {labels.category}: &nbsp;<span class="mil-dark">{copy.category}</span>
+            </li>
+            <li class="mil-up">
+              {labels.packageId}: &nbsp;<span class="mil-dark">{entry.data.packageId}</span>
+            </li>
+            <li class="mil-up">
+              {labels.ads}: &nbsp;<span class="mil-dark">
+                {entry.data.containsAds ? labels.adsYes : labels.adsNo}
+              </span>
+            </li>
+          </ul>
+          <h2 class="mil-up mil-mb-30">{copy.tagline}</h2>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="mil-image-frame mil-app-cover mil-up mil-mb-30">
+          <img
+            src={cover.src}
+            alt={copy.title}
+            width={cover.attributes.width}
+            height={cover.attributes.height}
+          />
+          <a
+            data-fancybox="gallery"
+            data-no-swup
+            href={cover.src}
+            class="mil-zoom-btn"
+            title={labels.zoom}
+          >
+            <img src="/img/icons/zoom.svg" alt={labels.zoom} />
+          </a>
+        </div>
+        <p class="mil-up mil-mb-30">{copy.paragraphs[0]}</p>
+        {
+          copy.features.length > 0 && (
+            <>
+              <h3 class="mil-up mil-mb-30">{copy.featuresTitle}</h3>
+              <ul class="mil-app-features mil-up mil-mb-30">
+                {copy.features.map((feature) => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+            </>
+          )
+        }
+        {
+          copy.paragraphs.slice(1).map((paragraph) => (
+            <p class="mil-up mil-mb-30">{paragraph}</p>
+          ))
+        }
+      </div>
+    </div>
+
+    <h2 class="mil-up mil-mb-60">{labels.gallery}</h2>
+    <div class="row">
+      {
+        shots.map((shot, index) => (
+          <div class="col-md-4 mil-mb-30">
+            <div class="mil-image-frame mil-phone mil-up">
+              <img
+                src={shot.src}
+                alt={copy.screenshotAlts[index] ?? copy.title}
+                width={shot.attributes.width}
+                height={shot.attributes.height}
+                loading="lazy"
+              />
+              <a
+                data-fancybox="gallery"
+                data-no-swup
+                href={shot.src}
+                class="mil-zoom-btn"
+                title={labels.zoom}
+              >
+                <img src="/img/icons/zoom.svg" alt={labels.zoom} />
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      privacyHref && (
+        <div class="mil-app-privacy mil-up">
+          <h2 class="mil-mb-30">{labels.privacy}</h2>
+          <p class="mil-mb-30">{labels.privacyLead}</p>
+          <a
+            href={privacyHref}
+            class="mil-link mil-dark mil-arrow-place"
+            title={labels.privacy}
+          >
+            <span>{labels.privacy}</span>
+          </a>
+        </div>
+      )
+    }
+
+    <div class="mil-works-nav mil-up">
+      {
+        prevHref ? (
+          <a
+            href={prevHref}
+            class="mil-link mil-dark mil-arrow-place mil-icon-left"
+            title={labels.prev}
+          >
+            <span>{prev ? prev.title : labels.prev}</span>
+          </a>
+        ) : (
+          <span class="mil-link mil-dark mil-arrow-place mil-icon-left mil-disabled">
+            <span>{labels.prev}</span>
+          </span>
+        )
+      }
+      <a href={listHref} class="mil-link mil-dark" title={labels.all}>
+        <span>{labels.all}</span>
+      </a>
+      {
+        nextHref ? (
+          <a
+            href={nextHref}
+            class="mil-link mil-dark mil-arrow-place"
+            title={labels.next}
+          >
+            <span>{next ? next.title : labels.next}</span>
+          </a>
+        ) : (
+          <span class="mil-link mil-dark mil-arrow-place mil-disabled">
+            <span>{labels.next}</span>
+          </span>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<section class="mil-soft-bg">
+  <div class="container mil-p-120-120">
+    <div class="row">
+      <div class="col-lg-10">
+        <span class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up">
+          {copy.tagline}
+        </span>
+      </div>
+      <div class="mil-center">
+        <h3 class="mil-up mil-mb-60" set:html={labels.ctaTitle} />
+        <div class="mil-up">
+          <a
+            href={`${langPrefix}/kontakt/`}
+            class="mil-button mil-arrow-place"
+            title={labels.ctaButton}><span>{labels.ctaButton}</span></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

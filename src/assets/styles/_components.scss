@@ -2771,6 +2771,17 @@ images
         padding-bottom: 50%;
     }
 
+    &.mil-app-cover {
+        padding-bottom: 48.83%;
+        background-color: #101418;
+    }
+
+    &.mil-phone {
+        padding-bottom: 196.3%;
+        border-radius: 16px;
+        background-color: #101418;
+    }
+
     & .mil-zoom-btn {
         opacity: 0;
         transform: translateY(15px);

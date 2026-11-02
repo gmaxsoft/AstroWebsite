@@ -51,4 +51,37 @@ const portfolio = defineCollection({
     }),
 });
 
-export const collections = { blog, portfolio };
+const appLocaleSchema = z.object({
+  title: z.string(),
+  description: z.string().max(160),
+  /** Nagłówek H1 (HTML), jak w portfolio. */
+  heading: z.string(),
+  tagline: z.string(),
+  featuresTitle: z.string(),
+  paragraphs: z.array(z.string()).min(1),
+  features: z.array(z.string()).default([]),
+  category: z.string(),
+  screenshotAlts: z.array(z.string()).min(1),
+});
+
+const apps = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/apps" }),
+  schema: ({ image }) =>
+    z.object({
+      sortOrder: z.number().int().default(0),
+      version: z.string(),
+      packageId: z.string(),
+      platform: z.string().default("Android"),
+      publisher: z.string().default("Maxsoft"),
+      containsAds: z.boolean().default(false),
+      /** Osobna strona HTML pod `/aplikacje-mobilne/{id}/polityka-prywatnosci/`. */
+      privacyPolicy: z.boolean().default(false),
+      icon: image(),
+      cover: image(),
+      screenshots: z.array(image()).min(1),
+      pl: appLocaleSchema,
+      en: appLocaleSchema,
+    }),
+});
+
+export const collections = { blog, portfolio, apps };

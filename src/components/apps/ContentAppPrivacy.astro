@@ -1,0 +1,55 @@
+---
+import pl from "../../i18n/pl.json";
+import en from "../../i18n/en.json";
+import { appBasePath, appEntryPath } from "../../utils/apps";
+import type { AppLang } from "../../utils/apps";
+
+interface Props {
+  lang: AppLang;
+  langPrefix: string;
+  slug: string;
+  appTitle: string;
+  pageTitle: string;
+  bodyHtml: string;
+}
+
+const { lang, langPrefix, slug, appTitle, pageTitle, bodyHtml } = Astro.props;
+const ui = lang === "en" ? en.apps : pl.apps;
+const homeHref = langPrefix ? `${langPrefix}/` : "/";
+const listHref = appBasePath(langPrefix);
+const appHref = appEntryPath(langPrefix, slug);
+---
+
+<div class="mil-inner-banner">
+  <div class="mil-banner-content mil-up">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="container">
+      <ul class="mil-breadcrumbs mil-mb-60">
+        <li><a href={homeHref}>Start</a></li>
+        <li>
+          <a href={listHref} title={ui.breadcrumb}>{ui.breadcrumb}</a>
+        </li>
+        <li>
+          <a href={appHref} title={appTitle}>{appTitle}</a>
+        </li>
+        <li>
+          <a href="#policy" title={pageTitle}>{pageTitle}</a>
+        </li>
+      </ul>
+      <h1 class="mil-mb-60">{pageTitle}</h1>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container mil-p-120-90" id="policy">
+    <div class="mil-blog-prose mil-app-privacy-doc mil-up" set:html={bodyHtml} />
+  </div>
+</section>

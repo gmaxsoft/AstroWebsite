@@ -1,0 +1,51 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import ContentAppSingle from "../../../components/apps/ContentAppSingle.astro";
+import en from "../../../i18n/en.json";
+import { sortAppEntries, type AppEntry } from "../../../utils/apps";
+
+export async function getStaticPaths() {
+  const entries = sortAppEntries(await getCollection("apps"));
+  return entries.map((entry) => ({
+    params: { lang: "en", slug: entry.id },
+  }));
+}
+
+const { lang, slug } = Astro.params as { lang: "en"; slug: string };
+const langPrefix = `/${lang}`;
+const entries = sortAppEntries(await getCollection("apps"));
+const index = entries.findIndex((entry) => entry.id === slug);
+const entry = entries[index] as AppEntry;
+const prevEntry = index > 0 ? entries[index - 1] : null;
+const nextEntry = index >= 0 && index < entries.length - 1 ? entries[index + 1] : null;
+
+const copy = entry.data.en;
+const pageTitle = `${copy.title} | ${en.apps.breadcrumb} Maxsoft`;
+const og = await getImage({ src: entry.data.cover, width: 1200, format: "jpg" });
+const canonical = `https://www.maxsoft.pl/en/aplikacje-mobilne/${entry.id}/`;
+const plCanonical = `https://www.maxsoft.pl/aplikacje-mobilne/${entry.id}/`;
+---
+
+<PageLayout
+  lang="en"
+  title={pageTitle}
+  description={copy.description}
+  ogImage={og.src}
+  canonical={canonical}
+  openGraphImageAlt={copy.title}
+>
+  <link slot="head" rel="alternate" hreflang="pl" href={plCanonical} />
+  <link slot="head" rel="alternate" hreflang="en" href={canonical} />
+  <link slot="head" rel="alternate" hreflang="x-default" href={plCanonical} />
+  <ContentAppSingle
+    entry={entry}
+    lang="en"
+    langPrefix={langPrefix}
+    prev={prevEntry ? { slug: prevEntry.id, title: prevEntry.data.en.title } : null}
+    next={nextEntry ? { slug: nextEntry.id, title: nextEntry.data.en.title } : null}
+  />
+</PageLayout>

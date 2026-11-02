@@ -1,0 +1,46 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import PageLayout from "../../../../layouts/PageLayout.astro";
+import ContentAppPrivacy from "../../../../components/apps/ContentAppPrivacy.astro";
+import { parseAppPrivacyHtml, readAppPrivacyHtml } from "../../../../utils/appPrivacy";
+
+export async function getStaticPaths() {
+  const apps = await getCollection("apps");
+  return apps.flatMap((app) => {
+    if (!app.data.privacyPolicy) return [];
+    const html = readAppPrivacyHtml(app.id, "en");
+    if (!html) return [];
+    return [{
+      params: { lang: "en", slug: app.id },
+      props: { html, appTitle: app.data.en.title },
+    }];
+  });
+}
+
+const { slug } = Astro.params;
+const { html, appTitle } = Astro.props as { html: string; appTitle: string };
+const doc = parseAppPrivacyHtml(html);
+const canonical = `https://www.maxsoft.pl/en/aplikacje-mobilne/${slug}/polityka-prywatnosci/`;
+const plCanonical = `https://www.maxsoft.pl/aplikacje-mobilne/${slug}/polityka-prywatnosci/`;
+---
+
+<PageLayout
+  lang="en"
+  title={`${doc.title} | Maxsoft`}
+  description={doc.description}
+  canonical={canonical}
+  openGraphImageAlt={doc.title}
+>
+  <link slot="head" rel="alternate" hreflang="pl" href={plCanonical} />
+  <link slot="head" rel="alternate" hreflang="en" href={canonical} />
+  <ContentAppPrivacy
+    lang="en"
+    langPrefix="/en"
+    slug={slug ?? ""}
+    appTitle={appTitle}
+    pageTitle={doc.title}
+    bodyHtml={doc.body}
+  />
+</PageLayout>

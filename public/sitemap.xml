@@ -192,5 +192,35 @@
   <lastmod>2026-03-20T00:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
+<url>
+  <loc>https://www.maxsoft.pl/aplikacje-mobilne/</loc>
+  <lastmod>2026-11-03T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.maxsoft.pl/en/aplikacje-mobilne/</loc>
+  <lastmod>2026-11-03T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.maxsoft.pl/aplikacje-mobilne/calmsound/</loc>
+  <lastmod>2026-11-03T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.maxsoft.pl/en/aplikacje-mobilne/calmsound/</loc>
+  <lastmod>2026-11-03T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.maxsoft.pl/aplikacje-mobilne/calmsound/polityka-prywatnosci/</loc>
+  <lastmod>2026-11-03T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.maxsoft.pl/en/aplikacje-mobilne/calmsound/polityka-prywatnosci/</loc>
+  <lastmod>2026-11-03T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
 
 </urlset>

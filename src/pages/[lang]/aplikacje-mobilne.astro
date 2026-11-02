@@ -1,0 +1,85 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
+import PageLayout from "../../layouts/PageLayout.astro";
+import AppsIndexContent from "../../components/apps/AppsIndexContent.astro";
+import pl from "../../i18n/pl.json";
+import en from "../../i18n/en.json";
+import { sortAppEntries, APPS_INDEX_PAGE_SIZE } from "../../utils/apps";
+
+const translations = { pl, en };
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: "en" };
+const langPrefix = `/${lang}`;
+const appsUi = translations[lang].apps;
+
+const items = sortAppEntries(await getCollection("apps"));
+const totalPages = Math.max(1, Math.ceil(items.length / APPS_INDEX_PAGE_SIZE));
+const pageItems = items.slice(0, APPS_INDEX_PAGE_SIZE);
+const canonical = `https://www.maxsoft.pl${langPrefix}/aplikacje-mobilne/`;
+const og = items[0]
+  ? await getImage({ src: items[0].data.cover, width: 1200, format: "jpg" })
+  : null;
+---
+
+<PageLayout
+  lang={lang}
+  title={appsUi.indexTitle}
+  description={appsUi.indexDescription}
+  ogImage={og?.src ?? "/img/default-og.webp"}
+  canonical={canonical}
+  openGraphImageAlt={appsUi.breadcrumb}
+>
+  <link slot="head" rel="alternate" hreflang="pl" href="https://www.maxsoft.pl/aplikacje-mobilne/" />
+  <link slot="head" rel="alternate" hreflang="en" href="https://www.maxsoft.pl/en/aplikacje-mobilne/" />
+  <link slot="head" rel="alternate" hreflang="x-default" href="https://www.maxsoft.pl/aplikacje-mobilne/" />
+
+  <div class="mil-inner-banner mil-blog-banner">
+    <div class="mil-animation-frame">
+      <div
+        class="mil-animation mil-position-4 mil-dark mil-scale"
+        data-value-1="6"
+        data-value-2="1.4"
+      >
+      </div>
+    </div>
+    <div class="mil-banner-content mil-up">
+      <div class="container">
+        <ul class="mil-breadcrumbs mil-mb-60">
+          <li>
+            <a href={`${langPrefix}/`} title="Start">Start</a>
+          </li>
+          <li>
+            <span title={appsUi.breadcrumb}>{appsUi.breadcrumb}</span>
+          </li>
+        </ul>
+        <h1 class="mil-mb-15" set:html={appsUi.indexHeading} />
+        <p class="mil-text-sm mil-dark-soft mil-up mil-mb-60">
+          {appsUi.indexSubheading}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="mil-soft-bg">
+    <div class="container mil-p-120-90">
+      <AppsIndexContent
+        pageItems={pageItems}
+        currentPage={1}
+        totalPages={totalPages}
+        pathPrefix={`${langPrefix}/aplikacje-mobilne`}
+        lang={lang}
+        readMore={appsUi.readMore}
+        pagerPrev={appsUi.pagerPrev}
+        pagerNext={appsUi.pagerNext}
+        pagerAria={appsUi.pagerAria}
+      />
+    </div>
+  </section>
+</PageLayout>
