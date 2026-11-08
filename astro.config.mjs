@@ -27,6 +27,10 @@ export default defineConfig({
     '/pl/aplikacje-mobilne/': '/aplikacje-mobilne/',
     '/pl/aplikacje-mobilne/calmsound/': '/aplikacje-mobilne/calmsound/',
     '/pl/aplikacje-mobilne/calmsound/polityka-prywatnosci/': '/aplikacje-mobilne/calmsound/polityka-prywatnosci/',
+    '/pl/aplikacje-mobilne/car-acoustic-detector/': '/aplikacje-mobilne/car-acoustic-detector/',
+    '/pl/aplikacje-mobilne/car-acoustic-detector/polityka-prywatnosci/': '/aplikacje-mobilne/car-acoustic-detector/polityka-prywatnosci/',
+    '/pl/aplikacje-mobilne/synchro-race-timer/': '/aplikacje-mobilne/synchro-race-timer/',
+    '/pl/aplikacje-mobilne/synchro-race-timer/polityka-prywatnosci/': '/aplikacje-mobilne/synchro-race-timer/polityka-prywatnosci/',
   },
   i18n: {
     defaultLocale: 'pl',

@@ -145,7 +145,10 @@ const nextHref = next ? appEntryPath(langPrefix, next.slug) : null;
       {
         shots.map((shot, index) => (
           <div class="col-md-4 mil-mb-30">
-            <div class="mil-image-frame mil-phone mil-up">
+            <div
+              class="mil-image-frame mil-phone mil-up"
+              style={`padding-bottom: ${((shot.attributes.height / shot.attributes.width) * 100).toFixed(2)}%`}
+            >
               <img
                 src={shot.src}
                 alt={copy.screenshotAlts[index] ?? copy.title}
