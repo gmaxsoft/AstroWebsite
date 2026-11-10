@@ -31,6 +31,8 @@ export default defineConfig({
     '/pl/aplikacje-mobilne/car-acoustic-detector/polityka-prywatnosci/': '/aplikacje-mobilne/car-acoustic-detector/polityka-prywatnosci/',
     '/pl/aplikacje-mobilne/synchro-race-timer/': '/aplikacje-mobilne/synchro-race-timer/',
     '/pl/aplikacje-mobilne/synchro-race-timer/polityka-prywatnosci/': '/aplikacje-mobilne/synchro-race-timer/polityka-prywatnosci/',
+    '/pl/aplikacje-mobilne/linkora/': '/aplikacje-mobilne/linkora/',
+    '/pl/aplikacje-mobilne/linkora/polityka-prywatnosci/': '/aplikacje-mobilne/linkora/polityka-prywatnosci/',
   },
   i18n: {
     defaultLocale: 'pl',
